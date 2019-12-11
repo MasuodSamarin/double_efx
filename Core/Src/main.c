@@ -112,7 +112,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  glcd_test_glcdutils();
+	  glcd_test_scrolling_graph();
   }
   /* USER CODE END 3 */
 }
