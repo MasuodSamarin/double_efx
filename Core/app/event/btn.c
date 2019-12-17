@@ -44,7 +44,7 @@ void Btn_Event_Init(Btn_t *btn){
 	/* Save pressed time */
 	start_time = Time_Now;
 	/*set the press time to initial value*/
-	Btn_Event_Set_Press_time(btn, BTN_NORMAL_PRESS_TIME);
+	Btn_Event_Set_time(btn, BTN_NORMAL_PRESS_TIME);
 	/*there's no press btn, yet*/
 	btn->has_press = 0;
 }
@@ -55,7 +55,7 @@ uint8_t Btn_Event_Handle(Btn_t *btn){
 }
 
 #ifdef	FUNC_VS_DEFINE
-void Btn_Event_Set_Press_time(Btn_t *btn, uint32_t time){
+void Btn_Event_Set_time(Btn_t *btn, uint32_t time){
 	btn->press_time = time;
 }
 #endif
@@ -71,8 +71,8 @@ static uint8_t Btn_Hadle_State_Start(Btn_t *btn){
 		/* Save pressed time */
 		start_time = Time_Now;
 	}
-
-	RETURN_WITH_STATUS(btn, 0);
+	btn->has_press = 0;
+	return 0;
 }
 
 static uint8_t Btn_Hadle_State_Pressed(Btn_t *btn){
@@ -84,15 +84,16 @@ static uint8_t Btn_Hadle_State_Pressed(Btn_t *btn){
 			/* Call function callback */
 			/* Go to stage BUTTON_STATE_WAITRELEASE */
 			state = BTN_STATE_RELEASED;
-			RETURN_WITH_STATUS(btn, 1);
+			btn->has_press = 1;
+			return 1;
 
 		}
 	}else{
 		/* Button pressed, go to state BTN_STATE_START */
 		state = BTN_STATE_START;
 	}
-
-	RETURN_WITH_STATUS(btn, 0);
+	btn->has_press = 0;
+	return 0;
 }
 static uint8_t Btn_Hadle_State_Released(Btn_t *btn){
 	/* Wait till button released */
@@ -100,8 +101,8 @@ static uint8_t Btn_Hadle_State_Released(Btn_t *btn){
 		/* Button pressed, go to state BTN_STATE_START */
 		state = BTN_STATE_START;
 	}
-
-	RETURN_WITH_STATUS(btn, 0);
+	btn->has_press = 0;
+	return 0;
 }
 
 

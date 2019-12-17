@@ -22,16 +22,16 @@ typedef struct Btn_t{
 }Btn_t;
 
 
-void Btn_Event_Init(Btn_t *btn);
+void 	Btn_Event_Init(Btn_t *btn);
 uint8_t Btn_Event_Handle(Btn_t *btn);
 
 /*
  * which one is better?*/
 //#define FUNC_VS_DEFINE
 #ifdef	FUNC_VS_DEFINE
-void Btn_Event_Set_Press_time(Btn_t *btn, uint32_t time);
+void Btn_Event_Set_time(Btn_t *btn, uint32_t time);
 #else
-#define Btn_Event_Set_Press_time(btn, time)	(btn->press_time = time)
+#define Btn_Event_Set_time(btn, time)	(btn->press_time = time)
 #endif
 
 

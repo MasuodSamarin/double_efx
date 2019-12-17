@@ -97,16 +97,13 @@ int main(void)
   //MX_DMA_Init();
   //MX_ADC_Init();
   //MX_I2C1_Init();
-  //MX_TIM1_Init();
+  MX_TIM1_Init();
   //MX_TIM3_Init();
   //MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
   glcd_init();
   glcd_set_font_c(FC_Default_Font_5x8_AlphaNumber);
 
-//  HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
-//  __HAL_TIM_SET_COUNTER(&htim1, 7);
-//  __HAL_TIM_SET_AUTORELOAD(&htim1, 16);
 
   Btn_t	btn;
   Btn_Event_Init(&btn);
