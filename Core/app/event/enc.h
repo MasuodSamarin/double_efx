@@ -8,6 +8,7 @@
 #ifndef APP_EVENT_ENC_H_
 #define APP_EVENT_ENC_H_
 
+typedef struct Enc_t *Enc_t;
 
 
 #endif /* APP_EVENT_ENC_H_ */

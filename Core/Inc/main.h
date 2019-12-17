@@ -61,8 +61,8 @@ void Error_Handler(void);
 #define mas 1
 #define MIDI_RX_Pin GPIO_PIN_4
 #define MIDI_RX_GPIO_Port GPIOA
-#define ENC_BTN_Pin GPIO_PIN_5
-#define ENC_BTN_GPIO_Port GPIOA
+#define BTN_Pin GPIO_PIN_5
+#define BTN_GPIO_Port GPIOA
 #define PWM_CH1_Pin GPIO_PIN_6
 #define PWM_CH1_GPIO_Port GPIOA
 #define PWM_CH2_Pin GPIO_PIN_7

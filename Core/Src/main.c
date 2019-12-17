@@ -28,7 +28,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "glcd.h"
+#include "../app/glcd/glcd.h"
+#include "../app/event/btn.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,14 +97,20 @@ int main(void)
   //MX_DMA_Init();
   //MX_ADC_Init();
   //MX_I2C1_Init();
-  MX_TIM1_Init();
+  //MX_TIM1_Init();
   //MX_TIM3_Init();
   //MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
   glcd_init();
-  HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
-  __HAL_TIM_SET_COUNTER(&htim1, 7);
-  __HAL_TIM_SET_AUTORELOAD(&htim1, 16);
+  glcd_set_font_c(FC_Default_Font_5x8_AlphaNumber);
+
+//  HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
+//  __HAL_TIM_SET_COUNTER(&htim1, 7);
+//  __HAL_TIM_SET_AUTORELOAD(&htim1, 16);
+
+  Btn_t	btn;
+  Btn_Event_Init(&btn);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,9 +118,21 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+	  if(Btn_Event_Handle(&btn)){
+		  glcd_clear_buffer();
+		  glcd_draw_string_P(5, 30, "BTN PREESED");
+		  glcd_write();
+		  HAL_Delay(1000);
+		  glcd_clear_buffer();
+
+	  }
+	  glcd_draw_string_P(5, 10, "USE BTN");
+	  glcd_write();
+	  HAL_Delay(10);
+
 
     /* USER CODE BEGIN 3 */
-	  glcd_test_scrolling_graph();
+//	  glcd_test_scrolling_graph();
   }
   /* USER CODE END 3 */
 }

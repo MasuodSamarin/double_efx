@@ -7,3 +7,7 @@
 
 
 #include "enc.h"
+
+struct Enc_t{
+
+};

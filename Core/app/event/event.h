@@ -15,4 +15,12 @@
 
 typedef struct Event_t *Event_t;
 
+typedef enum{
+	Event_NOT = 0,
+	Event_BTN,
+	Event_ENC,
+	Event_VOL,
+	EVENT_MAX
+}Event_Mode_t;
+
 #endif /* APP_EVENT_EVENT_H_ */

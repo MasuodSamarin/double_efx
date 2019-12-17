@@ -8,7 +8,14 @@
 #include "event.h"
 
 
-typedef struct Event_t{
+struct Event_t{
 
+	Event_Mode_t	mode;
+	union{
 		Btn_t	btn;
+		Enc_t	enc;
+		Vol_t	vol;
+	}instance;
 };
+
+
