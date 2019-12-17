@@ -8,8 +8,10 @@
 #include "btn.h"
 
 
-#define Btn_Status	(BTN_GPIO_Port->IDR & BTN_Pin)
+#define Btn_Status	((BTN_GPIO_Port)->IDR & BTN_Pin)
 #define Time_Now	(HAL_GetTick())
+/* Return with status macro */
+#define RETURN_WITH_STATUS(b, p)    do { (b)->has_press = p; return p; } while (0)
 
 typedef enum {
 	BTN_STATE_START,
@@ -70,7 +72,7 @@ static uint8_t Btn_Hadle_State_Start(Btn_t *btn){
 		start_time = Time_Now;
 	}
 
-	return btn->has_press = 0;
+	RETURN_WITH_STATUS(btn, 0);
 }
 
 static uint8_t Btn_Hadle_State_Pressed(Btn_t *btn){
@@ -82,14 +84,15 @@ static uint8_t Btn_Hadle_State_Pressed(Btn_t *btn){
 			/* Call function callback */
 			/* Go to stage BUTTON_STATE_WAITRELEASE */
 			state = BTN_STATE_RELEASED;
-			return btn->has_press = 1;
+			RETURN_WITH_STATUS(btn, 1);
+
 		}
 	}else{
 		/* Button pressed, go to state BTN_STATE_START */
 		state = BTN_STATE_START;
 	}
 
-	return btn->has_press = 0;
+	RETURN_WITH_STATUS(btn, 0);
 }
 static uint8_t Btn_Hadle_State_Released(Btn_t *btn){
 	/* Wait till button released */
@@ -98,7 +101,7 @@ static uint8_t Btn_Hadle_State_Released(Btn_t *btn){
 		state = BTN_STATE_START;
 	}
 
-	return btn->has_press = 0;
+	RETURN_WITH_STATUS(btn, 0);
 }
 
 

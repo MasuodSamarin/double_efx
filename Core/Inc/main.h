@@ -58,7 +58,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define mas 1
 #define MIDI_RX_Pin GPIO_PIN_4
 #define MIDI_RX_GPIO_Port GPIOA
 #define BTN_Pin GPIO_PIN_5
