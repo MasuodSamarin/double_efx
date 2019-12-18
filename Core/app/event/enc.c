@@ -13,7 +13,8 @@
 
 
 
-#define half(x)	(x / 2)
+#define half(x)		( x / 2 )
+#define nhalf(x)	( -x / 2 )
 
 
 void Enc_Event_Init(Enc_t *enc){
@@ -51,7 +52,7 @@ uint8_t Enc_Event_Handle(Enc_t *enc){
 
 	}
 	/* Enc_Rotate_Increment */
-	else if( diff < (-half(span)) ){
+	else if( diff < nhalf(span) ){
 		enc->direction = Enc_Rotate_Increment;
 		enc->value = span + diff;
 		return 1;

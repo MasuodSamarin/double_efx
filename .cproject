@@ -46,6 +46,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test_defx/Core/app/effect}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test_defx/Core/app/event}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test_defx/Core/app/glcd}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test_defx/Core/app/link_list}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1932215274" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__weak=&quot;__attribute__((weak))&quot;"/>

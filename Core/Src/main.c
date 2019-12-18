@@ -28,8 +28,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "../app/glcd/glcd.h"
-#include "../app/event/btn.h"
+#include "glcd.h"
+#include "btn.h"
 
 /* USER CODE END Includes */
 
