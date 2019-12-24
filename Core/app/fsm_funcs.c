@@ -10,7 +10,6 @@
 
 void fp_S1_All(App_Handle_t *handle){}
 
-
 void fp_S2_Enot(App_Handle_t *handle){}
 void fp_S2_Ebtn(App_Handle_t *handle){}
 void fp_S2_Eenc(App_Handle_t *handle){}

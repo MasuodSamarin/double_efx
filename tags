@@ -484,6 +484,14 @@ APB2FZ	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t
 APB2RSTR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t APB2RSTR;   \/*!< RCC APB2 peripheral reset register,                          Address offset: 0x0C *\/$/;"	m	struct:__anon191
 APBPERIPH_BASE	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	450;"	d
 APBPrescTable	Core/Src/system_stm32f0xx.c	/^const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};$/;"	v
+APP_APP_H_	Core/app/app.h	9;"	d
+APP_EFFECT_EFX_H_	Core/app/effect/efx.h	9;"	d
+APP_EFFECT_FV1_H_	Core/app/aux/fv1.h	9;"	d
+APP_EVENT_BTN_H_	Core/app/event/btn.h	9;"	d
+APP_EVENT_ENC_H_	Core/app/event/enc.h	9;"	d
+APP_EVENT_EVENT_H_	Core/app/event/event.h	9;"	d
+APP_EVENT_VOL_H_	Core/app/event/vol.h	9;"	d
+APP_Exec	Core/app/app.c	/^void APP_Exec(App_Handle_t *handle){}$/;"	f
 APSR_C_Msk	Drivers/CMSIS/Include/core_cm0.h	268;"	d
 APSR_C_Msk	Drivers/CMSIS/Include/core_cm0plus.h	279;"	d
 APSR_C_Msk	Drivers/CMSIS/Include/core_cm3.h	276;"	d
@@ -589,6 +597,7 @@ ARM_MATH_SUCCESS	Drivers/CMSIS/Include/arm_math.h	/^    ARM_MATH_SUCCESS = 0,   
 ARM_MATH_TEST_FAILURE	Drivers/CMSIS/Include/arm_math.h	/^    ARM_MATH_TEST_FAILURE = -6           \/**< Test Failed  *\/$/;"	e	enum:__anon20
 ARR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t ARR;          \/*!< TIM auto-reload register,            Address offset: 0x2C *\/$/;"	m	struct:__anon194
 ASM_SRCS	Debug/sources.mk	/^ASM_SRCS := $/;"	m
+ASM_SRCS	Release/sources.mk	/^ASM_SRCS := $/;"	m
 AWD1_EVENT	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	62;"	d
 AWD2_EVENT	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	63;"	d
 AWD3_EVENT	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	64;"	d
@@ -597,6 +606,9 @@ AddrEventCount	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h	/^  __IO uin
 Address	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h	/^  __IO uint32_t               Address;          \/*!< Internal variable to save address selected for program or erase *\/$/;"	m	struct:__anon214
 AddressingMode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h	/^  uint32_t AddressingMode;      \/*!< Specifies if 7-bit or 10-bit addressing mode is selected.$/;"	m	struct:__anon203
 Alternate	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h	/^  uint32_t Alternate;  \/*!< Peripheral to be connected to the selected pins $/;"	m	struct:__anon197
+App_Handle_t	Core/app/app.h	/^typedef struct App_Handle_t{$/;"	s
+App_Handle_t	Core/app/app.h	/^}App_Handle_t;$/;"	t	typeref:struct:App_Handle_t
+App_Init	Core/app/app.c	/^void App_Init(App_Handle_t *handle){}$/;"	f
 AutoReloadPreload	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h	/^  uint32_t AutoReloadPreload;  \/*!< Specifies the auto-reload preload.$/;"	m	struct:__anon232
 AutomaticOutput	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h	/^  uint32_t AutomaticOutput;       \/*!< TIM Automatic Output Enable state $/;"	m	struct:__anon208
 BDCR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t BDCR;       \/*!< RCC Backup domain control register,                          Address offset: 0x20 *\/$/;"	m	struct:__anon191
@@ -621,10 +633,32 @@ BRE_BitNumber	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	1367;"	
 BRR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t BRR;          \/*!< GPIO bit reset register,                     Address offset: 0x28      *\/$/;"	m	struct:__anon186
 BRR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t BRR;    \/*!< USART Baud rate register,                 Address offset: 0x0C *\/$/;"	m	struct:__anon195
 BSRR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t BSRR;         \/*!< GPIO port bit set\/reset register,      Address offset: 0x1A *\/$/;"	m	struct:__anon186
+BTN_GPIO_Port	Core/Inc/main.h	65;"	d
+BTN_LONG_PRESS_TIME	Core/app/event/btn.h	15;"	d
+BTN_NORMAL_PRESS_TIME	Core/app/event/btn.h	14;"	d
+BTN_Pin	Core/Inc/main.h	64;"	d
+BTN_STATE_MAX	Core/app/event/btn.c	/^	BTN_STATE_MAX,$/;"	e	enum:__anon252	file:
+BTN_STATE_PRESSED	Core/app/event/btn.c	/^	BTN_STATE_PRESSED,$/;"	e	enum:__anon252	file:
+BTN_STATE_RELEASED	Core/app/event/btn.c	/^	BTN_STATE_RELEASED,$/;"	e	enum:__anon252	file:
+BTN_STATE_START	Core/app/event/btn.c	/^	BTN_STATE_START,$/;"	e	enum:__anon252	file:
 Bebas_Neue18x36_Numbers	Core/app/glcd/fonts/Bebas_Neue18x36_Numbers.h	/^static const char Bebas_Neue18x36_Numbers[]  = {$/;"	v
 Bebas_Neue20x36_Bold_Numbers	Core/app/glcd/fonts/Bebas_Neue20x36_Bold_Numbers.h	/^static const char Bebas_Neue20x36_Bold_Numbers[]  = {$/;"	v
 BreakPolarity	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h	/^  uint32_t BreakPolarity;         \/*!< TIM Break input polarity $/;"	m	struct:__anon208
 BreakState	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h	/^  uint32_t BreakState;            \/*!< TIM Break State $/;"	m	struct:__anon208
+Btn_Event_Handle	Core/app/event/btn.c	/^uint8_t Btn_Event_Handle(Btn_t *btn){$/;"	f
+Btn_Event_Init	Core/app/event/btn.c	/^void Btn_Event_Init(Btn_t *btn){$/;"	f
+Btn_Event_Set_time	Core/app/event/btn.c	/^void Btn_Event_Set_time(Btn_t *btn, uint32_t time){$/;"	f
+Btn_Event_Set_time	Core/app/event/btn.h	34;"	d
+Btn_Event_Set_time_define	Core/app/event/btn.h	30;"	d
+Btn_Hadle_State_Pressed	Core/app/event/btn.c	/^static uint8_t Btn_Hadle_State_Pressed(Btn_t *btn){$/;"	f	file:
+Btn_Hadle_State_Released	Core/app/event/btn.c	/^static uint8_t Btn_Hadle_State_Released(Btn_t *btn){$/;"	f	file:
+Btn_Hadle_State_Start	Core/app/event/btn.c	/^static uint8_t Btn_Hadle_State_Start(Btn_t *btn){$/;"	f	file:
+Btn_Handle_fp	Core/app/event/btn.c	/^typedef uint8_t(*Btn_Handle_fp)(Btn_t *btn);$/;"	t	file:
+Btn_Handle_table	Core/app/event/btn.c	/^static Btn_Handle_fp Btn_Handle_table[BTN_STATE_MAX]={$/;"	v	file:
+Btn_State_t	Core/app/event/btn.c	/^}Btn_State_t;$/;"	t	typeref:enum:__anon252	file:
+Btn_Status	Core/app/event/btn.c	11;"	d	file:
+Btn_t	Core/app/event/btn.h	/^typedef struct Btn_t{$/;"	s
+Btn_t	Core/app/event/btn.h	/^}Btn_t;$/;"	t	typeref:struct:Btn_t
 C	Drivers/CMSIS/Include/core_cm0.h	/^    uint32_t C:1;                        \/*!< bit:     29  Carry condition code flag *\/$/;"	m	struct:__anon112::__anon113
 C	Drivers/CMSIS/Include/core_cm0.h	/^    uint32_t C:1;                        \/*!< bit:     29  Carry condition code flag *\/$/;"	m	struct:__anon116::__anon117
 C	Drivers/CMSIS/Include/core_cm0plus.h	/^    uint32_t C:1;                        \/*!< bit:     29  Carry condition code flag *\/$/;"	m	struct:__anon82::__anon83
@@ -722,6 +756,7 @@ CID3	Drivers/CMSIS/Include/core_cm4.h	/^  __IM  uint32_t CID3;                  
 CID3	Drivers/CMSIS/Include/core_cm7.h	/^  __IM  uint32_t CID3;                   \/*!< Offset: 0xFFC (R\/ )  ITM Component  Identification Register #3 *\/$/;"	m	struct:__anon148
 CID3	Drivers/CMSIS/Include/core_sc300.h	/^  __IM  uint32_t CID3;                   \/*!< Offset: 0xFFC (R\/ )  ITM Component  Identification Register #3 *\/$/;"	m	struct:__anon167
 CIR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t CIR;        \/*!< RCC clock interrupt register,                                Address offset: 0x08 *\/$/;"	m	struct:__anon191
+CIRCULAR_LINKED_LIST	Core/app/aux/link_list.h	2;"	d
 CIR_BYTE1_ADDRESS	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	3046;"	d
 CIR_BYTE2_ADDRESS	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	3047;"	d
 CLAIMCLR	Drivers/CMSIS/Include/core_cm3.h	/^  __IOM uint32_t CLAIMCLR;               \/*!< Offset: 0xFA4 (R\/W)  Claim tag clear *\/$/;"	m	struct:__anon109
@@ -978,7 +1013,9 @@ CYCCNT	Drivers/CMSIS/Include/core_cm4.h	/^  __IOM uint32_t CYCCNT;              
 CYCCNT	Drivers/CMSIS/Include/core_cm7.h	/^  __IOM uint32_t CYCCNT;                 \/*!< Offset: 0x004 (R\/W)  Cycle Count Register *\/$/;"	m	struct:__anon150
 CYCCNT	Drivers/CMSIS/Include/core_sc300.h	/^  __IOM uint32_t CYCCNT;                 \/*!< Offset: 0x004 (R\/W)  Cycle Count Register *\/$/;"	m	struct:__anon169
 C_DEPS	Debug/sources.mk	/^C_DEPS := $/;"	m
+C_DEPS	Release/sources.mk	/^C_DEPS := $/;"	m
 C_SRCS	Debug/sources.mk	/^C_SRCS := $/;"	m
+C_SRCS	Release/sources.mk	/^C_SRCS := $/;"	m
 CecClockSelection	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h	/^  uint32_t CecClockSelection;    \/*!< HDMI CEC clock source$/;"	m	struct:__anon217
 CecClockSelection	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h	/^  uint32_t CecClockSelection;    \/*!< HDMI CEC clock source$/;"	m	struct:__anon218
 CecClockSelection	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h	/^  uint32_t CecClockSelection;    \/*!< HDMI CEC clock source$/;"	m	struct:__anon219
@@ -1939,11 +1976,28 @@ Direction	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h	/^  uint32_t Dire
 DiscontinuousConvMode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h	/^  uint32_t DiscontinuousConvMode; \/*!< Specifies whether the conversions sequence of regular group is performed in Complete-sequence\/Discontinuous-sequence (main sequence subdivided in successive parts).$/;"	m	struct:__anon209
 DmaBaseAddress	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h	/^  DMA_TypeDef          *DmaBaseAddress;                                               \/*!< DMA Channel Base Address                *\/$/;"	m	struct:__DMA_HandleTypeDef
 DualAddressMode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h	/^  uint32_t DualAddressMode;     \/*!< Specifies if dual addressing mode is selected.$/;"	m	struct:__anon203
+EFX_FACT_PRESET_MODE	Core/app/effect/efx.h	/^	EFX_FACT_PRESET_MODE$/;"	e	enum:__anon244
+EFX_PRST_1	Core/app/effect/efx.h	/^	EFX_PRST_1,$/;"	e	enum:__anon243
+EFX_PRST_10	Core/app/effect/efx.h	/^	EFX_PRST_10,$/;"	e	enum:__anon243
+EFX_PRST_11	Core/app/effect/efx.h	/^	EFX_PRST_11,$/;"	e	enum:__anon243
+EFX_PRST_12	Core/app/effect/efx.h	/^	EFX_PRST_12,$/;"	e	enum:__anon243
+EFX_PRST_13	Core/app/effect/efx.h	/^	EFX_PRST_13,$/;"	e	enum:__anon243
+EFX_PRST_14	Core/app/effect/efx.h	/^	EFX_PRST_14,$/;"	e	enum:__anon243
+EFX_PRST_15	Core/app/effect/efx.h	/^	EFX_PRST_15,$/;"	e	enum:__anon243
+EFX_PRST_16	Core/app/effect/efx.h	/^	EFX_PRST_16,$/;"	e	enum:__anon243
+EFX_PRST_2	Core/app/effect/efx.h	/^	EFX_PRST_2,$/;"	e	enum:__anon243
+EFX_PRST_3	Core/app/effect/efx.h	/^	EFX_PRST_3,$/;"	e	enum:__anon243
+EFX_PRST_4	Core/app/effect/efx.h	/^	EFX_PRST_4,$/;"	e	enum:__anon243
+EFX_PRST_5	Core/app/effect/efx.h	/^	EFX_PRST_5,$/;"	e	enum:__anon243
+EFX_PRST_6	Core/app/effect/efx.h	/^	EFX_PRST_6,$/;"	e	enum:__anon243
+EFX_PRST_7	Core/app/effect/efx.h	/^	EFX_PRST_7,$/;"	e	enum:__anon243
+EFX_PRST_8	Core/app/effect/efx.h	/^	EFX_PRST_8,$/;"	e	enum:__anon243
+EFX_PRST_9	Core/app/effect/efx.h	/^	EFX_PRST_9,$/;"	e	enum:__anon243
+EFX_PRST_MAX	Core/app/effect/efx.h	/^	EFX_PRST_MAX,$/;"	e	enum:__anon243
+EFX_USER_PRESET_MODE	Core/app/effect/efx.h	/^	EFX_USER_PRESET_MODE,$/;"	e	enum:__anon244
 EGR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t EGR;          \/*!< TIM event generation register,       Address offset: 0x14 *\/$/;"	m	struct:__anon194
 EMR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t EMR;          \/*!<EXTI Event mask register,                     Address offset: 0x04 *\/$/;"	m	struct:__anon183
 ENABLE	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h	/^  ENABLE = !DISABLE$/;"	e	enum:__anon174
-ENC_BTN_GPIO_Port	Core/Inc/main.h	65;"	d
-ENC_BTN_Pin	Core/Inc/main.h	64;"	d
 ENC_CH1_GPIO_Port	Core/Inc/main.h	75;"	d
 ENC_CH1_Pin	Core/Inc/main.h	74;"	d
 ENC_CH2_GPIO_Port	Core/Inc/main.h	77;"	d
@@ -1993,12 +2047,14 @@ ETH_MMCTIMR	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	1122;"	d
 ETH_MMCTIR	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	1120;"	d
 ETH_PROMISCIOUSMODE_DISABLE	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	3445;"	d
 ETH_PROMISCIOUSMODE_ENABLE	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	3444;"	d
+EVENT_MAX	Core/app/event/event.h	/^	EVENT_MAX$/;"	e	enum:__anon248
 EWUP_BitNumber	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	1361;"	d
 EXCCNT	Drivers/CMSIS/Include/core_cm3.h	/^  __IOM uint32_t EXCCNT;                 \/*!< Offset: 0x00C (R\/W)  Exception Overhead Count Register *\/$/;"	m	struct:__anon108
 EXCCNT	Drivers/CMSIS/Include/core_cm4.h	/^  __IOM uint32_t EXCCNT;                 \/*!< Offset: 0x00C (R\/W)  Exception Overhead Count Register *\/$/;"	m	struct:__anon15
 EXCCNT	Drivers/CMSIS/Include/core_cm7.h	/^  __IOM uint32_t EXCCNT;                 \/*!< Offset: 0x00C (R\/W)  Exception Overhead Count Register *\/$/;"	m	struct:__anon150
 EXCCNT	Drivers/CMSIS/Include/core_sc300.h	/^  __IOM uint32_t EXCCNT;                 \/*!< Offset: 0x00C (R\/W)  Exception Overhead Count Register *\/$/;"	m	struct:__anon169
 EXECUTABLES	Debug/sources.mk	/^EXECUTABLES := $/;"	m
+EXECUTABLES	Release/sources.mk	/^EXECUTABLES := $/;"	m
 EXTI	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	511;"	d
 EXTI0_1_IRQn	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  EXTI0_1_IRQn                = 5,      \/*!< EXTI Line 0 and 1 Interrupt                                     *\/$/;"	e	enum:__anon176
 EXTI2_3_IRQn	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  EXTI2_3_IRQn                = 6,      \/*!< EXTI Line 2 and 3 Interrupt                                     *\/$/;"	e	enum:__anon176
@@ -2474,6 +2530,27 @@ EXTI_SWIER_SWIER9	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	1523;"
 EXTI_SWIER_SWIER9_Msk	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	1522;"	d
 EXTI_SWIER_SWIER9_Pos	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	1521;"	d
 EXTI_TypeDef	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^} EXTI_TypeDef;$/;"	t	typeref:struct:__anon183
+Efx_Base_t	Core/app/effect/efx.h	/^typedef struct Efx_Base_t{$/;"	s
+Efx_Base_t	Core/app/effect/efx.h	/^}Efx_Base_t;$/;"	t	typeref:struct:Efx_Base_t
+Efx_Memory_t	Core/app/effect/efx.h	/^typedef struct Efx_Memory_t{$/;"	s
+Efx_Memory_t	Core/app/effect/efx.h	/^}Efx_Memory_t;$/;"	t	typeref:struct:Efx_Memory_t
+Efx_Preset_Mode_t	Core/app/effect/efx.h	/^}Efx_Preset_Mode_t;$/;"	t	typeref:enum:__anon244
+Efx_Preset_t	Core/app/effect/efx.h	/^}Efx_Preset_t;$/;"	t	typeref:enum:__anon243
+Efx_get_base	Core/app/effect/efx_base.c	/^Efx_Base_t *Efx_get_base(Efx_Preset_t pst){$/;"	f
+Efx_t	Core/app/effect/efx.h	/^typedef struct Efx_t{$/;"	s
+Efx_t	Core/app/effect/efx.h	/^}Efx_t;$/;"	t	typeref:struct:Efx_t
+Enc_Event_Get_Span	Core/app/event/enc.h	38;"	d
+Enc_Event_Get_val	Core/app/event/enc.h	35;"	d
+Enc_Event_Handle	Core/app/event/enc.c	/^uint8_t Enc_Event_Handle(Enc_t *enc){$/;"	f
+Enc_Event_Init	Core/app/event/enc.c	/^void Enc_Event_Init(Enc_t *enc){$/;"	f
+Enc_Event_Set_Span	Core/app/event/enc.h	39;"	d
+Enc_Event_Set_val	Core/app/event/enc.h	36;"	d
+Enc_Rotate_Decrement	Core/app/event/enc.h	/^	Enc_Rotate_Decrement, \/*!< Encoder was decremented *\/$/;"	e	enum:__anon247
+Enc_Rotate_Increment	Core/app/event/enc.h	/^	Enc_Rotate_Increment, \/*!< Encoder was incremented *\/$/;"	e	enum:__anon247
+Enc_Rotate_Nothing	Core/app/event/enc.h	/^	Enc_Rotate_Nothing    \/*!< Encoder stop at it was before *\/$/;"	e	enum:__anon247
+Enc_Rotate_t	Core/app/event/enc.h	/^}Enc_Rotate_t;$/;"	t	typeref:enum:__anon247
+Enc_t	Core/app/event/enc.h	/^typedef struct Enc_t{$/;"	s
+Enc_t	Core/app/event/enc.h	/^}Enc_t;$/;"	t	typeref:struct:Enc_t
 EncoderMode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h	/^  uint32_t EncoderMode;   \/*!< Specifies the active edge of the input signal.$/;"	m	struct:__anon236
 ErrorCode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h	/^  __IO uint32_t                 ErrorCode;              \/*!< ADC Error code *\/$/;"	m	struct:__anon212
 ErrorCode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h	/^  __IO uint32_t         ErrorCode;                                                    \/*!< DMA Error code                         *\/$/;"	m	struct:__DMA_HandleTypeDef
@@ -2482,6 +2559,15 @@ ErrorCode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h	/^  __IO uint32_t
 ErrorLimitValue	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h	/^  uint32_t ErrorLimitValue;       \/*!< Specifies the value to be used to evaluate the captured frequency error value.$/;"	m	struct:__anon222
 ErrorStatus	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h	/^} ErrorStatus;$/;"	t	typeref:enum:__anon175
 Error_Handler	Core/Src/main.c	/^void Error_Handler(void)$/;"	f
+Event_BTN	Core/app/event/event.h	/^	Event_BTN,$/;"	e	enum:__anon248
+Event_ENC	Core/app/event/event.h	/^	Event_ENC,$/;"	e	enum:__anon248
+Event_Handle	Core/app/event/event.c	/^void Event_Handle(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol){}$/;"	f
+Event_Init	Core/app/event/event.c	/^void Event_Init(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol){}$/;"	f
+Event_Mode_t	Core/app/event/event.h	/^}Event_Mode_t;$/;"	t	typeref:enum:__anon248
+Event_NOT	Core/app/event/event.h	/^	Event_NOT = 0,$/;"	e	enum:__anon248
+Event_VOL	Core/app/event/event.h	/^	Event_VOL,$/;"	e	enum:__anon248
+Event_t	Core/app/event/event.h	/^typedef struct Event_t{$/;"	s
+Event_t	Core/app/event/event.h	/^}Event_t;$/;"	t	typeref:struct:Event_t
 ExternalTrigConv	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h	/^  uint32_t ExternalTrigConv;      \/*!< Selects the external event used to trigger the conversion start of regular group.$/;"	m	struct:__anon209
 ExternalTrigConvEdge	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h	/^  uint32_t ExternalTrigConvEdge;  \/*!< Selects the external trigger edge of regular group.$/;"	m	struct:__anon209
 FALLING_EDGE	Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c	150;"	d	file:
@@ -2865,12 +2951,25 @@ FUNCTION3	Drivers/CMSIS/Include/core_cm3.h	/^  __IOM uint32_t FUNCTION3;        
 FUNCTION3	Drivers/CMSIS/Include/core_cm4.h	/^  __IOM uint32_t FUNCTION3;              \/*!< Offset: 0x058 (R\/W)  Function Register 3 *\/$/;"	m	struct:__anon15
 FUNCTION3	Drivers/CMSIS/Include/core_cm7.h	/^  __IOM uint32_t FUNCTION3;              \/*!< Offset: 0x058 (R\/W)  Function Register 3 *\/$/;"	m	struct:__anon150
 FUNCTION3	Drivers/CMSIS/Include/core_sc300.h	/^  __IOM uint32_t FUNCTION3;              \/*!< Offset: 0x058 (R\/W)  Function Register 3 *\/$/;"	m	struct:__anon169
+FV1_CODE_0	Core/app/aux/fv1.h	/^	FV1_CODE_0 = 0b0000,$/;"	e	enum:__anon245
+FV1_CODE_1	Core/app/aux/fv1.h	/^	FV1_CODE_1 = 0b0001,$/;"	e	enum:__anon245
+FV1_CODE_2	Core/app/aux/fv1.h	/^	FV1_CODE_2 = 0b0010,$/;"	e	enum:__anon245
+FV1_CODE_3	Core/app/aux/fv1.h	/^	FV1_CODE_3 = 0b0011,$/;"	e	enum:__anon245
+FV1_CODE_4	Core/app/aux/fv1.h	/^	FV1_CODE_4 = 0b0100,$/;"	e	enum:__anon245
+FV1_CODE_5	Core/app/aux/fv1.h	/^	FV1_CODE_5 = 0b0101,$/;"	e	enum:__anon245
+FV1_CODE_6	Core/app/aux/fv1.h	/^	FV1_CODE_6 = 0b0110,$/;"	e	enum:__anon245
+FV1_CODE_7	Core/app/aux/fv1.h	/^	FV1_CODE_7 = 0b0111,$/;"	e	enum:__anon245
+FV1_EEP_0	Core/app/aux/fv1.h	/^	FV1_EEP_0 = 0b00010000,$/;"	e	enum:__anon246
+FV1_EEP_1	Core/app/aux/fv1.h	/^	FV1_EEP_1 = 0b00100000,$/;"	e	enum:__anon246
 FillZerobss	startup/startup_stm32f030x6.s	/^FillZerobss:$/;"	l
 FlagStatus	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h	/^} FlagStatus, ITStatus;$/;"	t	typeref:enum:__anon173
 Font5x8	Core/app/glcd/fonts/Font5x8.h	/^static const char Font5x8[]  =$/;"	v
 FreqErrorCapture	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h	/^  uint32_t FreqErrorCapture;      \/*!< Specifies the value loaded in the .FECAP, the frequency error counter $/;"	m	struct:__anon223
 FreqErrorDirection	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h	/^  uint32_t FreqErrorDirection;    \/*!< Specifies the value loaded in the .FEDIR, the counting direction of the $/;"	m	struct:__anon223
+Fsm_Fp_t	Core/app/app.h	/^typedef void (*Fsm_Fp_t)(App_Handle_t *handle);$/;"	t
 FunctionalState	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h	/^} FunctionalState;$/;"	t	typeref:enum:__anon174
+Fv1_Code_t	Core/app/aux/fv1.h	/^}Fv1_Code_t;$/;"	t	typeref:enum:__anon245
+Fv1_EEP_t	Core/app/aux/fv1.h	/^}Fv1_EEP_t;$/;"	t	typeref:enum:__anon246
 GE	Drivers/CMSIS/Include/core_cm4.h	/^    uint32_t GE:4;                       \/*!< bit: 16..19  Greater than or Equal flags *\/$/;"	m	struct:__anon1::__anon2
 GE	Drivers/CMSIS/Include/core_cm4.h	/^    uint32_t GE:4;                       \/*!< bit: 16..19  Greater than or Equal flags *\/$/;"	m	struct:__anon5::__anon6
 GE	Drivers/CMSIS/Include/core_cm7.h	/^    uint32_t GE:4;                       \/*!< bit: 16..19  Greater than or Equal flags *\/$/;"	m	struct:__anon136::__anon137
@@ -2879,8 +2978,6 @@ GET_GPIO_INDEX	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	543;"	
 GET_GPIO_SOURCE	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	542;"	d
 GLCD_A0_HIGH	Core/app/glcd/ST7565R.h	127;"	d
 GLCD_A0_LOW	Core/app/glcd/ST7565R.h	126;"	d
-GLCD_DC_HIGH	Core/app/glcd/ST7565R.h	124;"	d
-GLCD_DC_LOW	Core/app/glcd/ST7565R.h	123;"	d
 GLCD_GRAPHICS_H_	Core/app/glcd/glcd_graphics.h	36;"	d
 GLCD_GRAPHS_H	Core/app/glcd/glcd_graphs.h	36;"	d
 GLCD_INIT_UC1705	Core/app/glcd/ST7565R.c	378;"	d	file:
@@ -6070,6 +6167,7 @@ LIBERATION_SANS17X17_ALPHA_H_	Core/app/glcd/fonts/Liberation_Sans17x17_Alpha.h	1
 LIBERATION_SANS20X28_NUMBERS_H_	Core/app/glcd/fonts/Liberation_Sans20x28_Numbers.h	10;"	d
 LIBERATION_SANS27X36_NUMBERS_H_	Core/app/glcd/fonts/Liberation_Sans27x36_Numbers.h	10;"	d
 LIBS	Debug/objects.mk	/^LIBS :=$/;"	m
+LIBS	Release/objects.mk	/^LIBS :=$/;"	m
 LOAD	Drivers/CMSIS/Include/core_cm0.h	/^  __IOM uint32_t LOAD;                   \/*!< Offset: 0x004 (R\/W)  SysTick Reload Value Register *\/$/;"	m	struct:__anon122
 LOAD	Drivers/CMSIS/Include/core_cm0plus.h	/^  __IOM uint32_t LOAD;                   \/*!< Offset: 0x004 (R\/W)  SysTick Reload Value Register *\/$/;"	m	struct:__anon92
 LOAD	Drivers/CMSIS/Include/core_cm3.h	/^  __IOM uint32_t LOAD;                   \/*!< Offset: 0x004 (R\/W)  SysTick Reload Value Register *\/$/;"	m	struct:__anon105
@@ -6608,7 +6706,9 @@ OB	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	528;"	d
 OBEX_BOOTCONFIG	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	390;"	d
 OBEX_PCROP	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	389;"	d
 OBJS	Debug/sources.mk	/^OBJS := $/;"	m
+OBJS	Release/sources.mk	/^OBJS := $/;"	m
 OBJ_SRCS	Debug/sources.mk	/^OBJ_SRCS := $/;"	m
+OBJ_SRCS	Release/sources.mk	/^OBJ_SRCS := $/;"	m
 OBR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t OBR;          \/*!<FLASH option bytes register,                   Address offset: 0x1C *\/$/;"	m	struct:__anon184
 OB_BASE	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	483;"	d
 OB_BOOT0_RESET	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h	391;"	d
@@ -6767,6 +6867,7 @@ OVR_DATA_OVERWRITTEN	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	
 OVR_DATA_PRESERVED	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	54;"	d
 OVR_EVENT	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	65;"	d
 O_SRCS	Debug/sources.mk	/^O_SRCS := $/;"	m
+O_SRCS	Release/sources.mk	/^O_SRCS := $/;"	m
 OffStateIDLEMode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h	/^  uint32_t OffStateIDLEMode;	    \/*!< TIM off state in IDLE mode$/;"	m	struct:__anon208
 OffStateRunMode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h	/^  uint32_t OffStateRunMode;       \/*!< TIM off state in run mode$/;"	m	struct:__anon208
 OptionType	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h	/^  uint32_t OptionType;  \/*!< OptionType: Option byte to be configured.$/;"	m	struct:__anon231
@@ -8005,9 +8106,11 @@ RESERVED7	Drivers/CMSIS/Include/core_cm7.h	/^        uint32_t RESERVED7[8U];$/;"
 RESERVED7	Drivers/CMSIS/Include/core_sc300.h	/^        uint32_t RESERVED7[8U];$/;"	m	struct:__anon170
 RESERVED8	Drivers/CMSIS/Include/core_cm7.h	/^        uint32_t RESERVED8[1U];$/;"	m	struct:__anon145
 RESET	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h	/^  RESET = 0, $/;"	e	enum:__anon173
+RETURN_WITH_STATUS	Core/app/event/btn.c	14;"	d	file:
 RISING_EDGE	Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c	149;"	d	file:
 RLR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t RLR;  \/*!< IWDG Reload register,    Address offset: 0x08 *\/$/;"	m	struct:__anon189
 RM	Debug/makefile	/^RM := rm -rf$/;"	m
+RM	Release/makefile	/^RM := rm -rf$/;"	m
 RMVF_BITNUMBER	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	3043;"	d
 RMVF_BitNumber	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	3042;"	d
 RNR	Drivers/CMSIS/Include/core_cm0plus.h	/^  __IOM uint32_t RNR;                    \/*!< Offset: 0x008 (R\/W)  MPU Region RNRber Register *\/$/;"	m	struct:__anon93
@@ -9583,6 +9686,10 @@ ST7565_LCD_CMD_SET_STATIC_REG	Core/app/glcd/ST7565R.h	191;"	d
 ST7565_LCD_CMD_SET_VOLUME_FIRST	Core/app/glcd/ST7565R.h	187;"	d
 ST7565_LCD_CMD_SET_VOLUME_SECOND	Core/app/glcd/ST7565R.h	188;"	d
 ST7565_LCD_CMD_TEST	Core/app/glcd/ST7565R.h	197;"	d
+STATE_1	Core/app/app.h	/^	STATE_1,$/;"	e	enum:State_t
+STATE_2	Core/app/app.h	/^	STATE_2,$/;"	e	enum:State_t
+STATE_3	Core/app/app.h	/^	STATE_3,$/;"	e	enum:State_t
+STATE_MAX	Core/app/app.h	/^	STATE_MAX,$/;"	e	enum:State_t
 STIR	Drivers/CMSIS/Include/core_cm3.h	/^  __OM  uint32_t STIR;                   \/*!< Offset: 0xE00 ( \/W)  Software Trigger Interrupt Register *\/$/;"	m	struct:__anon102
 STIR	Drivers/CMSIS/Include/core_cm4.h	/^  __OM  uint32_t STIR;                   \/*!< Offset: 0xE00 ( \/W)  Software Trigger Interrupt Register *\/$/;"	m	struct:__anon9
 STIR	Drivers/CMSIS/Include/core_cm7.h	/^  __OM  uint32_t STIR;                   \/*!< Offset: 0x200 ( \/W)  Software Triggered Interrupt Register *\/$/;"	m	struct:__anon145
@@ -9591,6 +9698,7 @@ STIR	Drivers/CMSIS/Include/core_sc300.h	/^  __OM  uint32_t STIR;                
 STM32F0	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h	69;"	d
 STM32_HAL_LEGACY	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	23;"	d
 SUBDIRS	Debug/sources.mk	/^SUBDIRS := \\$/;"	m
+SUBDIRS	Release/sources.mk	/^SUBDIRS := \\$/;"	m
 SUCCESS	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h	/^  SUCCESS = !ERROR$/;"	e	enum:__anon175
 SVC_Handler	Core/Src/stm32f0xx_it.c	/^void SVC_Handler(void)$/;"	f
 SVC_IRQn	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  SVC_IRQn                    = -5,     \/*!< 11 Cortex-M0 SV Call Interrupt                                  *\/$/;"	e	enum:__anon176
@@ -9794,8 +9902,11 @@ SYSCLKSource	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h	/^  uint32_t S
 SYSTICK_CLKSOURCE_HCLK	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h	65;"	d
 SYSTICK_CLKSOURCE_HCLK_DIV8	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h	64;"	d
 S_SRCS	Debug/sources.mk	/^S_SRCS := $/;"	m
+S_SRCS	Release/sources.mk	/^S_SRCS := $/;"	m
 S_UPPER_DEPS	Debug/sources.mk	/^S_UPPER_DEPS := $/;"	m
+S_UPPER_DEPS	Release/sources.mk	/^S_UPPER_DEPS := $/;"	m
 S_UPPER_SRCS	Debug/sources.mk	/^S_UPPER_SRCS := $/;"	m
+S_UPPER_SRCS	Release/sources.mk	/^S_UPPER_SRCS := $/;"	m
 SamplingTime	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h	/^  uint32_t SamplingTime;           \/*!< Sampling time value to be set for the selected channel.$/;"	m	struct:__anon210
 SamplingTimeCommon	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h	/^  uint32_t SamplingTimeCommon;    \/*!< Sampling time value to be set for the selected channel.$/;"	m	struct:__anon209
 ScanConvMode	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h	/^  uint32_t ScanConvMode;          \/*!< Configures the sequencer of regular group.$/;"	m	struct:__anon209
@@ -9811,6 +9922,8 @@ State	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h	/^  __IO uint32_t    
 State	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h	/^  __IO HAL_DMA_StateTypeDef  State;                                                   \/*!< DMA transfer state                     *\/$/;"	m	struct:__DMA_HandleTypeDef
 State	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h	/^  __IO HAL_I2C_StateTypeDef  State;          \/*!< I2C communication state                   *\/$/;"	m	struct:__I2C_HandleTypeDef
 State	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h	/^  __IO HAL_TIM_StateTypeDef   State;         \/*!< TIM operation state               *\/$/;"	m	struct:__anon242
+State_t	Core/app/app.h	/^typedef enum State_t{$/;"	g
+State_t	Core/app/app.h	/^}State_t;$/;"	t	typeref:enum:State_t
 SysTick	Drivers/CMSIS/Include/core_cm0.h	588;"	d
 SysTick	Drivers/CMSIS/Include/core_cm0plus.h	700;"	d
 SysTick	Drivers/CMSIS/Include/core_cm3.h	1375;"	d
@@ -11148,6 +11261,7 @@ TYPEPROGRAM_HALFWORD	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	
 TYPEPROGRAM_WORD	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	380;"	d
 Tahoma11x13	Core/app/glcd/fonts/Tahoma11x13.h	/^static const char Tahoma11x13[]  =$/;"	v
 Tekton_Pro_Ext27x28	Core/app/glcd/fonts/Tekton_Pro_Ext27x28.h	/^static const char Tekton_Pro_Ext27x28[]  =$/;"	v
+Time_Now	Core/app/event/btn.c	12;"	d	file:
 Timing	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h	/^  uint32_t Timing;              \/*!< Specifies the I2C_TIMINGR_register value.$/;"	m	struct:__anon203
 TriggerFilter	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h	/^  uint32_t  TriggerFilter;     \/*!< Input trigger filter $/;"	m	struct:__anon239
 TriggerPolarity	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h	/^  uint32_t  TriggerPolarity;   \/*!< Input Trigger polarity $/;"	m	struct:__anon239
@@ -11450,6 +11564,7 @@ USB_HS_EXTI_TRIGGER_RISING_EDGE	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_ha
 USER	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint16_t USER;         \/*!< FLASH option byte user options,                Address offset: 0x02 *\/$/;"	m	struct:__anon185
 USERConfig	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h	/^  uint8_t USERConfig;   \/*!< USERConfig: Program the FLASH User Option Byte: $/;"	m	struct:__anon231
 USER_OBJS	Debug/objects.mk	/^USER_OBJS :=$/;"	m
+USER_OBJS	Release/objects.mk	/^USER_OBJS :=$/;"	m
 USE_RTOS	Core/Inc/stm32f0xx_hal_conf.h	167;"	d
 USE_SPI_CRC	Core/Inc/stm32f0xx_hal_conf.h	185;"	d
 Usart1ClockSelection	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h	/^  uint32_t Usart1ClockSelection; \/*!< USART1 clock source$/;"	m	struct:__anon215
@@ -11493,12 +11608,28 @@ VOLTAGE_RANGE_1	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	406;"
 VOLTAGE_RANGE_2	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	407;"	d
 VOLTAGE_RANGE_3	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	408;"	d
 VOLTAGE_RANGE_4	Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h	409;"	d
+VOL_A	Core/app/event/vol.h	/^	VOL_A,$/;"	e	enum:__anon250
+VOL_B	Core/app/event/vol.h	/^	VOL_B,$/;"	e	enum:__anon250
+VOL_C	Core/app/event/vol.h	/^	VOL_C,$/;"	e	enum:__anon250
+VOL_D	Core/app/event/vol.h	/^	VOL_D,$/;"	e	enum:__anon250
+VOL_GROUP_1	Core/app/event/vol.h	/^	VOL_GROUP_1 = 0x01,$/;"	e	enum:__anon251
+VOL_GROUP_2	Core/app/event/vol.h	/^	VOL_GROUP_2	= 0x02,$/;"	e	enum:__anon251
+VOL_GROUP_3	Core/app/event/vol.h	/^	VOL_GROUP_3	= 0x04,$/;"	e	enum:__anon251
+VOL_GROUP_4	Core/app/event/vol.h	/^	VOL_GROUP_4	= 0x08,$/;"	e	enum:__anon251
+VOL_GROUP_MAX	Core/app/event/vol.h	/^	VOL_GROUP_MAX,$/;"	e	enum:__anon251
+VOL_MAX	Core/app/event/vol.h	/^	VOL_MAX$/;"	e	enum:__anon250
 VTOR	Drivers/CMSIS/Include/core_cm0plus.h	/^  __IOM uint32_t VTOR;                   \/*!< Offset: 0x008 (R\/W)  Vector Table Offset Register *\/$/;"	m	struct:__anon91
 VTOR	Drivers/CMSIS/Include/core_cm3.h	/^  __IOM uint32_t VTOR;                   \/*!< Offset: 0x008 (R\/W)  Vector Table Offset Register *\/$/;"	m	struct:__anon103
 VTOR	Drivers/CMSIS/Include/core_cm4.h	/^  __IOM uint32_t VTOR;                   \/*!< Offset: 0x008 (R\/W)  Vector Table Offset Register *\/$/;"	m	struct:__anon10
 VTOR	Drivers/CMSIS/Include/core_cm7.h	/^  __IOM uint32_t VTOR;                   \/*!< Offset: 0x008 (R\/W)  Vector Table Offset Register *\/$/;"	m	struct:__anon145
 VTOR	Drivers/CMSIS/Include/core_sc000.h	/^  __IOM uint32_t VTOR;                   \/*!< Offset: 0x008 (R\/W)  Vector Table Offset Register *\/$/;"	m	struct:__anon132
 VTOR	Drivers/CMSIS/Include/core_sc300.h	/^  __IOM uint32_t VTOR;                   \/*!< Offset: 0x008 (R\/W)  Vector Table Offset Register *\/$/;"	m	struct:__anon164
+Vol_Event_Handle	Core/app/event/vol.c	/^uint8_t Vol_Event_Handle(Vol_t *vol){return 0;}$/;"	f
+Vol_Event_Init	Core/app/event/vol.c	/^void 	Vol_Event_Init(Vol_t *vol){}$/;"	f
+Vol_Group_t	Core/app/event/vol.h	/^}Vol_Group_t;$/;"	t	typeref:enum:__anon251
+Vol_Name_t	Core/app/event/vol.h	/^}Vol_Name_t;$/;"	t	typeref:enum:__anon250
+Vol_t	Core/app/event/vol.h	/^typedef struct Vol_t{$/;"	s
+Vol_t	Core/app/event/vol.h	/^}Vol_t;$/;"	t	typeref:struct:Vol_t
 WHITE	Core/app/glcd/ST7565R.h	158;"	d
 WHITE	Core/app/glcd/glcd.h	65;"	d
 WINR	Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h	/^  __IO uint32_t WINR; \/*!< IWDG Window register,    Address offset: 0x10 *\/$/;"	m	struct:__anon189
@@ -14273,6 +14404,8 @@ _times	Core/Src/syscalls.c	/^int _times(struct tms *buf)$/;"	f
 _unlink	Core/Src/syscalls.c	/^int _unlink(char *name)$/;"	f
 _wait	Core/Src/syscalls.c	/^int _wait(int *status)$/;"	f
 _write	Core/Src/syscalls.c	/^__attribute__((weak)) int _write(int file, char *ptr, int len)$/;"	f
+abs	Core/app/event/vol.c	/^int abs(int j){$/;"	f
+abs2	Core/app/event/vol.c	17;"	d	file:
 arm_bilinear_interp_f32	Drivers/CMSIS/Include/arm_math.h	/^  static __INLINE float32_t arm_bilinear_interp_f32($/;"	f
 arm_bilinear_interp_instance_f32	Drivers/CMSIS/Include/arm_math.h	/^  } arm_bilinear_interp_instance_f32;$/;"	t	typeref:struct:__anon36
 arm_bilinear_interp_instance_q15	Drivers/CMSIS/Include/arm_math.h	/^  } arm_bilinear_interp_instance_q15;$/;"	t	typeref:struct:__anon38
@@ -14394,6 +14527,8 @@ b	Drivers/CMSIS/Include/core_sc300.h	/^  } b;                                   
 b	Drivers/CMSIS/Include/core_sc300.h	/^  } b;                                   \/*!< Structure used for bit  access *\/$/;"	m	union:__anon157	typeref:struct:__anon157::__anon158
 b	Drivers/CMSIS/Include/core_sc300.h	/^  } b;                                   \/*!< Structure used for bit  access *\/$/;"	m	union:__anon159	typeref:struct:__anon159::__anon160
 b	Drivers/CMSIS/Include/core_sc300.h	/^  } b;                                   \/*!< Structure used for bit  access *\/$/;"	m	union:__anon161	typeref:struct:__anon161::__anon162
+base	Core/app/effect/efx.h	/^	Efx_Base_t *base;$/;"	m	struct:Efx_t
+base_num	Core/app/effect/efx.h	/^	uint8_t	base_num;$/;"	m	struct:Efx_Memory_t
 bitRevFactor	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t bitRevFactor;             \/**< bit reversal modifier that supports different size FFTs with the same bit reversal table. *\/$/;"	m	struct:__anon44
 bitRevFactor	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t bitRevFactor;             \/**< bit reversal modifier that supports different size FFTs with the same bit reversal table. *\/$/;"	m	struct:__anon45
 bitRevFactor	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t bitRevFactor;           \/**< bit reversal modifier that supports different size FFTs with the same bit reversal table. *\/$/;"	m	struct:__anon40
@@ -14413,15 +14548,27 @@ bitReverseFlagR	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t bitReverseFlagR; 
 bitReverseFlagR	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t bitReverseFlagR;                    \/**< flag that enables (bitReverseFlagR=1) or disables (bitReverseFlagR=0) bit reversal of output. *\/$/;"	m	struct:__anon51
 bitReverseFlagR	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t bitReverseFlagR;                  \/**< flag that enables (bitReverseFlagR=1) or disables (bitReverseFlagR=0) bit reversal of output. *\/$/;"	m	struct:__anon49
 bmp_oslogo	Core/app/glcd/unit_tests.c	/^		const unsigned char bmp_oslogo[] = {	$/;"	v
+btn	Core/app/app.h	/^	Btn_t btn;$/;"	m	struct:App_Handle_t
+btn	Core/app/event/event.h	/^		Btn_t *btn;$/;"	m	union:Event_t::__anon249
 clip_q31_to_q15	Drivers/CMSIS/Include/arm_math.h	/^  static __INLINE q15_t clip_q31_to_q15($/;"	f
 clip_q31_to_q7	Drivers/CMSIS/Include/arm_math.h	/^  static __INLINE q7_t clip_q31_to_q7($/;"	f
 clip_q63_to_q15	Drivers/CMSIS/Include/arm_math.h	/^  static __INLINE q15_t clip_q63_to_q15($/;"	f
 clip_q63_to_q31	Drivers/CMSIS/Include/arm_math.h	/^  static __INLINE q31_t clip_q63_to_q31($/;"	f
-end_char	Core/app/glcd/fonts/fonts.h	/^	char end_char;$/;"	m	struct:__anon243
+code	Core/app/effect/efx.h	/^	const uint8_t code;$/;"	m	struct:Efx_Base_t
+cur_efx	Core/app/app.h	/^	Efx_t *cur_efx;$/;"	m	struct:App_Handle_t
+current	Core/app/aux/link_list.h	/^	node_t* current;$/;"	m	struct:list_iterator_t
+data	Core/app/aux/link_list.h	/^	void* data;$/;"	m	struct:list_iterator_t
+direction	Core/app/event/enc.h	/^	Enc_Rotate_t	direction;	\/*!< user turn encoder to 'rotate' direction *\/$/;"	m	struct:Enc_t
+efx_base_box	Core/app/effect/efx_base.c	/^struct Efx_Base_t *efx_base_box[EFX_PRST_MAX] = {$/;"	v	typeref:struct:Efx_Base_t
+element	Core/app/aux/link_list.h	/^	void* element;$/;"	m	struct:node_t
+enc	Core/app/app.h	/^	Enc_t enc;$/;"	m	struct:App_Handle_t
+enc	Core/app/event/event.h	/^		Enc_t *enc;$/;"	m	union:Event_t::__anon249
+end_char	Core/app/glcd/fonts/fonts.h	/^	char end_char;$/;"	m	struct:__anon253
 energy	Drivers/CMSIS/Include/arm_math.h	/^    float32_t energy;     \/**< saves previous frame energy. *\/$/;"	m	struct:__anon75
 energy	Drivers/CMSIS/Include/arm_math.h	/^    q15_t energy;         \/**< saves previous frame energy. *\/$/;"	m	struct:__anon77
 energy	Drivers/CMSIS/Include/arm_math.h	/^    q31_t energy;         \/**< saves previous frame energy. *\/$/;"	m	struct:__anon76
 environ	Core/Src/syscalls.c	/^char **environ = __env;$/;"	v
+event	Core/app/app.h	/^	Event_t event;$/;"	m	struct:App_Handle_t
 fftLen	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t fftLen;                   \/**< length of the FFT. *\/$/;"	m	struct:__anon44
 fftLen	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t fftLen;                   \/**< length of the FFT. *\/$/;"	m	struct:__anon45
 fftLen	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t fftLen;                   \/**< length of the FFT. *\/$/;"	m	struct:__anon46
@@ -14439,10 +14586,20 @@ fftLenReal	Drivers/CMSIS/Include/arm_math.h	/^    uint32_t fftLenReal;          
 float32_t	Drivers/CMSIS/Include/arm_math.h	/^  typedef float float32_t;$/;"	t
 float64_t	Drivers/CMSIS/Include/arm_math.h	/^  typedef double float64_t;$/;"	t
 font_current	Core/app/glcd/glcd_text.c	/^glcd_FontConfig_t font_current;$/;"	v
-font_table	Core/app/glcd/fonts/fonts.h	/^	const char *font_table;$/;"	m	struct:__anon243
+font_table	Core/app/glcd/fonts/fonts.h	/^	const char *font_table;$/;"	m	struct:__anon253
+fp_S1_All	Core/app/fsm_funcs.c	/^void fp_S1_All(App_Handle_t *handle){}$/;"	f
+fp_S2_Ebtn	Core/app/fsm_funcs.c	/^void fp_S2_Ebtn(App_Handle_t *handle){}$/;"	f
+fp_S2_Eenc	Core/app/fsm_funcs.c	/^void fp_S2_Eenc(App_Handle_t *handle){}$/;"	f
+fp_S2_Enot	Core/app/fsm_funcs.c	/^void fp_S2_Enot(App_Handle_t *handle){}$/;"	f
+fp_S2_Evol	Core/app/fsm_funcs.c	/^void fp_S2_Evol(App_Handle_t *handle){}$/;"	f
+fp_S3_Ebtn	Core/app/fsm_funcs.c	/^void fp_S3_Ebtn(App_Handle_t *handle){}$/;"	f
+fp_S3_Eenc	Core/app/fsm_funcs.c	/^void fp_S3_Eenc(App_Handle_t *handle){}$/;"	f
+fp_S3_Enot	Core/app/fsm_funcs.c	/^void fp_S3_Enot(App_Handle_t *handle){}$/;"	f
+fp_S3_Evol	Core/app/fsm_funcs.c	/^void fp_S3_Evol(App_Handle_t *handle){}$/;"	f
+fsm_fp_box	Core/app/app.c	/^const Fsm_Fp_t fsm_fp_box[EVENT_MAX][STATE_MAX]={$/;"	v
 g_pfnVectors	startup/startup_stm32f030x6.s	/^g_pfnVectors:$/;"	l
-glcd_BoundingBox_t	Core/app/glcd/glcd.h	/^} glcd_BoundingBox_t;$/;"	t	typeref:struct:__anon244
-glcd_FontConfig_t	Core/app/glcd/fonts/fonts.h	/^} glcd_FontConfig_t;$/;"	t	typeref:struct:__anon243
+glcd_BoundingBox_t	Core/app/glcd/glcd.h	/^} glcd_BoundingBox_t;$/;"	t	typeref:struct:__anon254
+glcd_FontConfig_t	Core/app/glcd/fonts/fonts.h	/^} glcd_FontConfig_t;$/;"	t	typeref:struct:__anon253
 glcd_ST7565R_init	Core/app/glcd/ST7565R.c	/^void glcd_ST7565R_init(void) {$/;"	f
 glcd_all_off	Core/app/glcd/ST7565R.c	/^void glcd_all_off(void)$/;"	f
 glcd_all_on	Core/app/glcd/ST7565R.c	/^void glcd_all_on(void)$/;"	f
@@ -14514,12 +14671,16 @@ glcd_test_volume_box	Core/app/glcd/unit_tests.c	/^void glcd_test_volume_box(void
 glcd_tests	Core/app/glcd/unit_tests.c	/^void glcd_tests(void){$/;"	f
 glcd_update_bbox	Core/app/glcd/glcd.c	/^void glcd_update_bbox(uint8_t xmin, uint8_t ymin, uint8_t xmax, uint8_t ymax)$/;"	f
 glcd_write	Core/app/glcd/ST7565R.c	/^void glcd_write()$/;"	f
+grp	Core/app/event/vol.h	/^	Vol_Group_t grp;$/;"	m	struct:Vol_t
 hadc	Core/Src/adc.c	/^ADC_HandleTypeDef hadc;$/;"	v
+half	Core/app/event/enc.c	16;"	d	file:
+has_press	Core/app/event/btn.h	/^	uint8_t		has_press;$/;"	m	struct:Btn_t
 hdma	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h	/^  DMA_HandleTypeDef        *hdma[7];      \/*!< DMA Handlers array$/;"	m	struct:__anon242
 hdma_adc	Core/Src/adc.c	/^DMA_HandleTypeDef hdma_adc;$/;"	v
 hdmarx	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h	/^  DMA_HandleTypeDef          *hdmarx;        \/*!< I2C Rx DMA handle parameters              *\/$/;"	m	struct:__I2C_HandleTypeDef
 hdmatx	Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h	/^  DMA_HandleTypeDef          *hdmatx;        \/*!< I2C Tx DMA handle parameters              *\/$/;"	m	struct:__I2C_HandleTypeDef
-height	Core/app/glcd/fonts/fonts.h	/^	uint8_t height;$/;"	m	struct:__anon243
+head	Core/app/aux/link_list.h	/^	struct node_t* head;$/;"	m	struct:list_t	typeref:struct:list_t::node_t
+height	Core/app/glcd/fonts/fonts.h	/^	uint8_t height;$/;"	m	struct:__anon253
 hi2c1	Core/Src/i2c.c	/^I2C_HandleTypeDef hi2c1;$/;"	v
 htim1	Core/Src/tim.c	/^TIM_HandleTypeDef htim1;$/;"	v
 htim14	Core/Src/tim.c	/^TIM_HandleTypeDef htim14;$/;"	v
@@ -14534,17 +14695,63 @@ ifftFlagR	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t ifftFlagR;             
 ifftFlagR	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t ifftFlagR;                          \/**< flag that selects forward (ifftFlagR=0) or inverse (ifftFlagR=1) transform. *\/$/;"	m	struct:__anon51
 ifftFlagR	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t ifftFlagR;                        \/**< flag that selects forward (ifftFlagR=0) or inverse (ifftFlagR=1) transform. *\/$/;"	m	struct:__anon49
 initialise_monitor_handles	Core/Src/syscalls.c	/^void initialise_monitor_handles()$/;"	f
+list	Core/app/aux/link_list.h	/^	list_t* list;$/;"	m	struct:list_iterator_t
+list_clear	Core/app/aux/link_list.c	/^void list_clear(list_t* list) {$/;"	f
+list_create	Core/app/aux/link_list.c	/^list_t* list_create() {$/;"	f
+list_create_static	Core/app/aux/link_list.c	/^list_t list_create_static() {$/;"	f
+list_destroy	Core/app/aux/link_list.c	/^void list_destroy(list_t* list) {$/;"	f
+list_find_node	Core/app/aux/link_list.c	/^node_t* list_find_node(const list_t* list, const node_t* element) {$/;"	f
+list_find_node_if	Core/app/aux/link_list.c	/^node_t* list_find_node_if(const list_t* list, list_predicate_t iterator,$/;"	f
+list_get_size	Core/app/aux/link_list.c	/^size_t list_get_size(const list_t* list) {$/;"	f
+list_is_empty	Core/app/aux/link_list.c	/^int list_is_empty(const list_t* list) {$/;"	f
+list_iter_from_head	Core/app/aux/link_list.c	/^node_t* list_iter_from_head(const list_t* list, size_t index) {$/;"	f
+list_iter_from_tail	Core/app/aux/link_list.c	/^node_t* list_iter_from_tail(const list_t* list, size_t index) {$/;"	f
+list_iterate_over_nodes	Core/app/aux/link_list.c	/^void list_iterate_over_nodes(const list_t* list,$/;"	f
+list_iterator_has_next	Core/app/aux/link_list.c	/^int list_iterator_has_next(const list_iterator_t* it) {$/;"	f
+list_iterator_has_prev	Core/app/aux/link_list.c	/^int list_iterator_has_prev(const list_iterator_t* it) {$/;"	f
+list_iterator_next	Core/app/aux/link_list.c	/^node_t* list_iterator_next(list_iterator_t* it) {$/;"	f
+list_iterator_prev	Core/app/aux/link_list.c	/^node_t* list_iterator_prev(list_iterator_t* it) {$/;"	f
+list_iterator_remove	Core/app/aux/link_list.c	/^int list_iterator_remove(list_iterator_t* it) {$/;"	f
+list_iterator_set_current	Core/app/aux/link_list.c	/^node_t* list_iterator_set_current(list_iterator_t* it) {$/;"	f
+list_iterator_t	Core/app/aux/link_list.h	/^typedef struct list_iterator_t {$/;"	s
+list_iterator_t	Core/app/aux/link_list.h	/^} list_iterator_t;$/;"	t	typeref:struct:list_iterator_t
+list_make_iterator	Core/app/aux/link_list.c	/^list_iterator_t list_make_iterator(list_t* list, node_t* node) {$/;"	f
+list_pop_back	Core/app/aux/link_list.c	/^void* list_pop_back(list_t* list) {$/;"	f
+list_pop_front	Core/app/aux/link_list.c	/^void* list_pop_front(list_t* list) {$/;"	f
+list_pop_node	Core/app/aux/link_list.c	/^void* list_pop_node(list_t* list, node_t* node) {$/;"	f
+list_predicate_t	Core/app/aux/link_list.h	/^typedef int (*list_predicate_t)(size_t index, node_t* node, void* data);$/;"	t
+list_push_back	Core/app/aux/link_list.c	/^node_t* list_push_back(list_t* list, void* element) {$/;"	f
+list_push_front	Core/app/aux/link_list.c	/^node_t* list_push_front(list_t* list, void* element) {$/;"	f
+list_remove_node	Core/app/aux/link_list.c	/^int list_remove_node(list_t* list, node_t* node) {$/;"	f
+list_remove_node_if	Core/app/aux/link_list.c	/^int list_remove_node_if(list_t* list, list_predicate_t iterator,$/;"	f
+list_t	Core/app/aux/link_list.h	/^typedef struct list_t {$/;"	s
+list_t	Core/app/aux/link_list.h	/^} list_t;$/;"	t	typeref:struct:list_t
 main	Core/Src/main.c	/^int main(void)$/;"	f
-mas	Core/Inc/main.h	61;"	d
+main_num	Core/app/effect/efx.h	/^	uint8_t	main_num;$/;"	m	struct:Efx_Memory_t
 maxDelay	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t maxDelay;            \/**< maximum offset specified by the pTapDelay array. *\/$/;"	m	struct:__anon78
 maxDelay	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t maxDelay;            \/**< maximum offset specified by the pTapDelay array. *\/$/;"	m	struct:__anon79
 maxDelay	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t maxDelay;            \/**< maximum offset specified by the pTapDelay array. *\/$/;"	m	struct:__anon80
 maxDelay	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t maxDelay;            \/**< maximum offset specified by the pTapDelay array. *\/$/;"	m	struct:__anon81
-mcpu	Debug/Core/Src/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
-mcpu	Debug/Core/app/glcd/fonts/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
-mcpu	Debug/Core/app/glcd/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
-mcpu	Debug/Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Debug/Core/Src/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/aux"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Debug/Core/app/aux/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/aux"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Debug/Core/app/effect/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/aux"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Debug/Core/app/event/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/aux"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Debug/Core/app/glcd/fonts/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/aux"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Debug/Core/app/glcd/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/aux"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Debug/Core/app/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/aux"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Debug/Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/aux"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
 mcpu	Debug/startup/subdir.mk	/^	arm-none-eabi-as -mcpu=cortex-m0 -mthumb -mfloat-abi=soft -g -o "$@" "$<"$/;"	m
+mcpu	Release/Core/Src/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/link_list"  -Os -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Release/Core/app/effect/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/link_list"  -Os -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Release/Core/app/event/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/link_list"  -Os -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Release/Core/app/glcd/fonts/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/link_list"  -Os -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Release/Core/app/glcd/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/link_list"  -Os -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Release/Core/app/link_list/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/link_list"  -Os -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Release/Core/app/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/link_list"  -Os -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Release/Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk	/^	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed="__attribute__((__packed__))"' -DUSE_HAL_DRIVER -DSTM32F030x6 -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/STM32F0xx_HAL_Driver\/Inc\/Legacy" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Device\/ST\/STM32F0xx\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Drivers\/CMSIS\/Include" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/effect" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/event" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/glcd" -I"\/home\/sam\/w\/work\/double_effect\/code\/test_defx\/Core\/app\/link_list"  -Os -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"$/;"	m
+mcpu	Release/startup/subdir.mk	/^	arm-none-eabi-as -mcpu=cortex-m0 -mthumb -mfloat-abi=soft -o "$@" "$<"$/;"	m
+mem	Core/app/effect/efx.h	/^	Efx_Memory_t mem;$/;"	m	struct:Efx_t
+mode	Core/app/event/event.h	/^	Event_Mode_t mode;$/;"	m	struct:Event_t
 mu	Drivers/CMSIS/Include/arm_math.h	/^    float32_t mu;         \/**< step size that control filter coefficient updates. *\/$/;"	m	struct:__anon75
 mu	Drivers/CMSIS/Include/arm_math.h	/^    float32_t mu;        \/**< step size that controls filter coefficient updates. *\/$/;"	m	struct:__anon72
 mu	Drivers/CMSIS/Include/arm_math.h	/^    q15_t mu;             \/**< step size that controls filter coefficient updates. *\/$/;"	m	struct:__anon77
@@ -14564,6 +14771,13 @@ nPRIV	Drivers/CMSIS/Include/core_cm4.h	/^    uint32_t nPRIV:1;                  
 nPRIV	Drivers/CMSIS/Include/core_cm7.h	/^    uint32_t nPRIV:1;                    \/*!< bit:      0  Execution privilege in Thread mode *\/$/;"	m	struct:__anon142::__anon143
 nPRIV	Drivers/CMSIS/Include/core_sc300.h	/^    uint32_t nPRIV:1;                    \/*!< bit:      0  Execution privilege in Thread mode *\/$/;"	m	struct:__anon161::__anon162
 nValues	Drivers/CMSIS/Include/arm_math.h	/^    uint32_t nValues;           \/**< nValues *\/$/;"	m	struct:__anon35
+name	Core/app/effect/efx.h	/^	const char *name;$/;"	m	struct:Efx_Base_t
+name	Core/app/event/vol.h	/^	Vol_Name_t name;$/;"	m	struct:Vol_t
+next	Core/app/aux/link_list.h	/^	struct node_t* next;$/;"	m	struct:node_t	typeref:struct:node_t::node_t
+nhalf	Core/app/event/enc.c	17;"	d	file:
+node_new	Core/app/aux/link_list.c	/^node_t* node_new(void* element) {$/;"	f
+node_t	Core/app/aux/link_list.h	/^typedef struct node_t {$/;"	s
+node_t	Core/app/aux/link_list.h	/^} node_t;$/;"	t	typeref:struct:node_t
 normalize	Drivers/CMSIS/Include/arm_math.h	/^    float32_t normalize;                 \/**< normalizing factor. *\/$/;"	m	struct:__anon53
 normalize	Drivers/CMSIS/Include/arm_math.h	/^    q15_t normalize;                     \/**< normalizing factor. *\/$/;"	m	struct:__anon55
 normalize	Drivers/CMSIS/Include/arm_math.h	/^    q31_t normalize;                     \/**< normalizing factor. *\/$/;"	m	struct:__anon54
@@ -14746,6 +14960,8 @@ postShift	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t postShift;       \/**< 
 postShift	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t postShift;       \/**< additional shift, in bits, applied to each output sample. *\/$/;"	m	struct:__anon62
 postShift	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t postShift;    \/**< bit shift applied to coefficients. *\/$/;"	m	struct:__anon76
 postShift	Drivers/CMSIS/Include/arm_math.h	/^    uint8_t postShift;    \/**< bit shift applied to coefficients. *\/$/;"	m	struct:__anon77
+press_time	Core/app/event/btn.h	/^	uint32_t	press_time;$/;"	m	struct:Btn_t
+prev	Core/app/aux/link_list.h	/^	struct node_t* prev;$/;"	m	struct:node_t	typeref:struct:node_t::node_t
 pvCoeffs	Drivers/CMSIS/Include/arm_math.h	/^    float32_t *pvCoeffs;                 \/**< points to the ladder coefficient array. The array is of length numStages+1. *\/$/;"	m	struct:__anon71
 pvCoeffs	Drivers/CMSIS/Include/arm_math.h	/^    q15_t *pvCoeffs;                     \/**< points to the ladder coefficient array. The array is of length numStages+1. *\/$/;"	m	struct:__anon69
 pvCoeffs	Drivers/CMSIS/Include/arm_math.h	/^    q31_t *pvCoeffs;                     \/**< points to the ladder coefficient array. The array is of length numStages+1. *\/$/;"	m	struct:__anon70
@@ -14755,7 +14971,11 @@ q63_t	Drivers/CMSIS/Include/arm_math.h	/^  typedef int64_t q63_t;$/;"	t
 q7_t	Drivers/CMSIS/Include/arm_math.h	/^  typedef int8_t q7_t;$/;"	t
 recipTable	Drivers/CMSIS/Include/arm_math.h	/^    q15_t *recipTable;    \/**< Points to the reciprocal initial value table. *\/$/;"	m	struct:__anon77
 recipTable	Drivers/CMSIS/Include/arm_math.h	/^    q31_t *recipTable;    \/**< points to the reciprocal initial value table. *\/$/;"	m	struct:__anon76
-start_char	Core/app/glcd/fonts/fonts.h	/^	char start_char;$/;"	m	struct:__anon243
+size	Core/app/aux/link_list.h	/^	size_t size;$/;"	m	struct:list_t
+start_char	Core/app/glcd/fonts/fonts.h	/^	char start_char;$/;"	m	struct:__anon253
+start_time	Core/app/event/btn.c	/^static uint32_t	start_time;$/;"	v	file:
+state	Core/app/app.h	/^	State_t state;$/;"	m	struct:App_Handle_t
+state	Core/app/event/btn.c	/^static Btn_State_t	state;$/;"	v	file:
 state	Drivers/CMSIS/Include/arm_math.h	/^    float32_t state[3];    \/**< The state array of length 3. *\/$/;"	m	struct:__anon34
 state	Drivers/CMSIS/Include/arm_math.h	/^    q15_t state[3];     \/**< The state array of length 3. *\/$/;"	m	struct:__anon32
 state	Drivers/CMSIS/Include/arm_math.h	/^    q31_t state[3];      \/**< The state array of length 3. *\/$/;"	m	struct:__anon33
@@ -14766,6 +14986,11 @@ stateIndex	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t stateIndex;          
 str	Core/app/glcd/unit_tests.c	/^char str[50];$/;"	v
 strings	Core/app/glcd/unit_tests.c	/^char *strings[] = {$/;"	v
 swap	Core/app/glcd/glcd.h	81;"	d
+tail	Core/app/aux/link_list.h	/^	struct node_t* tail;$/;"	m	struct:list_t	typeref:struct:list_t::node_t
+test_btn_test	Core/app/app_test.c	/^void test_btn_test(void){$/;"	f
+tim_cnt	Core/app/event/enc.h	/^	__IO uint32_t	tim_cnt;	\/*!< Timer_Counter value*\/$/;"	m	struct:Enc_t
+tmp_efx	Core/app/app.h	/^	Efx_t *tmp_efx;$/;"	m	struct:App_Handle_t
+touch	Core/app/event/vol.h	/^	uint8_t touch;$/;"	m	struct:Vol_t
 twidCoefModifier	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t twidCoefModifier;         \/**< twiddle coefficient modifier that supports different size FFTs with the same twiddle factor table. *\/$/;"	m	struct:__anon44
 twidCoefModifier	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t twidCoefModifier;         \/**< twiddle coefficient modifier that supports different size FFTs with the same twiddle factor table. *\/$/;"	m	struct:__anon45
 twidCoefModifier	Drivers/CMSIS/Include/arm_math.h	/^    uint16_t twidCoefModifier;       \/**< twiddle coefficient modifier that supports different size FFTs with the same twiddle factor table. *\/$/;"	m	struct:__anon40
@@ -14803,6 +15028,11 @@ unit_test_return	Core/app/glcd/unit_tests.c	/^volatile uint8_t unit_test_return 
 unit_test_sizes	Core/app/glcd/unit_tests.c	/^void unit_test_sizes(void){$/;"	f
 unit_vol_name	Core/app/glcd/unit_tests.c	/^char *unit_vol_name[] = {$/;"	v
 uwTick	Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c	/^__IO uint32_t uwTick;$/;"	v
+value	Core/app/event/enc.h	/^	__IO uint32_t	value;		\/*!< User turn encoder exactly 'value' time *\/$/;"	m	struct:Enc_t
+vgrp	Core/app/effect/efx.h	/^	const uint8_t vgrp;$/;"	m	struct:Efx_Base_t
+vol	Core/app/app.h	/^	Vol_t vol;$/;"	m	struct:App_Handle_t
+vol	Core/app/event/event.h	/^		Vol_t *vol;$/;"	m	union:Event_t::__anon249
+vols	Core/app/effect/efx.h	/^	uint8_t	vols[VOL_MAX];$/;"	m	struct:Efx_Memory_t
 w	Drivers/CMSIS/Include/core_cm0.h	/^  uint32_t w;                            \/*!< Type      used for word access *\/$/;"	m	union:__anon112
 w	Drivers/CMSIS/Include/core_cm0.h	/^  uint32_t w;                            \/*!< Type      used for word access *\/$/;"	m	union:__anon114
 w	Drivers/CMSIS/Include/core_cm0.h	/^  uint32_t w;                            \/*!< Type      used for word access *\/$/;"	m	union:__anon116
@@ -14831,7 +15061,7 @@ w	Drivers/CMSIS/Include/core_sc300.h	/^  uint32_t w;                            
 w	Drivers/CMSIS/Include/core_sc300.h	/^  uint32_t w;                            \/*!< Type      used for word access *\/$/;"	m	union:__anon157
 w	Drivers/CMSIS/Include/core_sc300.h	/^  uint32_t w;                            \/*!< Type      used for word access *\/$/;"	m	union:__anon159
 w	Drivers/CMSIS/Include/core_sc300.h	/^  uint32_t w;                            \/*!< Type      used for word access *\/$/;"	m	union:__anon161
-width	Core/app/glcd/fonts/fonts.h	/^	uint8_t width;$/;"	m	struct:__anon243
+width	Core/app/glcd/fonts/fonts.h	/^	uint8_t width;$/;"	m	struct:__anon253
 write_one_bit_on_spi	Core/app/glcd/ST7565R.c	48;"	d	file:
 x0	Drivers/CMSIS/Include/arm_math.h	/^    float32_t x0;         \/**< saves previous input sample. *\/$/;"	m	struct:__anon75
 x0	Drivers/CMSIS/Include/arm_math.h	/^    q15_t x0;             \/**< saves previous input sample. *\/$/;"	m	struct:__anon77
@@ -14949,7 +15179,7 @@ xPSR_Z_Pos	Drivers/CMSIS/Include/core_cm7.h	403;"	d
 xPSR_Z_Pos	Drivers/CMSIS/Include/core_sc000.h	321;"	d
 xPSR_Z_Pos	Drivers/CMSIS/Include/core_sc300.h	327;"	d
 xSpacing	Drivers/CMSIS/Include/arm_math.h	/^    float32_t xSpacing;         \/**< xSpacing *\/$/;"	m	struct:__anon35
-x_max	Core/app/glcd/glcd.h	/^	uint8_t x_max;$/;"	m	struct:__anon244
-x_min	Core/app/glcd/glcd.h	/^	uint8_t x_min;$/;"	m	struct:__anon244
-y_max	Core/app/glcd/glcd.h	/^	uint8_t y_max;$/;"	m	struct:__anon244
-y_min	Core/app/glcd/glcd.h	/^	uint8_t y_min;$/;"	m	struct:__anon244
+x_max	Core/app/glcd/glcd.h	/^	uint8_t x_max;$/;"	m	struct:__anon254
+x_min	Core/app/glcd/glcd.h	/^	uint8_t x_min;$/;"	m	struct:__anon254
+y_max	Core/app/glcd/glcd.h	/^	uint8_t y_max;$/;"	m	struct:__anon254
+y_min	Core/app/glcd/glcd.h	/^	uint8_t y_min;$/;"	m	struct:__anon254
