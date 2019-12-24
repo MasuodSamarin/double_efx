@@ -35,11 +35,11 @@ Efx_t* Effect_Creare_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t 
 	Efx_t *efx = malloc(sizeof(Efx_t));
 	//TODO: check malloc
 	if(!efx){
-		_Error_Handler(__FILE__, __LINE__);
+		//_Error_Handler(__FILE__, __LINE__);
 		return (Efx_t*)NULL;
 	}
 
-	efx->base = effect_get_base(pst);
+	efx->base = Efx_get_base(pst);
 	efx->pmode = pmode;
 	efx->mem.pst_num = pst;
 	efx->mem.main_num = number;
@@ -60,7 +60,7 @@ void Effect_List_Add_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t 
 
 Efx_t* Effect_Get_Node(uint8_t number){
 
-	node_t *efx;
+	node_t *node;
 	uint8_t lsize = (uint8_t)efx_list->size;
 
 	/*
@@ -69,13 +69,13 @@ Efx_t* Effect_Get_Node(uint8_t number){
 	 * 		it's need to test it, carefully
 	 * */
 	if( (lsize - number) > number )
-		*efx = list_iter_from_head(efx_list, number);
+		node = list_iter_from_head(efx_list, number);
 	else
-		*efx = list_iter_from_tail(efx_list, (lsize - number));
+		node = list_iter_from_tail(efx_list, (lsize - number));
 
-	if(efx == NULL)
+	if(node == NULL)
 		return NULL;
-	return (efx->element);
+	return (node->element);
 }
 
 size_t Effect_Get_List_Size(void){
