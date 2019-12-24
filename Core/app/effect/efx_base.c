@@ -6,38 +6,39 @@
  */
 
 
-#include "main.h"
 #include "efx.h"
+#include "fv1.h"
+#include "vol.h"
 
 
 
+struct Efx_Base_t *efx_base_box[EFX_PRST_MAX] = {
+		/*this is efx_box 		NAME				  CODE SHR595							VOLUMES GROUP*/
+		&((struct Efx_Base_t){"MONO ECHO 1",	( FV1_EEP_0 | FV1_CODE_0 ),		( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((struct Efx_Base_t){"MONO ECHO 2", 	( FV1_EEP_0 | FV1_CODE_1 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((struct Efx_Base_t){"MONO ECHO 3", 	( FV1_EEP_0 | FV1_CODE_2 ), 	( VOL_GROUP_1 | VOL_GROUP_2 )}),
+		&((struct Efx_Base_t){"MONO ECHO 4", 	( FV1_EEP_0 | FV1_CODE_3 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((struct Efx_Base_t){"MULTI PONG", 	( FV1_EEP_0 | FV1_CODE_4 ), 	( VOL_GROUP_1 | VOL_GROUP_2 )}),
+		&((struct Efx_Base_t){"PING PONG", 		( FV1_EEP_0 | FV1_CODE_5 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((struct Efx_Base_t){"ECHO + DELAY", 	( FV1_EEP_0 | FV1_CODE_6 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((struct Efx_Base_t){"ECHO + REVERB",	( FV1_EEP_0 | FV1_CODE_7 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
 
-
-struct Efx_Base_t{
-
-	const	char			*name;
-	const	uint8_t			code;
-	const	Efx_Vol_Group_t	grp;
-};
-
-
-struct Efx_Base_t *efx_base_box[EFX_FV1_PRST_MAX] = {
-		&((struct Efx_Base_t){.name="MONO ECHO 1",		.code=(FV1_EEP_0 | FV1_CODE_0),		.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="MONO ECHO 2", 		.code=(FV1_EEP_0 | FV1_CODE_1), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="MONO ECHO 3", 		.code=(FV1_EEP_0 | FV1_CODE_2), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="MONO ECHO 4", 		.code=(FV1_EEP_0 | FV1_CODE_3), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="MULTI PONG", 		.code=(FV1_EEP_0 | FV1_CODE_4), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="PING PONG", 		.code=(FV1_EEP_0 | FV1_CODE_5), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="ECHO + DELAY", 	.code=(FV1_EEP_0 | FV1_CODE_6), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="ECHO + REVERB", 	.code=(FV1_EEP_0 | FV1_CODE_7), 	.grp=EFX_VOL_GROUP_1}),
-
-		&((struct Efx_Base_t){.name="VOICE DELAY", 		.code=(FV1_EEP_1 | FV1_CODE_0), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="HALL REVERB", 		.code=(FV1_EEP_1 | FV1_CODE_1), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="REVERB + FLNG", 	.code=(FV1_EEP_1 | FV1_CODE_2), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="ECHO + FLANG", 	.code=(FV1_EEP_1 | FV1_CODE_3), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="VOICE FLANG", 		.code=(FV1_EEP_1 | FV1_CODE_4), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="VOICE FLANG", 		.code=(FV1_EEP_1 | FV1_CODE_5), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="VOICE CHUOROS", 	.code=(FV1_EEP_1 | FV1_CODE_6), 	.grp=EFX_VOL_GROUP_1}),
-		&((struct Efx_Base_t){.name="VOICE REVERB", 	.code=(FV1_EEP_1 | FV1_CODE_7), 	.grp=EFX_VOL_GROUP_1})
+		&((struct Efx_Base_t){"VOICE DELAY", 	( FV1_EEP_1 | FV1_CODE_0 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((struct Efx_Base_t){"HALL REVERB", 	( FV1_EEP_1 | FV1_CODE_1 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((struct Efx_Base_t){"REVERB + FLNG", 	( FV1_EEP_1 | FV1_CODE_2 ), 	( VOL_GROUP_2 | VOL_GROUP_4 )}),
+		&((struct Efx_Base_t){"ECHO + FLANG", 	( FV1_EEP_1 | FV1_CODE_3 ), 	( VOL_GROUP_1 | VOL_GROUP_4 )}),
+		&((struct Efx_Base_t){"VOICE FLANG", 	( FV1_EEP_1 | FV1_CODE_4 ), 	( VOL_GROUP_1 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((struct Efx_Base_t){"VOICE FLANG", 	( FV1_EEP_1 | FV1_CODE_5 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((struct Efx_Base_t){"VOICE CHUOROS", 	( FV1_EEP_1 | FV1_CODE_6 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((struct Efx_Base_t){"VOICE REVERB", 	( FV1_EEP_1 | FV1_CODE_7 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )})
 
 };
+
+
+Efx_Base_t *Efx_get_base(Efx_Preset_t pst){
+
+	return efx_base_box[pst];
+}
+
+
+

@@ -13,7 +13,6 @@
 #include "enc.h"
 #include "vol.h"
 
-typedef struct Event_t *Event_t;
 
 typedef enum{
 	Event_NOT = 0,
@@ -22,5 +21,16 @@ typedef enum{
 	Event_VOL,
 	EVENT_MAX
 }Event_Mode_t;
+
+
+typedef struct Event_t{
+
+	Event_Mode_t mode;
+	union{
+		Btn_t btn;
+		Enc_t enc;
+		Vol_t vol;
+	};
+}Event_t;
 
 #endif /* APP_EVENT_EVENT_H_ */

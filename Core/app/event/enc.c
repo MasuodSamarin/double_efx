@@ -13,8 +13,8 @@
 
 
 
-#define half(x)		( x / 2 )
-#define nhalf(x)	( -x / 2 )
+#define half(x)		( (x) / 2 )
+#define nhalf(x)	( (-(x)) / 2 )
 
 
 void Enc_Event_Init(Enc_t *enc){

@@ -8,77 +8,84 @@
 #ifndef APP_EFFECT_EFX_H_
 #define APP_EFFECT_EFX_H_
 
+#include "main.h"
+#include "vol.h"
 
 /*
  * there's only 16 fv1 preset in the eeps
  * */
 /*
- * using in the efx_preset array to point to preset effects
+ * using in the efx_preset to point to preset effects
  * */
 typedef enum {
-	EFX_FV1_PRST_1,
-	EFX_FV1_PRST_2,
-	EFX_FV1_PRST_3,
-	EFX_FV1_PRST_4,
-	EFX_FV1_PRST_5,
-	EFX_FV1_PRST_6,
-	EFX_FV1_PRST_7,
-	EFX_FV1_PRST_8,
-	EFX_FV1_PRST_9,
-	EFX_FV1_PRST_10,
-	EFX_FV1_PRST_11,
-	EFX_FV1_PRST_12,
-	EFX_FV1_PRST_13,
-	EFX_FV1_PRST_14,
-	EFX_FV1_PRST_15,
-	EFX_FV1_PRST_16,
-	EFX_FV1_PRST_MAX,
+	/*the first bank on the first eep*/
+	EFX_PRST_1,
+	EFX_PRST_2,
+	EFX_PRST_3,
+	EFX_PRST_4,
+	EFX_PRST_5,
+	EFX_PRST_6,
+	EFX_PRST_7,
+	EFX_PRST_8,
+	/*the second bank on the second eep*/
+	EFX_PRST_9,
+	EFX_PRST_10,
+	EFX_PRST_11,
+	EFX_PRST_12,
+	EFX_PRST_13,
+	EFX_PRST_14,
+	EFX_PRST_15,
+	EFX_PRST_16,
 
+	EFX_PRST_MAX,
 }Efx_Preset_t;
 
-/*
- * in the each eep there's a 8 program, it start count from 0b000 to 0b111
- * like this:
- * 			0b00EELABC
- * 			0b00011001
- * 	that means second effect of eep 0
- * 	the L bit define latch bit, fv1 read external eep if this pin was logic 1
+
+/*effect (1 to 16) is a factory preset, so don't have prefix volume value
+ * but for every other (from 17 to 99) there's a group of volumes, the value of vol-grp
+ * save on the external storage.
  * */
 typedef enum {
-	FV1_CODE_0 = 0b0000,
-	FV1_CODE_1 = 0b0001,
-	FV1_CODE_2 = 0b0010,
-	FV1_CODE_3 = 0b0011,
-	FV1_CODE_4 = 0b0100,
-	FV1_CODE_5 = 0b0101,
-	FV1_CODE_6 = 0b0110,
-	FV1_CODE_7 = 0b0111,
-}Fv1_Code_t;
-
-typedef enum {
-	FV1_EEP_0 = 0b00010000,
-	FV1_EEP_1 = 0b00100000,
-}Fv1_EEP_t;
-
-typedef enum {
-	EFX_VOL_GROUP_1,
-	EFX_VOL_GROUP_2,
-	EFX_VOL_GROUP_3,
-	EFX_VOL_GROUP_MAX,
-}Efx_Vol_Group_t;
+	EFX_USER_PRESET_MODE,
+	EFX_FACT_PRESET_MODE
+}Efx_Preset_Mode_t;
 
 
+typedef struct Efx_Base_t{
+	const char *name;
+	const uint8_t code;
+	const uint8_t vgrp;
+
+}Efx_Base_t;
 
 
+typedef struct Efx_Memory_t{
+	uint8_t	main_num;
+	uint8_t	base_num;
+	uint8_t	vols[VOL_MAX];
 
+}Efx_Memory_t;
 
+typedef struct Efx_t{
+	Efx_Base_t *base;
+	Efx_Memory_t mem;
+
+}Efx_t;
 
 
 
-//typedef struct Effect_t *Effect_t;
 
-typedef struct Efx_Base_t *Efx_Base_t;
-typedef struct Efx_Mem_t *Efx_Mem_t;
+
+
+
+
+
+
+
+
+
+Efx_Base_t *Efx_get_base(Efx_Preset_t pst);
+
 
 
 #endif /* APP_EFFECT_EFX_H_ */

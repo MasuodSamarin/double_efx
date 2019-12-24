@@ -8,14 +8,6 @@
 #include "event.h"
 
 
-struct Event_t{
 
-	Event_Mode_t	mode;
-	union{
-		Btn_t	btn;
-		Enc_t	enc;
-		Vol_t	vol;
-	}instance;
-};
 
 

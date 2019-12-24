@@ -8,12 +8,18 @@
 
 #include "vol.h"
 
-struct Vol_t{
 
-};
 
 int abs(int j){
      return (j < 0 ? -j : j);
 }
 
 #define abs2(j) (j < 0 ? -j : j)
+
+
+
+
+
+
+void 	Vol_Event_Init(Vol_t *vol){}
+uint8_t Vol_Event_Handle(Vol_t *vol){return 0;}

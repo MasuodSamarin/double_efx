@@ -58,3 +58,4 @@ Debug/*
 /Debug/
 *.settings/language.settings.xml
 *.cproject
+/Release/

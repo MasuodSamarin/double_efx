@@ -54,7 +54,7 @@ uint8_t Btn_Event_Handle(Btn_t *btn){
 	return Btn_Handle_table[state](btn);
 }
 
-#ifdef	FUNC_VS_DEFINE
+#ifdef	Btn_Event_Set_time_define
 void Btn_Event_Set_time(Btn_t *btn, uint32_t time){
 	btn->press_time = time;
 }
@@ -81,7 +81,6 @@ static uint8_t Btn_Hadle_State_Pressed(Btn_t *btn){
 	if ( Btn_Status == GPIO_PIN_RESET ) {
 		if (( Time_Now - start_time ) > btn->press_time ) {
 			/* Button pressed OK, call function */
-			/* Call function callback */
 			/* Go to stage BUTTON_STATE_WAITRELEASE */
 			state = BTN_STATE_RELEASED;
 			btn->has_press = 1;

@@ -58,11 +58,11 @@
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 /* USER CODE END 0 */
 
 /**
@@ -97,17 +97,10 @@ int main(void)
   //MX_DMA_Init();
   //MX_ADC_Init();
   //MX_I2C1_Init();
-  MX_TIM1_Init();
+  //MX_TIM1_Init();
   //MX_TIM3_Init();
   //MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
-  glcd_init();
-  glcd_set_font_c(FC_Default_Font_5x8_AlphaNumber);
-
-
-  Btn_t	btn;
-  Btn_Event_Init(&btn);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -115,21 +108,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  if(Btn_Event_Handle(&btn)){
-		  glcd_clear_buffer();
-		  glcd_draw_string_P(5, 30, "BTN PREESED");
-		  glcd_write();
-		  HAL_Delay(1000);
-		  glcd_clear_buffer();
-
-	  }
-	  glcd_draw_string_P(5, 10, "USE BTN");
-	  glcd_write();
-	  HAL_Delay(10);
 
 
     /* USER CODE BEGIN 3 */
-//	  glcd_test_scrolling_graph();
   }
   /* USER CODE END 3 */
 }

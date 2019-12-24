@@ -1,0 +1,42 @@
+2019-12-18  sam  <sam@rin>
+
+	* .settings/org.eclipse.cdt.codan.core.prefs: New file.
+	* Core/app/effect/fv1.c: New file.
+	* Core/app/effect/fv1.h: New file.
+	* Core/Src/unit_test.c: New file.
+	* .gitignore: 
+	* Core/app/effect/efx.c (m): 
+	* Core/app/effect/efx.h: 
+	* Core/app/effect/efx_base.c (Efx_get_base): 
+	* Core/app/effect/efx_mem.c: 
+	* Core/app/event/enc.h: 
+	* Core/app/event/vol.c (abs): 
+	* Core/app/event/vol.h: 
+	* Core/app/link_list/link_list.c (list_create_static): 
+	(list_clear): 
+	(list_destroy): 
+	(list_iter_from_head): 
+	(list_iter_from_tail): 
+	(list_iterate_over_nodes): 
+	(list_find_node): 
+	(list_find_node_if): 
+	(list_get_size): 
+	(list_is_empty): 
+	(node_new): 
+	(list_push_front): 
+	(list_push_back): 
+	(list_pop_node): 
+	(list_pop_back): 
+	(list_pop_front): 
+	(list_make_iterator): 
+	(list_iterator_has_next): 
+	(list_iterator_has_prev): 
+	(list_iterator_remove): 
+	(list_iterator_next): 
+	(list_iterator_prev): 
+	(list_iterator_set_current): 
+	(list_remove_node): 
+	(list_remove_node_if): 
+	* Core/app/link_list/link_list.h: 
+	* Core/Inc/main.h: 
+	* Core/Src/main.c (main): 
