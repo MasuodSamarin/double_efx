@@ -27,10 +27,20 @@ typedef struct Event_t{
 
 	Event_Mode_t mode;
 	union{
-		Btn_t btn;
-		Enc_t enc;
-		Vol_t vol;
+		Btn_t *btn;
+		Enc_t *enc;
+		Vol_t *vol;
 	};
 }Event_t;
+
+
+
+void Event_Init(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol);
+void Event_Handle(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol);
+
+
+
+
+
 
 #endif /* APP_EVENT_EVENT_H_ */
