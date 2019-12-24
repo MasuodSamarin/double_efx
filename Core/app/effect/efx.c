@@ -60,7 +60,19 @@ void Effect_List_Add_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t 
 
 Efx_t* Effect_Get_Node(uint8_t number){
 
-	node_t *efx = list_iter_from_head(efx_list, number);
+	node_t *efx;
+	uint8_t lsize = (uint8_t)efx_list->size;
+
+	/*
+	 * TODO:
+	 * 		"list_iter_from_tail()" doesn't work properly?
+	 * 		it's need to test it, carefully
+	 * */
+	if( (lsize - number) > number )
+		*efx = list_iter_from_head(efx_list, number);
+	else
+		*efx = list_iter_from_tail(efx_list, (lsize - number));
+
 	if(efx == NULL)
 		return NULL;
 	return (efx->element);

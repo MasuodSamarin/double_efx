@@ -73,7 +73,7 @@ node_t* list_iter_from_tail(const list_t* list, size_t index) {
 	node_t* node = list->tail;
 	size_t i = 0;
 
-	if (index > list->size)
+	if (index >= list->size)
 		return NULL;
 
 	while (i < index){
