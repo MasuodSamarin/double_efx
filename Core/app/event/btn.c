@@ -10,8 +10,6 @@
 
 #define Btn_Status	((BTN_GPIO_Port)->IDR & BTN_Pin)
 #define Time_Now	(HAL_GetTick())
-/* Return with status macro */
-#define RETURN_WITH_STATUS(b, p)    do { (b)->has_press = p; return p; } while (0)
 
 typedef enum {
 	BTN_STATE_START,
@@ -85,7 +83,6 @@ static uint8_t Btn_Hadle_State_Pressed(Btn_t *btn){
 			state = BTN_STATE_RELEASED;
 			btn->has_press = 1;
 			return 1;
-
 		}
 	}else{
 		/* Button pressed, go to state BTN_STATE_START */

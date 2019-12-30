@@ -28,8 +28,15 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "glcd.h"
 #include "btn.h"
+#include "glcd.h"
+#include "efx.h"
+#include "event.h"
+#include "app.h"
+
+
+App_Handle_t handle;
+
 
 /* USER CODE END Includes */
 
@@ -40,6 +47,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+//void test_btn_test(void);
 
 /* USER CODE END PD */
 
@@ -63,6 +71,11 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	  Event_Handle(&handle.event, &handle.btn, &handle.enc, &handle.vol);
+}
 /* USER CODE END 0 */
 
 /**
@@ -94,13 +107,16 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  //MX_DMA_Init();
-  //MX_ADC_Init();
-  //MX_I2C1_Init();
-  //MX_TIM1_Init();
-  //MX_TIM3_Init();
-  //MX_TIM14_Init();
+  MX_DMA_Init();
+  MX_ADC_Init();
+  MX_I2C1_Init();
+  MX_TIM1_Init();
+  MX_TIM3_Init();
+  MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
+
+
+  App_Init(&handle);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,8 +124,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
-
+	  APP_Exec(&handle);
+	  //test_btn_test();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

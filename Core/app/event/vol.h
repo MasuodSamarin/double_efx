@@ -37,17 +37,18 @@ typedef enum {
 }Vol_Group_t;
 
 
+typedef enum {
+	VOL_FROM_ADC,
+	VOL_FROM_MEM
+}vol_src_t;
+
 
 typedef struct Vol_t{
-	Vol_Name_t name;
-	Vol_Group_t grp;
-	uint8_t touch;
+	uint32_t	vol_raw[VOL_MAX];
+	uint32_t	vol_pre[VOL_MAX];
+	vol_src_t	vol_src[VOL_MAX];
+	Vol_Name_t 	name;
 }Vol_t;
-
-
-void 	Vol_Event_Init(Vol_t *vol);
-uint8_t Vol_Event_Handle(Vol_t *vol);
-
 
 
 

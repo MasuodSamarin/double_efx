@@ -27,11 +27,11 @@ uint8_t Btn_Event_Handle(Btn_t *btn);
 
 /*
  * which one is better?*/
-#define Btn_Event_Set_time_define
+//#define Btn_Event_Set_time_define
 #ifdef	Btn_Event_Set_time_define
 void Btn_Event_Set_time(Btn_t *btn, uint32_t time);
 #else
-#define Btn_Event_Set_time(btn, time)	(btn->press_time = time)
+#define Btn_Event_Set_time(btn, time)	((btn)->press_time = (time))
 #endif
 
 

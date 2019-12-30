@@ -20,12 +20,13 @@ typedef enum{
 	Event_ENC,
 	Event_VOL,
 	EVENT_MAX
-}Event_Mode_t;
+}Event_Type_t;
 
 
 typedef struct Event_t{
 
-	Event_Mode_t mode;
+	uint8_t has_e;
+	Event_Type_t type;
 	union{
 		Btn_t *btn;
 		Enc_t *enc;
