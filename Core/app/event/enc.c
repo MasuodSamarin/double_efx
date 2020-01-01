@@ -5,7 +5,6 @@
  *      Author: sam
  */
 
-#include "main.h"
 #include "enc.h"
 #include "tim.h"
 

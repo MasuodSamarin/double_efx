@@ -76,13 +76,13 @@ typedef struct Efx_t{
 
 
 
-Efx_Base_t *Efx_get_base(Efx_Preset_t pst);
+//Efx_Base_t *Efx_Get_Base(Efx_Preset_t pst);
 
 void Effect_List_Init(void);
-Efx_t* Effect_Creare_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols);
-void Effect_List_Add_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols);
-Efx_t* Effect_Get_Node(uint8_t number);
-size_t Effect_Get_List_Size(void);
+//Efx_t* Effect_Creare_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols);
+void Effect_List_Add_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols);
+Efx_t* Effect_List_Get_Element(uint8_t number);
+size_t Effect_List_Get_List_Size(void);
 
 
 

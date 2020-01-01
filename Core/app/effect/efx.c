@@ -5,10 +5,10 @@
  *      Author: sam
  */
 
-#include "main.h"
 #include "efx.h"
 #include "link_list.h"
 
+Efx_Base_t *Efx_Get_Base(Efx_Preset_t pst);
 
 
 list_t *efx_list;
@@ -25,12 +25,12 @@ void Effect_List_Init(void){
 	for (Efx_Preset_t pst = EFX_PRST_1; pst < EFX_PRST_MAX; ++pst) {
 		//Efx_t *efx = Effect_Creare_Node((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
 		//list_push_back(efx_list, (void*)efx);
-		Effect_List_Add_Node((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
+		Effect_List_Add_Element((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
 
 	}
 }
 
-Efx_t* Effect_Creare_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols){
+static Efx_t* Effect_List_Create_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols){
 
 	Efx_t *efx = malloc(sizeof(Efx_t));
 	//TODO: check malloc
@@ -39,7 +39,7 @@ Efx_t* Effect_Creare_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t 
 		return (Efx_t*)NULL;
 	}
 
-	efx->base = Efx_get_base(pst);
+	efx->base = Efx_Get_Base(pst);
 	efx->pmode = pmode;
 	efx->mem.pst_num = pst;
 	efx->mem.main_num = number;
@@ -52,16 +52,16 @@ Efx_t* Effect_Creare_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t 
 	return efx;
 }
 
-void Effect_List_Add_Node(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols){
+void Effect_List_Add_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols){
 
-	Efx_t *efx = Effect_Creare_Node(number, pmode, pst, vols);
+	Efx_t *efx = Effect_List_Create_Element(number, pmode, pst, vols);
 	list_push_back(efx_list, (void*)efx);
 }
 
-Efx_t* Effect_Get_Node(uint8_t number){
+Efx_t* Effect_List_Get_Element(uint8_t number){
 
 	node_t *node;
-	uint8_t lsize = (uint8_t)efx_list->size;
+	uint8_t lsize = (uint8_t)Effect_List_Get_List_Size();
 
 	/*
 	 * TODO:
@@ -78,7 +78,7 @@ Efx_t* Effect_Get_Node(uint8_t number){
 	return (node->element);
 }
 
-size_t Effect_Get_List_Size(void){
+size_t Effect_List_Get_List_Size(void){
 	return (efx_list->size);
 }
 

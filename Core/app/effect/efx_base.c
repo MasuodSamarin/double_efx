@@ -35,7 +35,7 @@ Efx_Base_t *efx_base_box[EFX_PRST_MAX] = {
 };
 
 
-Efx_Base_t *Efx_get_base(Efx_Preset_t pst){
+Efx_Base_t* Efx_Get_Base(Efx_Preset_t pst){
 
 	return efx_base_box[pst];
 }
