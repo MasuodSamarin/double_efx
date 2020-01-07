@@ -15,7 +15,7 @@ void Event_Init(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol){
 
 	Btn_Event_Init(btn);
 	Enc_Event_Init(enc);
-	Vol_Event_Handle(vol);
+	Vol_Event_Init(vol);
 }
 
 void Event_Handle(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol){

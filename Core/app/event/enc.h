@@ -8,6 +8,7 @@
 #ifndef APP_EVENT_ENC_H_
 #define APP_EVENT_ENC_H_
 #include "main.h"
+#include "tim.h"
 
 
 

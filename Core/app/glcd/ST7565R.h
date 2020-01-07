@@ -154,8 +154,8 @@ void glcd_reset(void);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Commands */
 
-#define BLACK 1
-#define WHITE 0
+//#define BLACK 1
+//#define WHITE 0
 
 #define ST7565_LCD_CMD_DISPLAY_OFF           0xAE
 #define ST7565_LCD_CMD_DISPLAY_ON            0xAF

@@ -7,7 +7,7 @@
 
 
 #include "app.h"
-extern TIM_HandleTypeDef htim1;
+//extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim14;
 
