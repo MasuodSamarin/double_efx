@@ -28,10 +28,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "btn.h"
-#include "glcd.h"
-#include "efx.h"
-#include "event.h"
+//#include "btn.h"
+//#include "glcd.h"
+//#include "efx.h"
+//#include "event.h"
 #include "app.h"
 
 

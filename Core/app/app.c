@@ -43,34 +43,24 @@ const Fsm_Fp_t fsm_fp_box[EVENT_MAX][STATE_MAX]={
 
 void App_Init(App_Handle_t *handle){
 
-
-
 	glcd_init();
 	glcd_set_font_c(FC_Default_Font_5x8_AlphaNumber);
-
-
 
 	Effect_List_Init();
 
 	Event_Init(&handle->event, &handle->btn, &handle->enc, &handle->vol);
 
 	HAL_Delay(1000);
-//	Vol_Process(&handle->vol);
-//	Vol_Select_Src(&handle->vol, VOL_FROM_MEM);
-//
-//	handle->event.type = EVENT_NOT;
-//	handle->state = STATE_MAIN;
-//	handle->fv1_low_level = 1;
-//	handle->timer = 0;
-//	handle->cur_effect = Effect_Get_Node(status->enc.val);
-
 
 	HAL_TIM_Base_Start_IT(&htim14);
 
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1 );
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2 );
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3 );
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4 );
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_ALL);
+//	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1 );
+//	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2 );
+//	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3 );
+//	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4 );
+
+	fp_S0_Reset(handle);
 }
 
 void APP_Exec(App_Handle_t *handle){

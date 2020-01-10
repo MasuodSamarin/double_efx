@@ -45,6 +45,8 @@ typedef void (*Fsm_Fp_t)(App_Handle_t *handle);
  *
  * S1 has only one function which runs on the every event
  * */
+void fp_S0_Reset(App_Handle_t *handle);
+
 
 void fp_S1_All(App_Handle_t *handle);
 

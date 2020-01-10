@@ -12,8 +12,8 @@
 char tmp_str[20];
 
 #define VOL_X		8
-#define VOL_Y		30
-#define VOL_DIFF	8
+#define VOL_Y		27
+#define VOL_DIFF	9
 #define VOL_W		65
 #define VOL_H		3
 
@@ -63,6 +63,10 @@ void Helper_Print_EFX_ADC_Vol(Vol_t vol, Vol_Name_t name){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+void fp_S0_Reset(App_Handle_t *handle){}
+
+
 void fp_S1_All(App_Handle_t *handle){
 	handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
 	glcd_clear_buffer();
@@ -74,6 +78,11 @@ void fp_S1_All(App_Handle_t *handle){
 	Helper_Print_EFX_ADC_Vol(handle->vol, VOL_C);
 	Helper_Print_EFX_ADC_Vol(handle->vol, VOL_D);
 	glcd_write();
+	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->vol.vol_raw[VOL_A]) << 4 );
+	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, (handle->vol.vol_raw[VOL_B]) << 4 );
+	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, (handle->vol.vol_raw[VOL_C]) << 4 );
+	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, (handle->vol.vol_raw[VOL_D]) << 4 );
+
 	//HAL_Delay(200);
 
 }
