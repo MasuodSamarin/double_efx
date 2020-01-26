@@ -78,8 +78,19 @@ void Helper_Print_EFX_ADC_Vol(Vol_t vol, Vol_Name_t name){
  * 	2, load vital values from EEP
  * 	3, make link-list from EEP data chain
  * 	4, set handle->cur_efx to the last enabled effect
+ * 	TODO:
+ * 		there's some development
  * */
-void fp_S0_Reset(App_Handle_t *handle){}
+void fp_S0_Reset(App_Handle_t *handle){
+
+	/*TODO:
+	 * 	it's not finished yet.
+	 * */
+
+	handle->state = STATE_1;
+	handle->tmp_efx = NULL;
+	handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
+}
 
 /*
  * State 1: All Events
@@ -92,9 +103,10 @@ void fp_S0_Reset(App_Handle_t *handle){}
  * 		C, effect volumes value like horizontal bar with small pin
  * 	5. button push time = Long push time
  * 	6. goto straight STATE 2
+ * 	TODO:
+ * 		there's some development
  * */
 void fp_S1_All(App_Handle_t *handle){
-	handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
 	glcd_clear_buffer();
 	Helper_Draw_Thin_Frame;
 	Helper_Print_EFX_Name(handle->cur_efx);
@@ -109,7 +121,6 @@ void fp_S1_All(App_Handle_t *handle){
 	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, (handle->vol.vol_raw[VOL_C]) << 4 );
 	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, (handle->vol.vol_raw[VOL_D]) << 4 );
 
-	//HAL_Delay(200);
 
 }
 
