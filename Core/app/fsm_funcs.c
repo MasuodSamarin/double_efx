@@ -63,10 +63,82 @@ void Helper_Print_EFX_ADC_Vol(Vol_t vol, Vol_Name_t name){
 	glcd_bar_graph_volume_shape(VOL_X, (VOL_Y + (name*VOL_DIFF)), VOL_W, VOL_H, vol.vol_raw[name]);
 }
 
-void Helper_Print_EFX_Vol(App_Handle_t *handle, Vol_Name_t name){
+void Helper_Print_EFX_Vol(uint32_t Vol_Value, Vol_Name_t name, ){
 
-	if (handle->cur_efx->pmode == EFX_FACT_PRESET_MODE){}
-	else{}
+	glcd_bar_graph_volume_shape(VOL_X, (VOL_Y + (name*VOL_DIFF)), VOL_W, VOL_H, Vol_Value);
+
+}
+
+uint32_t Helper_Get_Vol_Value(App_Handle_t *handle, Vol_Name_t name){
+
+	//READ VOLUMES VALUES FROM SAVED MEMORY
+	if(handle->vol.vol_src[name]  == VOL_FROM_MEM){
+		return (uint32_t)((handle->cur_efx->mem.vols[name]) << 4);
+	}
+	//READ VOLUMES VALUES FROM ADC ONLINE
+	else
+		return (uint32_t)((handle->vol.vol_raw[name]) << 4);
+
+}
+
+//HANDLE VOLUMES ON FACTORY PRESET MODE
+void Helper_Fp_S2_Not_F0(App_Handle_t *handle){
+	//hold temp volume val
+	uint32_t vol_val;
+	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_1){
+		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_A]) << 4 );
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		Helper_Print_EFX_Vol(VOL_A,vol_val);
+	}
+
+	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_2){
+		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_B]) << 4 );
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		Helper_Print_EFX_Vol(VOL_B,vol_val);
+	}
+
+	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_3){
+		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_C]) << 4 );
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		Helper_Print_EFX_Vol(VOL_C,vol_val);
+	}
+
+	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_4){
+		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_D]) << 4 );
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		Helper_Print_EFX_Vol(VOL_D,vol_val);
+	}
+
+	glcd_write();
+}
+
+//HANDLE VOLUMES ON USER PRESET MODE
+void Helper_Fp_S2_Not_F1(App_Handle_t *handle){
+	//hold temp volume val
+	uint32_t vol_val;
+	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_1){
+		vol_val = Helper_Get_Vol_Value(handle, VOL_A);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		Helper_Print_EFX_Vol(VOL_A,vol_val);
+	}
+
+	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_2){
+		vol_val = Helper_Get_Vol_Value(handle, VOL_B);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		Helper_Print_EFX_Vol(VOL_B,vol_val);
+	}
+
+	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_3){
+		vol_val = Helper_Get_Vol_Value(handle, VOL_C);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		Helper_Print_EFX_Vol(VOL_C,vol_val);
+	}
+
+	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_4){
+		vol_val = Helper_Get_Vol_Value(handle, VOL_D);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		Helper_Print_EFX_Vol(VOL_D,vol_val);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,25 +202,26 @@ void fp_S1_All(App_Handle_t *handle){
 
 
 	//ON USER MODE
-	if(handle->cur_efx->pmode == EFX_USER_PRESET_MODE){
-		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_1){
-			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_A);
-			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_A]) << 4 );
-		}
-		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_2){
-			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_B);
-			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_B]) << 4 );
-		}
-		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_3){
-			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_C);
-			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_C]) << 4 );
-		}
-		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_4){
-			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_D);
-			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_D]) << 4 );
-		}
-
-	}
+	Helper_Fp_S2_Not_F1(handle);
+//	if(handle->cur_efx->pmode == EFX_USER_PRESET_MODE){
+//		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_1){
+//			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_A);
+//			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_A]) << 4 );
+//		}
+//		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_2){
+//			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_B);
+//			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_B]) << 4 );
+//		}
+//		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_3){
+//			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_C);
+//			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_C]) << 4 );
+//		}
+//		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_4){
+//			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_D);
+//			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_D]) << 4 );
+//		}
+//
+//	}
 
 	handle->state = STATE_2;
 	handle->btn.press_time = BTN_LONG_PRESS_TIME;
@@ -175,57 +248,14 @@ void fp_S1_All(App_Handle_t *handle){
  * */
 void fp_S2_Not(App_Handle_t *handle){
 
-	//HANDLE VOLUMES ON FACTORY MODE
-	if (handle->cur_efx->pmode == EFX_FACT_PRESET_MODE){
-		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_1){
-			Helper_Print_EFX_ADC_Vol(handle->vol, VOL_A);
-			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->vol.vol_raw[VOL_A]) << 4 );
-		}
-		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_2){
-			Helper_Print_EFX_ADC_Vol(handle->vol, VOL_B);
-			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, (handle->vol.vol_raw[VOL_B]) << 4 );
-		}
-		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_3){
-			Helper_Print_EFX_ADC_Vol(handle->vol, VOL_C);
-			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, (handle->vol.vol_raw[VOL_C]) << 4 );
-		}
-		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_4){
-			Helper_Print_EFX_ADC_Vol(handle->vol, VOL_D);
-			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, (handle->vol.vol_raw[VOL_D]) << 4 );
-		}
+	Fsm_Fp_t func = NULL;
 
-	}
-
-	//HANDLE VOLUMES ON USER MODE
-	else{
-		if(handle->vol.vol_src[VOL_A] == VOL_FROM_ADC){
-			if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_1){
-				Helper_Print_EFX_ADC_Vol(handle->vol, VOL_A);
-				__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->vol.vol_raw[VOL_A]) << 4 );
-			}
-		}
-		if(handle->vol.vol_src[VOL_B] == VOL_FROM_ADC){
-			if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_2){
-				Helper_Print_EFX_ADC_Vol(handle->vol, VOL_B);
-				__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, (handle->vol.vol_raw[VOL_B]) << 4 );
-			}
-		}
-		if(handle->vol.vol_src[VOL_B] == VOL_FROM_ADC){
-			if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_3){
-				Helper_Print_EFX_ADC_Vol(handle->vol, VOL_C);
-				__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, (handle->vol.vol_raw[VOL_C]) << 4 );
-			}
-		}
-		if(handle->vol.vol_src[VOL_B] == VOL_FROM_ADC){
-			if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_4){
-				Helper_Print_EFX_ADC_Vol(handle->vol, VOL_D);
-				__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, (handle->vol.vol_raw[VOL_D]) << 4 );
-			}
-		}
-	}
-
+	if(handle->cur_efx->pmode == EFX_FACT_PRESET_MODE)
+		func =  Helper_Fp_S2_Not_F0;
+	else
+		func =  Helper_Fp_S2_Not_F1;
+	func(handle);
 	glcd_write();
-
 }
 
 
