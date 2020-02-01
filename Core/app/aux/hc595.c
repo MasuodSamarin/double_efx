@@ -52,16 +52,16 @@ void HC595_SendByte(uint8_t byte){
 	for (int8_t i = 7; i >= 0; --i) {
 
 		uint8_t bit = byte & (0x1 << i);							// Read bit
-		GPIO_WritePin(SHR_DATA_GPIO_Port, SHR_DATA_Pin, bit);		// Send bit
+		HAL_GPIO_WritePin(SHR_DATA_GPIO_Port, SHR_DATA_Pin, bit);		// Send bit
 
 		// Toggle clock
-		GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, 1);
+		HAL_GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, 1);
 		//while(clock_timeout--);
-		GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, 0);
+		HAL_GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, 0);
 	}
 
 	// Toggle latch
-	GPIO_WritePin(SHR_LATCH_GPIO_Port, SHR_LATCH_Pin, 1);
+	HAL_GPIO_WritePin(SHR_LATCH_GPIO_Port, SHR_LATCH_Pin, 1);
 	//while (latch_timeout--);
-	GPIO_WritePin(SHR_LATCH_GPIO_Port, SHR_LATCH_Pin, 0);
+	HAL_GPIO_WritePin(SHR_LATCH_GPIO_Port, SHR_LATCH_Pin, 0);
 }

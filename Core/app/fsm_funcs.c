@@ -63,7 +63,7 @@ void Helper_Print_EFX_ADC_Vol(Vol_t vol, Vol_Name_t name){
 	glcd_bar_graph_volume_shape(VOL_X, (VOL_Y + (name*VOL_DIFF)), VOL_W, VOL_H, vol.vol_raw[name]);
 }
 
-void Helper_Print_EFX_Vol(uint32_t Vol_Value, Vol_Name_t name, ){
+void Helper_Print_EFX_Vol(uint32_t Vol_Value, Vol_Name_t name){
 
 	glcd_bar_graph_volume_shape(VOL_X, (VOL_Y + (name*VOL_DIFF)), VOL_W, VOL_H, Vol_Value);
 
@@ -271,8 +271,13 @@ void fp_S2_Not(App_Handle_t *handle){
  * 	2. goto the effect
  * 	3. update the EEP value
  * 	4. goto the STATE 1
+ * 	#TODO:
+ * 		complete EEP section
  * */
-void fp_S2_Btn(App_Handle_t *handle){}
+void fp_S2_Btn(App_Handle_t *handle){
+
+
+}
 
 
 

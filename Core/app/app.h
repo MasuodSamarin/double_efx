@@ -12,6 +12,7 @@
 #include "glcd.h"
 #include "efx.h"
 #include "event.h"
+#include "hc595.h"
 
 typedef enum State_t{
 	STATE_1,
