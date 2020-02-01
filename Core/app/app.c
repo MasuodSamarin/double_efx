@@ -60,7 +60,15 @@ void App_Init(App_Handle_t *handle){
 //	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3 );
 //	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4 );
 
-	fp_S0_Reset(handle);
+	//fp_S0_Reset(handle);
+	handle->vol.vol_src[VOL_A] = VOL_FROM_ADC;
+	handle->vol.vol_src[VOL_B] = VOL_FROM_ADC;
+	handle->vol.vol_src[VOL_C] = VOL_FROM_ADC;
+	handle->vol.vol_src[VOL_D] = VOL_FROM_ADC;
+	handle->state = STATE_1;
+	handle->tmp_efx = NULL;
+	handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
+
 }
 
 void APP_Exec(App_Handle_t *handle){
