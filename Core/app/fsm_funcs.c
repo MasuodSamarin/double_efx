@@ -139,8 +139,55 @@ void Helper_Fp_S2_Not_F1(App_Handle_t *handle){
 		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
 		Helper_Print_EFX_Vol(VOL_D,vol_val);
 	}
+	glcd_write();
+
 }
 
+
+
+#define MAX_EFX_USER_LIST_SIZE	50
+#define MAX_EFX_FACTORY_LIST_SIZE	16
+
+//HANDLE SAVE EFX ON LINK-LIST AND EEP'S
+void Helper_Fp_S2_Btn_F0(App_Handle_t *handle){
+	//check efx number not > from link-list size
+	//theres no space to make new efx
+	if(handle->cur_efx->mem.main_num >= (MAX_EFX_USER_LIST_SIZE + MAX_EFX_FACTORY_LIST_SIZE)){
+
+		//#TODO:
+		//show a warning message on the screen because we dont have any memory for new efx
+		// nothing change t all.
+		return;
+	}
+
+	/*
+	 * TODO:
+	 * 		1. show message on the lcd for SAVING EFX
+	 *		2. save actual efx to the EEP
+	 * 	*/
+	Effect_List_Add_Element(handle->cur_efx->mem.main_num + 1, EFX_USER_PRESET_MODE,
+									handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
+	Enc_Event_Set_Span(handle->cur_efx->mem.main_num + 1);
+	Enc_Event_Set_val(handle->cur_efx->mem.main_num);
+	handle->state = STATE_1;
+	//glcd_write();
+
+}
+
+//HANDLE UPDATE EFX ON LINK-LIST AND EEP'S
+void Helper_Fp_S2_Btn_F1(App_Handle_t *handle){
+	/*
+	 * TODO:
+	 * 		1. show message on the lcd for MODIFY/UPDATE current EFX
+	 * 		2. update actual EFX  EEp
+	 *
+	 * */
+	Effect_List_Modify_Vol_Element(handle->cur_efx, handle->vol.vol_raw);
+	handle->state = STATE_1;
+	//glcd_write();
+
+
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -158,16 +205,16 @@ void Helper_Fp_S2_Not_F1(App_Handle_t *handle){
  * 	TODO:
  * 		there's some development
  * */
-void fp_S0_Reset(App_Handle_t *handle){
-
-	/*TODO:
-	 * 	it's not finished yet.
-	 * */
-
-//	handle->state = STATE_1;
-//	handle->tmp_efx = NULL;
-//	handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
-}
+//void fp_S0_Reset(App_Handle_t *handle){
+//
+//	/*TODO:
+//	 * 	it's not finished yet.
+//	 * */
+//
+////	handle->state = STATE_1;
+////	handle->tmp_efx = NULL;
+////	handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
+//}
 
 /*
  * State 1: All Events
@@ -184,6 +231,9 @@ void fp_S0_Reset(App_Handle_t *handle){
  * 		there's some development
  * */
 void fp_S1_All(App_Handle_t *handle){
+
+	//set the most important field of handle --CUR_EFX--
+	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);
 	//2. set HC595 shift register values
 	HC595_SendByte(handle->cur_efx->base->code);
 
@@ -226,10 +276,7 @@ void fp_S1_All(App_Handle_t *handle){
 	handle->state = STATE_2;
 	handle->btn.press_time = BTN_LONG_PRESS_TIME;
 
-
 	glcd_write();
-
-
 }
 
 
@@ -255,11 +302,7 @@ void fp_S2_Not(App_Handle_t *handle){
 	else
 		func =  Helper_Fp_S2_Not_F1;
 	func(handle);
-	glcd_write();
 }
-
-
-
 
 /*
  * State 2: Button Press Event
@@ -276,11 +319,19 @@ void fp_S2_Not(App_Handle_t *handle){
  * */
 void fp_S2_Btn(App_Handle_t *handle){
 
+	Fsm_Fp_t func = NULL;
+
+	if(handle->cur_efx->pmode == EFX_FACT_PRESET_MODE)
+		func =  Helper_Fp_S2_Btn_F0;
+	else
+		func =  Helper_Fp_S2_Btn_F1;
+	func(handle);
+
+//	#TODO * 	2. goto the effect
+//	 * 	3. update the EEP value
+
 
 }
-
-
-
 
 /*
  * State 2: Encoder Changes Event
@@ -288,20 +339,44 @@ void fp_S2_Btn(App_Handle_t *handle){
  * 	2. button push time = Normal push time
  * 	3. goto the State 3
  * */
-void fp_S2_Enc(App_Handle_t *handle){}
+void fp_S2_Enc(App_Handle_t *handle){
 
-
-
+	handle->tmp_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);;
+	handle->btn.press_time = BTN_NORMAL_PRESS_TIME;
+	handle->state = STATE_3;
+}
 
 /*
  * State 2: Volume Changes Event
  * 	1. is volume belong to the Volume-Group?
  * 		yes:
- * 			1. mark that volume to online or free vol
+ * 			1. mark that volume to online or VOL_FROM_ADC
  * 		no:
  * 			1. there's nothing to do
+ * 	note:
+ * 		probably vol_handle take care of it
  * */
-void fp_S2_Vol(App_Handle_t *handle){}
+void fp_S2_Vol(App_Handle_t *handle){
+
+	/**/
+//	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_1){
+//		handle->vol.vol_src[VOL_A] = VOL_FROM_ADC;
+//	}
+//
+//	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_2){
+//		handle->vol.vol_src[VOL_B] = VOL_FROM_ADC;
+//	}
+//
+//	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_3){
+//		handle->vol.vol_src[VOL_C] = VOL_FROM_ADC;
+//	}
+//
+//	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_4){
+//		handle->vol.vol_src[VOL_D] = VOL_FROM_ADC;
+//	}
+
+}
+
 
 
 
@@ -312,13 +387,10 @@ void fp_S2_Vol(App_Handle_t *handle){}
  * 		A)name	B)Number	C)volume group
  * 	3. the B section blinks every 100ms
  * 	4. after some time-out:
- * 		A) change Encoder tim value to handle->cur_efx
+ * 		A) change Encoder TIM value to handle->cur_efx
  * 		B) goto State 2
  * */
 void fp_S3_Not(App_Handle_t *handle){}
-
-
-
 
 /*
  * State 3: Button Press Event
@@ -327,18 +399,12 @@ void fp_S3_Not(App_Handle_t *handle){}
  * */
 void fp_S3_Btn(App_Handle_t *handle){}
 
-
-
-
 /*
  * State 3: Encoder Changes Event
  * 	1. set handle->tmp_efx to next or previous effect on the link-list
  * 	2. set blink timer
  * */
 void fp_S3_Enc(App_Handle_t *handle){}
-
-
-
 
 /*
  * State 3: Volume Changes Event

@@ -67,7 +67,7 @@ void App_Init(App_Handle_t *handle){
 	handle->vol.vol_src[VOL_D] = VOL_FROM_ADC;
 	handle->state = STATE_1;
 	handle->tmp_efx = NULL;
-	handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
+	//handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
 
 }
 

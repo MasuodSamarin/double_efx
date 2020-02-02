@@ -21,7 +21,7 @@ list_t *efx_list;
 void Effect_List_Init(void){
 	efx_list = list_create();
 
-	uint16_t vols[VOL_MAX] = {0};
+	uint32_t vols[VOL_MAX] = {0};
 	for (Efx_Preset_t pst = EFX_PRST_1; pst < EFX_PRST_MAX; ++pst) {
 		//Efx_t *efx = Effect_Creare_Node((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
 		//list_push_back(efx_list, (void*)efx);
@@ -30,7 +30,7 @@ void Effect_List_Init(void){
 	}
 }
 
-static Efx_t* Effect_List_Create_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols){
+static Efx_t* Effect_List_Create_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint32_t *vols){
 
 	Efx_t *efx = malloc(sizeof(Efx_t));
 	//TODO: check malloc
@@ -44,21 +44,34 @@ static Efx_t* Effect_List_Create_Element(uint8_t number, Efx_Preset_Mode_t pmode
 	efx->mem.pst_num = pst;
 	efx->mem.main_num = number;
 
-	efx->mem.vols[VOL_A] = vols[VOL_A];
-	efx->mem.vols[VOL_B] = vols[VOL_B];
-	efx->mem.vols[VOL_C] = vols[VOL_C];
-	efx->mem.vols[VOL_D] = vols[VOL_D];
+	/*
+	 * adc was 12 bit so shift 4bit to the right*/
+	efx->mem.vols[VOL_A] = vols[VOL_A] >> 4;
+	efx->mem.vols[VOL_B] = vols[VOL_B] >> 4;
+	efx->mem.vols[VOL_C] = vols[VOL_C] >> 4;
+	efx->mem.vols[VOL_D] = vols[VOL_D] >> 4;
 
 	return efx;
 }
 
-void Effect_List_Add_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols){
+void Effect_List_Add_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint32_t *vols){
 
 	Efx_t *efx = Effect_List_Create_Element(number, pmode, pst, vols);
 	list_push_back(efx_list, (void*)efx);
 }
 
-Efx_t* Effect_List_Get_Element(uint8_t number){
+
+void Effect_List_Modify_Vol_Element(Efx_t *cur_efx, uint32_t *new_val){
+	/*
+	 * adc was 12 bit so shift 4bit to the right to save just 8byte on it
+	 * */
+	cur_efx->mem.vols[VOL_A] = new_val[VOL_A] >> 4;
+	cur_efx->mem.vols[VOL_B] = new_val[VOL_B] >> 4;
+	cur_efx->mem.vols[VOL_C] = new_val[VOL_C] >> 4;
+	cur_efx->mem.vols[VOL_D] = new_val[VOL_D] >> 4;
+}
+
+Efx_t* Effect_List_Get_EFX_Element(uint8_t number){
 
 	node_t *node;
 	uint8_t lsize = (uint8_t)Effect_List_Get_List_Size();

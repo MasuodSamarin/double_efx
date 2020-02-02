@@ -80,10 +80,10 @@ typedef struct Efx_t{
 
 void Effect_List_Init(void);
 //Efx_t* Effect_Creare_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols);
-void Effect_List_Add_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint16_t *vols);
-Efx_t* Effect_List_Get_Element(uint8_t number);
+void Effect_List_Add_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint32_t *vols);
+Efx_t* Effect_List_Get_EFX_Element(uint8_t number);
 size_t Effect_List_Get_List_Size(void);
-
+void Effect_List_Modify_Vol_Element(Efx_t *number, uint32_t *new_val);
 
 
 
