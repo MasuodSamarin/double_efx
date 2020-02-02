@@ -32,6 +32,8 @@ typedef struct App_Handle_t{
 	Btn_t btn;
 	Vol_t vol;
 
+	uint8_t blink_timer;
+	uint32_t halTick_timer;
 }App_Handle_t;
 
 

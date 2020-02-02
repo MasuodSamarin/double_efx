@@ -344,6 +344,8 @@ void fp_S2_Enc(App_Handle_t *handle){
 	handle->tmp_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);;
 	handle->btn.press_time = BTN_NORMAL_PRESS_TIME;
 	handle->state = STATE_3;
+	handle->halTick_timer = HAL_GetTick();
+	handle->blink_timer = 0;
 }
 
 /*
@@ -354,7 +356,7 @@ void fp_S2_Enc(App_Handle_t *handle){
  * 		no:
  * 			1. there's nothing to do
  * 	note:
- * 		probably vol_handle take care of it
+ * 		probably vol_handle interrupt take care of it
  * */
 void fp_S2_Vol(App_Handle_t *handle){
 
@@ -383,35 +385,119 @@ void fp_S2_Vol(App_Handle_t *handle){
 /*
  * State 3:	Not Events
  * 	1. important parameter is handle->tmp_efx
- * 	2. show tmp effect on the LCD.
+ * 	2. show TMP effect on the LCD.
  * 		A)name	B)Number	C)volume group
  * 	3. the B section blinks every 100ms
  * 	4. after some time-out:
  * 		A) change Encoder TIM value to handle->cur_efx
  * 		B) goto State 2
  * */
-void fp_S3_Not(App_Handle_t *handle){}
+void fp_S3_Not(App_Handle_t *handle){
+	uint32_t vol_val;
+
+	glcd_clear_buffer();
+	Helper_Draw_Thin_Frame;
+	Helper_Print_EFX_Name(handle->tmp_efx);
+
+	/* start point show number*/
+	if(handle->blink_timer < 40){
+		Helper_Print_EFX_Number(handle->tmp_efx);
+		handle->blink_timer = handle->blink_timer + 1;
+	}
+	/* repeat still show number*/
+	else if(handle->blink_timer < 60){
+		Helper_Print_EFX_Number(handle->tmp_efx);
+		handle->blink_timer = handle->blink_timer + 1;
+	}
+	/* remove number*/
+	else if(handle->blink_timer < 200){
+		glcd_draw_rect_fill(79, 22, 40, 37, 0);
+		handle->blink_timer = handle->blink_timer + 1;
+	}
+	/* reset loop goto repeat section*/
+	else{
+		handle->blink_timer = 41;
+	}
+
+	/*show volumes on LCD*/
+	if ((handle->tmp_efx->base->vgrp) & VOL_GROUP_1){
+		if(handle->tmp_efx->pmode == EFX_FACT_PRESET_MODE)
+			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_A]) << 4 );
+		else
+			vol_val = (uint32_t)((handle->tmp_efx->mem.vols[VOL_A]) << 4);
+
+		Helper_Print_EFX_Vol(VOL_A,vol_val);
+	}
+
+	if ((handle->tmp_efx->base->vgrp) & VOL_GROUP_2){
+		if(handle->tmp_efx->pmode == EFX_FACT_PRESET_MODE)
+			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_B]) << 4 );
+		else
+			vol_val = (uint32_t)((handle->tmp_efx->mem.vols[VOL_B]) << 4);
+
+		Helper_Print_EFX_Vol(VOL_B,vol_val);
+	}
+
+	if ((handle->tmp_efx->base->vgrp) & VOL_GROUP_3){
+		if(handle->tmp_efx->pmode == EFX_FACT_PRESET_MODE)
+			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_C]) << 4 );
+		else
+			vol_val = (uint32_t)((handle->tmp_efx->mem.vols[VOL_C]) << 4);
+
+		Helper_Print_EFX_Vol(VOL_C,vol_val);
+	}
+
+	if ((handle->tmp_efx->base->vgrp) & VOL_GROUP_4){
+		if(handle->tmp_efx->pmode == EFX_FACT_PRESET_MODE)
+			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_D]) << 4 );
+		else
+			vol_val = (uint32_t)((handle->tmp_efx->mem.vols[VOL_D]) << 4);
+
+		Helper_Print_EFX_Vol(VOL_D,vol_val);
+	}
+
+	glcd_write();
+
+	/* this is time-out section*/
+	if(HAL_GetTick() - handle->halTick_timer > 7000){
+		Enc_Event_Set_val(handle->cur_efx->mem.main_num);
+		handle->state = STATE_1;
+	}
+}
 
 /*
  * State 3: Button Press Event
- * 	1. set handle->cur_efx =  handle->tmp_efx
+ * 	1. set handle->cur_efx = handle->tmp_efx
  * 	2. goto State 1
  * */
-void fp_S3_Btn(App_Handle_t *handle){}
+void fp_S3_Btn(App_Handle_t *handle){
+
+	Enc_Event_Set_val(handle->tmp_efx->mem.main_num);
+	handle->state = STATE_1;
+}
 
 /*
  * State 3: Encoder Changes Event
  * 	1. set handle->tmp_efx to next or previous effect on the link-list
  * 	2. set blink timer
  * */
-void fp_S3_Enc(App_Handle_t *handle){}
+void fp_S3_Enc(App_Handle_t *handle){
+
+	handle->tmp_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);;
+	handle->halTick_timer = HAL_GetTick();
+	handle->blink_timer = 0;
+}
 
 /*
  * State 3: Volume Changes Event
  * 	1. change Encoder tim value to handle->cur_efx
- * 	2. goto State 2
+ * 	2. goto State 1
  * */
-void fp_S3_Vol(App_Handle_t *handle){}
+void fp_S3_Vol(App_Handle_t *handle){
+
+	Enc_Event_Set_val(handle->cur_efx->mem.main_num);
+	handle->state = STATE_1;
+}
 
 
 
@@ -419,10 +505,6 @@ void fp_S3_Vol(App_Handle_t *handle){}
 
 
 
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
