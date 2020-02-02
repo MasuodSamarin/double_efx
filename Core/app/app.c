@@ -39,7 +39,9 @@ const Fsm_Fp_t fsm_fp_box[EVENT_MAX][STATE_MAX]={
 };
 
 
-
+/*TODO:
+ * 	1. add logo to the beginning of the boot-up
+ * 	*/
 
 void App_Init(App_Handle_t *handle){
 
@@ -50,7 +52,7 @@ void App_Init(App_Handle_t *handle){
 
 	Event_Init(&handle->event, &handle->btn, &handle->enc, &handle->vol);
 
-	HAL_Delay(1000);
+	//HAL_Delay(1000);
 
 	HAL_TIM_Base_Start_IT(&htim14);
 

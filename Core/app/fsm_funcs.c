@@ -72,9 +72,9 @@ void Helper_Print_EFX_Vol(uint32_t Vol_Value, Vol_Name_t name){
 uint32_t Helper_Get_Vol_Value(App_Handle_t *handle, Vol_Name_t name){
 
 	//READ VOLUMES VALUES FROM SAVED MEMORY
-	if(handle->vol.vol_src[name]  == VOL_FROM_MEM){
+	if(handle->vol.vol_src[name]  == VOL_FROM_MEM)
 		return (uint32_t)((handle->cur_efx->mem.vols[name]) << 4);
-	}
+
 	//READ VOLUMES VALUES FROM ADC ONLINE
 	else
 		return (uint32_t)((handle->vol.vol_raw[name]) << 4);
@@ -93,23 +93,21 @@ void Helper_Fp_S2_Not_F0(App_Handle_t *handle){
 
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_2){
 		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_B]) << 4 );
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, vol_val);
 		Helper_Print_EFX_Vol(VOL_B,vol_val);
 	}
 
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_3){
 		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_C]) << 4 );
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, vol_val);
 		Helper_Print_EFX_Vol(VOL_C,vol_val);
 	}
 
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_4){
 		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_D]) << 4 );
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, vol_val);
 		Helper_Print_EFX_Vol(VOL_D,vol_val);
 	}
-
-	glcd_write();
 }
 
 //HANDLE VOLUMES ON USER PRESET MODE
@@ -124,23 +122,21 @@ void Helper_Fp_S2_Not_F1(App_Handle_t *handle){
 
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_2){
 		vol_val = Helper_Get_Vol_Value(handle, VOL_B);
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, vol_val);
 		Helper_Print_EFX_Vol(VOL_B,vol_val);
 	}
 
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_3){
 		vol_val = Helper_Get_Vol_Value(handle, VOL_C);
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, vol_val);
 		Helper_Print_EFX_Vol(VOL_C,vol_val);
 	}
 
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_4){
 		vol_val = Helper_Get_Vol_Value(handle, VOL_D);
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, vol_val);
 		Helper_Print_EFX_Vol(VOL_D,vol_val);
 	}
-	glcd_write();
-
 }
 
 
@@ -165,9 +161,9 @@ void Helper_Fp_S2_Btn_F0(App_Handle_t *handle){
 	 * 		1. show message on the lcd for SAVING EFX
 	 *		2. save actual efx to the EEP
 	 * 	*/
-	Effect_List_Add_Element(handle->cur_efx->mem.main_num + 1, EFX_USER_PRESET_MODE,
-									handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
-	Enc_Event_Set_Span(handle->cur_efx->mem.main_num + 1);
+	Effect_List_Add_Element(Enc_Event_Get_Span + 1, EFX_USER_PRESET_MODE,
+							handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
+	Enc_Event_Set_Span(Enc_Event_Get_Span + 1);
 	Enc_Event_Set_val(handle->cur_efx->mem.main_num);
 	handle->state = STATE_1;
 	//glcd_write();
@@ -179,7 +175,7 @@ void Helper_Fp_S2_Btn_F1(App_Handle_t *handle){
 	/*
 	 * TODO:
 	 * 		1. show message on the lcd for MODIFY/UPDATE current EFX
-	 * 		2. update actual EFX  EEp
+	 * 		2. update actual EFX on EEp
 	 *
 	 * */
 	Effect_List_Modify_Vol_Element(handle->cur_efx, handle->vol.vol_raw);
@@ -253,25 +249,6 @@ void fp_S1_All(App_Handle_t *handle){
 
 	//ON USER MODE
 	Helper_Fp_S2_Not_F1(handle);
-//	if(handle->cur_efx->pmode == EFX_USER_PRESET_MODE){
-//		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_1){
-//			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_A);
-//			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_A]) << 4 );
-//		}
-//		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_2){
-//			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_B);
-//			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_B]) << 4 );
-//		}
-//		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_3){
-//			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_C);
-//			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_C]) << 4 );
-//		}
-//		if ( (handle->cur_efx->base->vgrp) & VOL_GROUP_4){
-//			Helper_Print_EFX_Mem_Vol(handle->cur_efx, VOL_D);
-//			__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, (handle->cur_efx->mem.vols[VOL_D]) << 4 );
-//		}
-//
-//	}
 
 	handle->state = STATE_2;
 	handle->btn.press_time = BTN_LONG_PRESS_TIME;
@@ -301,7 +278,10 @@ void fp_S2_Not(App_Handle_t *handle){
 		func =  Helper_Fp_S2_Not_F0;
 	else
 		func =  Helper_Fp_S2_Not_F1;
+
 	func(handle);
+	glcd_write();
+
 }
 
 /*
@@ -311,7 +291,7 @@ void fp_S2_Not(App_Handle_t *handle){
  * 			1. save the new effect on tail of link-list
  * 		no:
  * 			1. update volume's value to the already exist effect
- * 	2. goto the effect
+ * 	2. goto the actual effect
  * 	3. update the EEP value
  * 	4. goto the STATE 1
  * 	#TODO:
@@ -326,6 +306,7 @@ void fp_S2_Btn(App_Handle_t *handle){
 	else
 		func =  Helper_Fp_S2_Btn_F1;
 	func(handle);
+	glcd_write();
 
 //	#TODO * 	2. goto the effect
 //	 * 	3. update the EEP value
@@ -338,13 +319,14 @@ void fp_S2_Btn(App_Handle_t *handle){
  * 	1. set handle->tmp_efx to next or previous effect on the link-list
  * 	2. button push time = Normal push time
  * 	3. goto the State 3
+ * 	4. reset blink and TICK-timer
  * */
 void fp_S2_Enc(App_Handle_t *handle){
 
 	handle->tmp_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);;
 	handle->btn.press_time = BTN_NORMAL_PRESS_TIME;
 	handle->state = STATE_3;
-	handle->halTick_timer = HAL_GetTick();
+	handle->tick_timer = HAL_GetTick();
 	handle->blink_timer = 0;
 }
 
@@ -390,7 +372,7 @@ void fp_S2_Vol(App_Handle_t *handle){
  * 	3. the B section blinks every 100ms
  * 	4. after some time-out:
  * 		A) change Encoder TIM value to handle->cur_efx
- * 		B) goto State 2
+ * 		B) goto State 1
  * */
 void fp_S3_Not(App_Handle_t *handle){
 	uint32_t vol_val;
@@ -459,7 +441,7 @@ void fp_S3_Not(App_Handle_t *handle){
 	glcd_write();
 
 	/* this is time-out section*/
-	if(HAL_GetTick() - handle->halTick_timer > 7000){
+	if(HAL_GetTick() - handle->tick_timer > 7000){
 		Enc_Event_Set_val(handle->cur_efx->mem.main_num);
 		handle->state = STATE_1;
 	}
@@ -484,7 +466,7 @@ void fp_S3_Btn(App_Handle_t *handle){
 void fp_S3_Enc(App_Handle_t *handle){
 
 	handle->tmp_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);;
-	handle->halTick_timer = HAL_GetTick();
+	handle->tick_timer = HAL_GetTick();
 	handle->blink_timer = 0;
 }
 
