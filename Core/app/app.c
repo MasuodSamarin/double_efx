@@ -34,7 +34,7 @@ const Fsm_Fp_t fsm_fp_box[EVENT_MAX][STATE_MAX]={
 		{ fp_S1_All, fp_S2_Not, fp_S3_Not},
 		{ fp_S1_All, fp_S2_Btn, fp_S3_Btn},
 		{ fp_S1_All, fp_S2_Enc, fp_S3_Enc},
-		{ fp_S1_All, fp_S2_Vol, fp_S3_Vol}
+		{ fp_S1_All, fp_S2_Vol, fp_S3_Vol},
 
 };
 
@@ -54,7 +54,6 @@ void App_Init(App_Handle_t *handle){
 
 	//HAL_Delay(1000);
 
-	HAL_TIM_Base_Start_IT(&htim14);
 
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_ALL);
 //	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1 );
@@ -63,22 +62,31 @@ void App_Init(App_Handle_t *handle){
 //	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4 );
 
 	//fp_S0_Reset(handle);
-	handle->vol.vol_src[VOL_A] = VOL_FROM_ADC;
-	handle->vol.vol_src[VOL_B] = VOL_FROM_ADC;
-	handle->vol.vol_src[VOL_C] = VOL_FROM_ADC;
-	handle->vol.vol_src[VOL_D] = VOL_FROM_ADC;
+//	handle->vol.vol_src[VOL_A] = VOL_FROM_ADC;
+//	handle->vol.vol_src[VOL_B] = VOL_FROM_ADC;
+//	handle->vol.vol_src[VOL_C] = VOL_FROM_ADC;
+//	handle->vol.vol_src[VOL_D] = VOL_FROM_ADC;
 	handle->state = STATE_1;
 	handle->tmp_efx = NULL;
 	//handle->cur_efx = Effect_List_Get_Element(Enc_Event_Get_val);
 
+
+	handle->btn.press_time = BTN_LONG_PRESS_TIME;
+	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);
+
+	HAL_TIM_Base_Start_IT(&htim14);
+
 }
+
+
+Fsm_Fp_t func = NULL;
 
 void APP_Exec(App_Handle_t *handle){
 
-	Fsm_Fp_t func = NULL;
 
 	func = fsm_fp_box[handle->event.type][handle->state];
 	handle->event.has_e = 0;
+	handle->event.type = Event_NOT;
 
 	if(func)
 		func(handle);

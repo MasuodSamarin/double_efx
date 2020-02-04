@@ -11,8 +11,8 @@
 #include "main.h"
 
 
-#define BTN_NORMAL_PRESS_TIME	500
-#define BTN_LONG_PRESS_TIME		5000
+#define BTN_NORMAL_PRESS_TIME	100
+#define BTN_LONG_PRESS_TIME		1000
 
 
 

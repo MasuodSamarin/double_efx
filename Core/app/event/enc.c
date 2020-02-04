@@ -20,7 +20,7 @@ void Enc_Event_Init(Enc_t *enc){
 
 	HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
 	Enc_Event_Set_Span(16);
-	Enc_Event_Set_val(0);
+	Enc_Event_Set_val(enc, 0);
 	enc->direction = Enc_Rotate_Nothing;
 	enc->value = 0;
 	enc->tim_cnt = Enc_Event_Get_val;
@@ -73,9 +73,12 @@ uint8_t Enc_Event_Handle(Enc_t *enc){
 }
 
 
-
-
-
+void Enc_Event_Set_val(Enc_t *enc, uint32_t val){
+	__HAL_TIM_SET_COUNTER(&htim1, val);
+	enc->tim_cnt = val;
+	enc->value = 0;
+	//enc->direction = Enc_Rotate_Nothing;
+}
 
 
 
