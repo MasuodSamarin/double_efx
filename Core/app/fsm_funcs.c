@@ -83,32 +83,32 @@ uint32_t Helper_Get_Vol_Value(App_Handle_t *handle, Vol_Name_t name){
 
 //HANDLE VOLUMES ON FACTORY PRESET MODE
 void Helper_Fp_S2_Not_F0(App_Handle_t *handle){
-	//hold temp volume val
-	uint32_t vol_val;
-	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_1){
-		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_A])>>4);
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
-		Helper_Print_EFX_Vol(vol_val, VOL_A);
-	}
-
-	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_2){
-		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_B])>>4);
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, vol_val);
-		Helper_Print_EFX_Vol(vol_val, VOL_B);
-	}
-
-	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_3){
-		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_C])>>4);
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, vol_val);
-		Helper_Print_EFX_Vol(vol_val, VOL_C);
-	}
-
-	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_4){
-		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_D])>>4);
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, vol_val);
-		Helper_Print_EFX_Vol(vol_val, VOL_D);
-	}
-	glcd_write();
+//	//hold temp volume val
+//	uint32_t vol_val;
+//	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_1){
+//		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_A])>>4);
+//		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+//		Helper_Print_EFX_Vol(vol_val, VOL_A);
+//	}
+//
+//	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_2){
+//		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_B])>>4);
+//		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, vol_val);
+//		Helper_Print_EFX_Vol(vol_val, VOL_B);
+//	}
+//
+//	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_3){
+//		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_C])>>4);
+//		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, vol_val);
+//		Helper_Print_EFX_Vol(vol_val, VOL_C);
+//	}
+//
+//	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_4){
+//		vol_val = (uint32_t)((handle->vol.vol_raw[VOL_D])>>4);
+//		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, vol_val);
+//		Helper_Print_EFX_Vol(vol_val, VOL_D);
+//	}
+//	glcd_write();
 }
 
 //HANDLE VOLUMES ON USER PRESET MODE
@@ -116,25 +116,43 @@ void Helper_Fp_S2_Not_F1(App_Handle_t *handle){
 	//hold temp volume val
 	uint32_t vol_val;
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_1){
-		vol_val = Helper_Get_Vol_Value(handle, VOL_A);
+		if(handle->vol.vol_src[VOL_A]  == VOL_FROM_MEM)
+			vol_val = (uint32_t)((handle->cur_efx->mem.vols[VOL_A]));
+		else
+			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_A])>>4);
+		//vol_val = Helper_Get_Vol_Value(handle, VOL_A);
+
 		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
 		Helper_Print_EFX_Vol(vol_val, VOL_A);
 	}
 
+
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_2){
-		vol_val = Helper_Get_Vol_Value(handle, VOL_B);
+		if(handle->vol.vol_src[VOL_B]  == VOL_FROM_MEM)
+			vol_val = (uint32_t)((handle->cur_efx->mem.vols[VOL_B]));
+		else
+			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_B])>>4);
+		//vol_val = Helper_Get_Vol_Value(handle, VOL_B);
 		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, vol_val);
 		Helper_Print_EFX_Vol(vol_val, VOL_B);
 	}
 
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_3){
-		vol_val = Helper_Get_Vol_Value(handle, VOL_C);
+		if(handle->vol.vol_src[VOL_C]  == VOL_FROM_MEM)
+			vol_val = (uint32_t)((handle->cur_efx->mem.vols[VOL_C]));
+		else
+			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_C])>>4);
+		//vol_val = Helper_Get_Vol_Value(handle, VOL_C);
 		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, vol_val);
 		Helper_Print_EFX_Vol(vol_val, VOL_C);
 	}
 
 	if ((handle->cur_efx->base->vgrp) & VOL_GROUP_4){
-		vol_val = Helper_Get_Vol_Value(handle, VOL_D);
+		if(handle->vol.vol_src[VOL_D]  == VOL_FROM_MEM)
+			vol_val = (uint32_t)((handle->cur_efx->mem.vols[VOL_D]));
+		else
+			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_D])>>4);
+		//vol_val = Helper_Get_Vol_Value(handle, VOL_D);
 		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, vol_val);
 		Helper_Print_EFX_Vol(vol_val, VOL_D);
 	}
@@ -244,6 +262,8 @@ void fp_S1_All(App_Handle_t *handle){
 
 	//ON USER MODE
 	if(handle->cur_efx->pmode == EFX_USER_PRESET_MODE){
+		Vol_Event_Reset_Vols(&(handle->vol));
+
 		handle->vol.vol_src[VOL_A] = VOL_FROM_MEM;
 		handle->vol.vol_src[VOL_B] = VOL_FROM_MEM;
 		handle->vol.vol_src[VOL_C] = VOL_FROM_MEM;
@@ -258,7 +278,7 @@ void fp_S1_All(App_Handle_t *handle){
 
 
 	//ON USER MODE
-	Helper_Fp_S2_Not_F1(handle);
+	//Helper_Fp_S2_Not_F1(handle);
 
 	handle->state = STATE_2;
 	handle->btn.press_time = BTN_LONG_PRESS_TIME;
@@ -281,7 +301,7 @@ void fp_S1_All(App_Handle_t *handle){
  * 	2. note that a desire volume must been in effect group volumes
  * */
 void fp_S2_Not(App_Handle_t *handle){
-
+#if 0
 	Fsm_Fp_t func = NULL;
 
 	if(handle->cur_efx->pmode == EFX_FACT_PRESET_MODE)
@@ -290,7 +310,11 @@ void fp_S2_Not(App_Handle_t *handle){
 		func =  Helper_Fp_S2_Not_F1;
 
 	func(handle);
+#else
 
+	Helper_Fp_S2_Not_F1(handle);
+
+#endif
 }
 
 /*
@@ -450,8 +474,8 @@ void fp_S3_Not(App_Handle_t *handle){
 	glcd_write();
 
 	/* this is time-out section*/
-	if(HAL_GetTick() - handle->tick_timer > 10000){
-		Enc_Event_Set_val(&handle->enc, handle->cur_efx->mem.main_num-1);
+	if(HAL_GetTick() - handle->tick_timer > 5000){
+		Enc_Event_Set_val(&(handle->enc), handle->cur_efx->mem.main_num-1);
 		handle->state = STATE_1;
 		handle->btn.press_time = BTN_LONG_PRESS_TIME;
 
@@ -468,6 +492,8 @@ void fp_S3_Btn(App_Handle_t *handle){
 	Enc_Event_Set_val(&(handle->enc), handle->tmp_efx->mem.main_num-1);
 	handle->state = STATE_1;
 	handle->cur_efx = handle->tmp_efx;
+
+
 }
 
 /*
@@ -488,9 +514,9 @@ void fp_S3_Enc(App_Handle_t *handle){
  * 	2. goto State 1
  * */
 void fp_S3_Vol(App_Handle_t *handle){
-
-	Enc_Event_Set_val(&handle->enc, (uint8_t)handle->cur_efx->mem.main_num);
-	handle->state = STATE_1;
+//
+//	Enc_Event_Set_val(&handle->enc, (uint8_t)handle->cur_efx->mem.main_num);
+//	handle->state = STATE_1;
 }
 
 

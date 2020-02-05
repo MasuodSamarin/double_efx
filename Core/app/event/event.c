@@ -20,8 +20,8 @@ void Event_Init(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol){
 
 void Event_Handle(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol){
 
-	if (event->has_e)
-		return;
+//	if (event->has_e)
+//		return;
 
 	if (Btn_Event_Handle(btn)){
 		event->has_e = 1;

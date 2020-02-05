@@ -61,7 +61,7 @@ typedef struct Vol_t{
 
 void 	Vol_Event_Init(Vol_t *vol);
 uint8_t Vol_Event_Handle(Vol_t *vol);
-
+void Vol_Event_Reset_Vols(Vol_t *vol);
 
 
 

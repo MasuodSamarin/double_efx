@@ -34,7 +34,7 @@ const Fsm_Fp_t fsm_fp_box[EVENT_MAX][STATE_MAX]={
 		{ fp_S1_All, fp_S2_Not, fp_S3_Not},
 		{ fp_S1_All, fp_S2_Btn, fp_S3_Btn},
 		{ fp_S1_All, fp_S2_Enc, fp_S3_Enc},
-		{ fp_S1_All, fp_S2_Vol, fp_S3_Vol},
+		{ fp_S1_All, fp_S2_Not, fp_S3_Vol},
 
 };
 
