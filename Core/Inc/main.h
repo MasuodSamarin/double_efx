@@ -75,12 +75,12 @@ void Error_Handler(void);
 #define ENC_CH1_GPIO_Port GPIOA
 #define ENC_CH2_Pin GPIO_PIN_9
 #define ENC_CH2_GPIO_Port GPIOA
-#define SHR_LATCH_Pin GPIO_PIN_10
-#define SHR_LATCH_GPIO_Port GPIOA
-#define SHR_CLK_Pin GPIO_PIN_11
-#define SHR_CLK_GPIO_Port GPIOA
-#define SHR_DATA_Pin GPIO_PIN_12
+#define SHR_DATA_Pin GPIO_PIN_10
 #define SHR_DATA_GPIO_Port GPIOA
+#define SHR_CLK_Pin GPIO_PIN_12
+#define SHR_CLK_GPIO_Port GPIOA
+#define SHR_LATCH_Pin GPIO_PIN_11
+#define SHR_LATCH_GPIO_Port GPIOA
 #define LCD_RST_Pin GPIO_PIN_15
 #define LCD_RST_GPIO_Port GPIOA
 #define LCD_SCL_Pin GPIO_PIN_3

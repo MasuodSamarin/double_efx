@@ -24,14 +24,11 @@
  *  Created on: 19.05.2019
  *      Author: Admin
  *
- *	LATCH    - PB12 (General output PP)
- *  CLOCK    - PB13 (General output PP)
- *  DATA     - PB14 (General output PP)
+ *	LATCH    - PA10 (General output PP)
+ *  CLOCK    - PA11 (General output PP)
+ *  DATA     - PA12 (General output PP)
  *
- *	NSS      - PA4 (General purpose output push-pull)	(not used)
- *  SCK      - PA5 (Alternate function push-pull)
- *  MISO     - PA6 (Input floating / Input pull-up)		(not used)
- *  MOSI     - PA7 (Alternate function push-pull)
+
  */
 
 
@@ -52,16 +49,16 @@ void HC595_SendByte(uint8_t byte){
 	for (int8_t i = 7; i >= 0; --i) {
 
 		uint8_t bit = byte & (0x1 << i);							// Read bit
-		HAL_GPIO_WritePin(SHR_DATA_GPIO_Port, SHR_DATA_Pin, bit);		// Send bit
+		HAL_GPIO_WritePin(SHR_DATA_GPIO_Port, SHR_DATA_Pin, (GPIO_PinState)bit);		// Send bit
 
 		// Toggle clock
-		HAL_GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, 1);
+		HAL_GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, GPIO_PIN_SET);
 		//while(clock_timeout--);
-		HAL_GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, 0);
+		HAL_GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, GPIO_PIN_RESET);
 	}
 
 	// Toggle latch
-	HAL_GPIO_WritePin(SHR_LATCH_GPIO_Port, SHR_LATCH_Pin, 1);
+	HAL_GPIO_WritePin(SHR_LATCH_GPIO_Port, SHR_LATCH_Pin, GPIO_PIN_SET);
 	//while (latch_timeout--);
-	HAL_GPIO_WritePin(SHR_LATCH_GPIO_Port, SHR_LATCH_Pin, 0);
+	HAL_GPIO_WritePin(SHR_LATCH_GPIO_Port, SHR_LATCH_Pin, GPIO_PIN_RESET);
 }

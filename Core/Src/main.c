@@ -33,6 +33,7 @@
 //#include "efx.h"
 //#include "event.h"
 #include "app.h"
+#include "eep.h"
 
 
 App_Handle_t handle;
@@ -118,6 +119,7 @@ int main(void)
 
   App_Init(&handle);
   /* USER CODE END 2 */
+
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */

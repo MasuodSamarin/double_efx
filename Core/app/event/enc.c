@@ -19,7 +19,7 @@
 void Enc_Event_Init(Enc_t *enc){
 
 	HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
-	Enc_Event_Set_Span(16);
+	//Enc_Event_Set_Span(16);
 	Enc_Event_Set_val(enc, 0);
 	enc->direction = Enc_Rotate_Nothing;
 	enc->value = 0;

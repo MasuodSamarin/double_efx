@@ -7,6 +7,7 @@
 
 #include "app.h"
 
+#include "eep_helper.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -162,6 +163,7 @@ void Helper_Fp_S2_Not_F1(App_Handle_t *handle){
 
 
 
+
 #define MAX_EFX_USER_LIST_SIZE	50
 #define MAX_EFX_FACTORY_LIST_SIZE	16
 
@@ -188,7 +190,23 @@ void Helper_Fp_S2_Btn_F0(App_Handle_t *handle){
 	Enc_Event_Set_val(&handle->enc, Enc_Event_Get_Span);
 	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_Span);
 	handle->state = STATE_1;
-	//glcd_write();
+
+
+	// show SAVE message on screen
+	if(Helper_Svae_Efx_EEP(handle, handle->cur_efx->mem.main_num) == true){
+		glcd_clear_buffer();
+		Helper_Draw_Thin_Frame;
+		glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+		glcd_draw_string(23, 25, "SAVE");
+	}else{
+		glcd_clear_buffer();
+		Helper_Draw_Thin_Frame;
+		glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+		glcd_draw_string(23, 25, "ERROR");
+	}
+
+	glcd_write();
+	HAL_Delay(1000);
 
 }
 
@@ -202,10 +220,23 @@ void Helper_Fp_S2_Btn_F1(App_Handle_t *handle){
 	 * */
 	Effect_List_Modify_Vol_Element(handle->cur_efx, handle->vol.vol_raw);
 	handle->state = STATE_1;
+
+	/*
+	 * show update message on screen*/
+	glcd_clear_buffer();
+	Helper_Draw_Thin_Frame;
+	glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+	glcd_draw_string(3, 25, "UPDATE");
+	glcd_write();
+
+	HAL_Delay(1000);
 	//glcd_write();
 
 
 }
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -253,7 +284,13 @@ void fp_S1_All(App_Handle_t *handle){
 	//set the most important field of handle --CUR_EFX--
 //	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);
 	//2. set HC595 shift register values
-	HC595_SendByte(handle->cur_efx->base->code);
+	/*
+	 * set FV1 effect
+	 * we clear the 4th bit off and then on
+	 * */
+	HC595_SendByte(0x00);
+	HAL_Delay(1);
+	HC595_SendByte((handle->cur_efx->base->code) | 0x08);
 
 	glcd_clear_buffer();
 	Helper_Draw_Thin_Frame;

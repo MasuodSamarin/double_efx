@@ -7,11 +7,17 @@
 
 #include "efx.h"
 #include "link_list.h"
+#include "eep.h"
+#include "enc.h"
+#include "eep_helper.h"
 
 Efx_Base_t *Efx_Get_Base(Efx_Preset_t pst);
 
 
 list_t *efx_list;
+
+
+
 
 /*
  * this is the init of the module, possible?
@@ -20,6 +26,7 @@ list_t *efx_list;
  * */
 void Effect_List_Init(void){
 	efx_list = list_create();
+	Enc_Event_Set_Span(16);
 
 	uint32_t vols[VOL_MAX] = {0};
 	for (Efx_Preset_t pst = EFX_PRST_1; pst < EFX_PRST_MAX; ++pst) {
@@ -28,6 +35,12 @@ void Effect_List_Init(void){
 		Effect_List_Add_Element((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
 
 	}
+//	at24_HAL_EraseMemFull(&hi2c1);
+	Helper_Load_Efx_EEP(17);
+	Helper_Load_Efx_EEP(18);
+//	Helper_Load_Efx_EEP(19);
+//	Helper_Load_Efx_EEP(20);
+
 }
 
 static Efx_t* Effect_List_Create_Element(uint8_t number, Efx_Preset_Mode_t pmode, Efx_Preset_t pst, uint32_t *vols){

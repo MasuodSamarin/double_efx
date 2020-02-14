@@ -60,9 +60,9 @@ typedef struct Efx_Base_t{
 
 
 typedef struct Efx_Memory_t{
+	uint8_t			vols[VOL_MAX];
 	uint8_t			main_num;
 	Efx_Preset_t	pst_num;
-	uint8_t			vols[VOL_MAX];
 
 }Efx_Memory_t;
 

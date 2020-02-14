@@ -70,9 +70,9 @@ void MX_TIM3_Init(void)
   TIM_OC_InitTypeDef sConfigOC = {0};
 
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 47999;
+  htim3.Init.Prescaler = 7;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 999;
+  htim3.Init.Period = 255;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
@@ -86,19 +86,19 @@ void MX_TIM3_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 16384;
+  sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
     Error_Handler();
   }
-  sConfigOC.Pulse = 32768;
+  sConfigOC.Pulse = 16384;
   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
   }
-  sConfigOC.Pulse = 49152;
+  sConfigOC.Pulse = 32768;
   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
   {
     Error_Handler();
@@ -170,7 +170,29 @@ void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef* tim_pwmHandle)
     __HAL_RCC_TIM3_CLK_ENABLE();
   /* USER CODE BEGIN TIM3_MspInit 1 */
 
-  /* USER CODE END TIM3_MspInit 1 */
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+     __HAL_RCC_GPIOB_CLK_ENABLE();
+     /**TIM3 GPIO Configuration
+     PA6     ------> TIM3_CH1
+     PA7     ------> TIM3_CH2
+     PB0     ------> TIM3_CH3
+     */
+     GPIO_InitStruct.Pin = PWM_CH1_Pin|PWM_CH2_Pin;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+     GPIO_InitStruct.Alternate = GPIO_AF1_TIM3;
+     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+     GPIO_InitStruct.Pin = PWM_CH3_Pin|PWM_CH4_Pin;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+     GPIO_InitStruct.Alternate = GPIO_AF1_TIM3;
+     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    /* USER CODE END TIM3_MspInit 1 */
   }
 }
 

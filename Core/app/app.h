@@ -13,6 +13,7 @@
 #include "efx.h"
 #include "event.h"
 #include "hc595.h"
+#include "eep.h"
 
 typedef enum State_t{
 	STATE_1,
