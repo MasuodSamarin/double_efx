@@ -10,7 +10,7 @@
 
 #define eep_offset 16
 
-const uint8_t EEP_ADDR_TABLE[] = {15, 23, 31, 39, 47, 55};
+const uint8_t EEP_ADDR_TABLE[6] = {0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88};
 
 uint8_t Helper_Svae_Efx_EEP(App_Handle_t *handle, uint8_t num){
 

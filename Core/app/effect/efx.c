@@ -38,8 +38,8 @@ void Effect_List_Init(void){
 //	at24_HAL_EraseMemFull(&hi2c1);
 	Helper_Load_Efx_EEP(17);
 	Helper_Load_Efx_EEP(18);
-//	Helper_Load_Efx_EEP(19);
-//	Helper_Load_Efx_EEP(20);
+	Helper_Load_Efx_EEP(19);
+	Helper_Load_Efx_EEP(20);
 
 }
 
