@@ -47,7 +47,7 @@ typedef struct Vol_t{
 	uint32_t	vol_raw[VOL_MAX];
 	uint32_t	vol_pre[VOL_MAX];
 	vol_src_t	vol_src[VOL_MAX];
-	Vol_Name_t 	name;
+	//Vol_Name_t 	name;
 }Vol_t;
 
 

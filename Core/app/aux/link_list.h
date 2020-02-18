@@ -218,7 +218,7 @@ node_t* node_new(void* element);
  */
 node_t* list_iterator_set_current(list_iterator_t* it);
 
-node_t* list_iter_from_head(const list_t* list, unsigned int index);
+node_t* list_iter_from_head(const list_t* list, size_t index);
 node_t* list_iter_from_tail(const list_t* list, size_t index);
 
 #ifdef __cplusplus

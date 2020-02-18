@@ -40,6 +40,7 @@ const Fsm_Fp_t fsm_fp_box[EVENT_MAX][STATE_MAX]={
 };
 
 
+#include "link_list.h"
 
 /*TODO:
  * 	1. add logo to the beginning of the boot-up
@@ -75,6 +76,16 @@ void App_Init(App_Handle_t *handle){
 
 	HAL_TIM_Base_Start_IT(&htim14);
 
+//	node_t *sam;
+//	char tmp_str[10];
+// 	int number = sizeof(sam);
+//
+//  	//print the number of efx and inert it
+// 	glcd_set_font_c(FC_Bebas_Neue18x36_Numbers);
+// 	sprintf(tmp_str, "%.2d", number);
+//
+// 	glcd_draw_string(80, 23, tmp_str);
+// 	glcd_write();
 //	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, 100);
 //	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, 75);
 //	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, 50);

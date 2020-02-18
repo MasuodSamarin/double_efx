@@ -36,7 +36,7 @@ void test_btn_test(void){
 
 	MX_TIM1_Init();
 	glcd_init();
-	glcd_set_font_c(FC_Default_Font_5x8_AlphaNumber);
+	//glcd_set_font_c(FC_Default_Font_5x8_AlphaNumber);
 	Btn_Event_Init(&btn);
 
 	while (1)

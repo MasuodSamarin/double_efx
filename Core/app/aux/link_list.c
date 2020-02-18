@@ -363,8 +363,7 @@ int list_remove_node(list_t* list, node_t* node) {
  * value of the given `predicate`.
  * @return the number of removed nodes.
  */
-int list_remove_node_if(list_t* list, list_predicate_t iterator,
-		void* data) {
+int list_remove_node_if(list_t* list, list_predicate_t iterator, void* data){
 	node_t* node = list->head;
 	int removed = 0;
 

@@ -10,6 +10,8 @@
 #include "eep.h"
 #include "enc.h"
 #include "eep_helper.h"
+#include "app.h"
+
 
 Efx_Base_t *Efx_Get_Base(Efx_Preset_t pst);
 
@@ -26,20 +28,41 @@ list_t *efx_list;
  * */
 void Effect_List_Init(void){
 	efx_list = list_create();
-	Enc_Event_Set_Span(16);
+	uint8_t span = 0;
 
 	uint32_t vols[VOL_MAX] = {0};
 	for (Efx_Preset_t pst = EFX_PRST_1; pst < EFX_PRST_MAX; ++pst) {
 		//Efx_t *efx = Effect_Creare_Node((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
 		//list_push_back(efx_list, (void*)efx);
 		Effect_List_Add_Element((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
+		span++;
 
 	}
+
+	for (Efx_Preset_t pst = EFX_PRST_1; pst < EFX_PRST_MAX; ++pst) {
+		//Efx_t *efx = Effect_Creare_Node((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
+		//list_push_back(efx_list, (void*)efx);
+		Effect_List_Add_Element(pst+17, EFX_FACT_PRESET_MODE, pst, vols);
+		span++;
+
+	}
+	for (Efx_Preset_t pst = EFX_PRST_1; pst < EFX_PRST_9; ++pst) {
+			//Efx_t *efx = Effect_Creare_Node((uint8_t)pst+1, EFX_FACT_PRESET_MODE, pst, vols);
+			//list_push_back(efx_list, (void*)efx);
+			Effect_List_Add_Element(pst+33, EFX_FACT_PRESET_MODE, pst, vols);
+			span++;
+
+		}
+	Enc_Event_Set_Span(span);
+
+
+//#define last_efx 41
+//	for (int var = 17; var < last_efx; ++var) {
+//		Helper_Load_Efx_EEP(var);
+//	}
 //	at24_HAL_EraseMemFull(&hi2c1);
-	Helper_Load_Efx_EEP(17);
-	Helper_Load_Efx_EEP(18);
-	Helper_Load_Efx_EEP(19);
-	Helper_Load_Efx_EEP(20);
+//	Helper_Load_Efx_EEP(17);
+
 
 }
 
@@ -49,7 +72,14 @@ static Efx_t* Effect_List_Create_Element(uint8_t number, Efx_Preset_Mode_t pmode
 	//TODO: check malloc
 	if(!efx){
 		//_Error_Handler(__FILE__, __LINE__);
-		return (Efx_t*)NULL;
+		glcd_clear_buffer();
+		glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+		glcd_draw_string(23, 25, "MEM ERR");
+
+
+		glcd_write();
+		HAL_Delay(10000);
+		//return (Efx_t*)NULL;
 	}
 
 	efx->base = Efx_Get_Base(pst);

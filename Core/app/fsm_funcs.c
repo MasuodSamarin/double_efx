@@ -13,7 +13,7 @@
 /*
  * HELPER FUNCTION USED IN FSM
  * */
-char tmp_str[20];
+//char tmp_str[10];
 
 #define VOL_X		8
 #define VOL_Y		27
@@ -42,6 +42,7 @@ static void Helper_Print_EFX_Name(Efx_t *efx){
 }
 
 static void Helper_Print_EFX_Number(Efx_t *efx){
+	char tmp_str[10];
  	int number = efx->mem.main_num;
 
   	//print the number of efx and inert it
@@ -164,8 +165,8 @@ void Helper_Fp_S2_Not_F1(App_Handle_t *handle){
 
 
 
-#define MAX_EFX_USER_LIST_SIZE	50
-#define MAX_EFX_FACTORY_LIST_SIZE	16
+//#define MAX_EFX_USER_LIST_SIZE	50
+//#define MAX_EFX_FACTORY_LIST_SIZE	16
 
 //HANDLE SAVE EFX ON LINK-LIST AND EEP'S
 void Helper_Fp_S2_Btn_F0(App_Handle_t *handle){
@@ -185,15 +186,14 @@ void Helper_Fp_S2_Btn_F0(App_Handle_t *handle){
 	 *		2. save actual efx to the EEP
 	 * 	*/
 	Enc_Event_Set_Span(Enc_Event_Get_Span + 1);
-	Effect_List_Add_Element(Enc_Event_Get_Span, EFX_USER_PRESET_MODE,
-							handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
+	Effect_List_Add_Element(Enc_Event_Get_Span, EFX_USER_PRESET_MODE, handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
 	Enc_Event_Set_val(&handle->enc, Enc_Event_Get_Span);
 	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_Span);
 	handle->state = STATE_1;
 
 
 	// show SAVE message on screen
-	if(Helper_Svae_Efx_EEP(handle, handle->cur_efx->mem.main_num) == true){
+	if(Helper_Svae_Efx_EEP(handle, handle->cur_efx->mem.main_num) == 1){
 		glcd_clear_buffer();
 		Helper_Draw_Thin_Frame;
 		glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
@@ -222,15 +222,24 @@ void Helper_Fp_S2_Btn_F1(App_Handle_t *handle){
 	handle->state = STATE_1;
 
 	/*
-	 * show update message on screen*/
-	glcd_clear_buffer();
-	Helper_Draw_Thin_Frame;
-	glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
-	glcd_draw_string(3, 25, "UPDATE");
-	glcd_write();
+	 * show update message on screen*
+	*/
+	if(Helper_Svae_Efx_EEP(handle, handle->cur_efx->mem.main_num) == 1){
+		glcd_clear_buffer();
+		Helper_Draw_Thin_Frame;
+		glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+		glcd_draw_string(3, 25, "UPDATE");
+	}else{
+		glcd_clear_buffer();
+		Helper_Draw_Thin_Frame;
+		glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+		glcd_draw_string(23, 25, "ERROR");
+	}
 
+
+
+	glcd_write();
 	HAL_Delay(1000);
-	//glcd_write();
 
 
 }
@@ -284,13 +293,6 @@ void fp_S1_All(App_Handle_t *handle){
 	//set the most important field of handle --CUR_EFX--
 //	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);
 	//2. set HC595 shift register values
-	/*
-	 * set FV1 effect
-	 * we clear the 4th bit off and then on
-	 * */
-	HC595_SendByte(0x00);
-	HAL_Delay(1);
-	HC595_SendByte((handle->cur_efx->base->code) | 0x08);
 
 	glcd_clear_buffer();
 	Helper_Draw_Thin_Frame;
@@ -312,6 +314,14 @@ void fp_S1_All(App_Handle_t *handle){
 		handle->vol.vol_src[VOL_C] = VOL_FROM_ADC;
 		handle->vol.vol_src[VOL_D] = VOL_FROM_ADC;
 	}
+
+	/*
+	 * set FV1 effect
+	 * we clear the 4th bit off and then on
+	 * */
+	HC595_SendByte(0x00);
+	HAL_Delay(1);
+	HC595_SendByte((handle->cur_efx->base->code) | 0x08);
 
 
 	//ON USER MODE
@@ -376,7 +386,7 @@ void fp_S2_Btn(App_Handle_t *handle){
 	else
 		func =  Helper_Fp_S2_Btn_F1;
 	func(handle);
-	glcd_write();
+	//glcd_write();
 
 //	#TODO * 	2. goto the effect
 //	 * 	3. update the EEP value
