@@ -185,10 +185,10 @@ void Helper_Fp_S2_Btn_F0(App_Handle_t *handle){
 	 * 		1. show message on the lcd for SAVING EFX
 	 *		2. save actual efx to the EEP
 	 * 	*/
-	Enc_Event_Set_Span(Enc_Event_Get_Span + 1);
-	Effect_List_Add_Element(Enc_Event_Get_Span, EFX_USER_PRESET_MODE, handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
-	Enc_Event_Set_val(&handle->enc, Enc_Event_Get_Span);
-	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_Span);
+	//Enc_Event_Set_Span(Enc_Event_Get_Span + 1);
+	Effect_List_Add_Element(Enc_Event_Get_Span+1, handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
+	//Enc_Event_Set_val(&handle->enc, Enc_Event_Get_Span);
+	Effect_List_Get_EFX_Element(handle->cur_efx, Enc_Event_Get_Span);
 	handle->state = STATE_1;
 
 
@@ -298,7 +298,6 @@ void fp_S1_All(App_Handle_t *handle){
 	Helper_Draw_Thin_Frame;
 	Helper_Print_EFX_Name(handle->cur_efx);
 	Helper_Print_EFX_Number(handle->cur_efx);
-
 	//ON USER MODE
 	if(handle->cur_efx->pmode == EFX_USER_PRESET_MODE){
 		Vol_Event_Reset_Vols(&(handle->vol));
@@ -403,7 +402,7 @@ void fp_S2_Btn(App_Handle_t *handle){
  * */
 void fp_S2_Enc(App_Handle_t *handle){
 
-	handle->tmp_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);;
+	Effect_List_Get_EFX_Element(handle->tmp_efx, Enc_Event_Get_val);;
 	handle->btn.press_time = BTN_NORMAL_PRESS_TIME;
 	handle->state = STATE_3;
 	handle->tick_timer = HAL_GetTick();
@@ -550,7 +549,7 @@ void fp_S3_Btn(App_Handle_t *handle){
  * */
 void fp_S3_Enc(App_Handle_t *handle){
 
-	handle->tmp_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);;
+	Effect_List_Get_EFX_Element(handle->tmp_efx, Enc_Event_Get_val);;
 	handle->tick_timer = HAL_GetTick();
 	handle->blink_timer = 0;
 }

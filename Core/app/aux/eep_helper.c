@@ -39,13 +39,13 @@ uint8_t Helper_Load_Efx_EEP(uint8_t num){
 
 	if(EEPROM24XX_Load(addr, (void*)&mem, size) == 1){
 
-		Enc_Event_Set_Span(Enc_Event_Get_Span + 1);
+		//Enc_Event_Set_Span(Enc_Event_Get_Span + 1);
 
 		vols[0] = mem.vols[0]<<4;
 		vols[1] = mem.vols[1]<<4;
 		vols[2] = mem.vols[2]<<4;
 		vols[3] = mem.vols[3]<<4;
-		Effect_List_Add_Element(mem.main_num, EFX_USER_PRESET_MODE, mem.pst_num, vols);
+		Effect_List_Add_Element(mem.main_num, mem.pst_num, vols);
 		return 1;
 	}
 	return 0;

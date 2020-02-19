@@ -51,9 +51,18 @@ void App_Init(App_Handle_t *handle){
 	glcd_init();
 	//glcd_set_font_c(FC_Default_Font_5x8_AlphaNumber);
 
-	Effect_List_Init();
+	handle->cur_efx = malloc(sizeof(Efx_t));
+	handle->tmp_efx = malloc(sizeof(Efx_t));
+//
+//	if((handle->cur_efx == NULL) || (handle->tmp_efx == NULL))
+//		while(1);
 
 	Event_Init(&handle->event, &handle->btn, &handle->enc, &handle->vol);
+
+	Effect_List_Init();
+//	Enc_Event_Set_val(handle->event.enc, 0);
+
+
 
 	/*
 	 * EEP connected test
@@ -64,9 +73,10 @@ void App_Init(App_Handle_t *handle){
 
 
 	handle->state = STATE_1;
-	handle->tmp_efx = NULL;
+	//handle->tmp_efx = NULL;
 	handle->btn.press_time = BTN_LONG_PRESS_TIME;
-	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);
+	Effect_List_Get_EFX_Element(handle->cur_efx, Enc_Event_Get_val);
+	Effect_List_Get_EFX_Element(handle->tmp_efx, Enc_Event_Get_val);
 
 
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1 );
