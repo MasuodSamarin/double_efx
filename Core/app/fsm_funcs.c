@@ -186,9 +186,9 @@ void Helper_Fp_S2_Btn_F0(App_Handle_t *handle){
 	 *		2. save actual efx to the EEP
 	 * 	*/
 	//Enc_Event_Set_Span(Enc_Event_Get_Span + 1);
-	Effect_List_Add_Element(Enc_Event_Get_Span+1, handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
-	//Enc_Event_Set_val(&handle->enc, Enc_Event_Get_Span);
-	Effect_List_Get_EFX_Element(handle->cur_efx, Enc_Event_Get_Span);
+	Effect_List_Add_Element(Enc_Event_Get_Span+2, handle->cur_efx->mem.pst_num, handle->vol.vol_raw);
+	Enc_Event_Set_val(&handle->enc, Enc_Event_Get_Span);
+	Effect_List_Get_EFX_Element(handle->cur_efx, Enc_Event_Get_val);
 	handle->state = STATE_1;
 
 
