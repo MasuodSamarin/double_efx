@@ -34,7 +34,7 @@ void glcd_init(void)
 
 	/* Set all dots black and hold for 1s, then clear it, we do this so we can visually check init sequence is working */
 	glcd_all_on();
-	HAL_Delay(1000);
+	HAL_Delay(1);
 	glcd_normal();
 
 	glcd_set_start_line(0);
@@ -44,7 +44,7 @@ void glcd_init(void)
 	glcd_clear();
 
 	glcd_pattern();
-	HAL_Delay(3500);
+	HAL_Delay(1000);
 	glcd_clear();
 
 }
