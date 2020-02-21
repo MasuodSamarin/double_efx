@@ -64,16 +64,31 @@ uint8_t Effect_List_Add_Element(uint8_t main_num, Efx_Preset_t pst, uint32_t *vo
 	return 1;
 }
 
-void Effect_List_Modify_Vol_Element(Efx_t *cur_efx, uint32_t *new_val){
+void Effect_List_Modify_Vol_Element(Efx_t *cur_efx, Vol_t vol){
 	/*
 	 * adc was 12 bit so shift 4bit to the right to save just 8byte on it
 	 * */
 	Efx_Memory_t* mem = &mems[cur_efx->mem.main_num-1];
 
-	mem->vols[VOL_A] = new_val[VOL_A] >> 4;
-	mem->vols[VOL_B] = new_val[VOL_B] >> 4;
-	mem->vols[VOL_C] = new_val[VOL_C] >> 4;
-	mem->vols[VOL_D] = new_val[VOL_D] >> 4;
+	if(vol.vol_src[VOL_A] == VOL_FROM_ADC){
+		mem->vols[VOL_A] = vol.vol_raw[VOL_A] >> 4;
+		cur_efx->mem.vols[VOL_A] = vol.vol_raw[VOL_A] >> 4;
+	}
+
+	if(vol.vol_src[VOL_B] == VOL_FROM_ADC){
+		mem->vols[VOL_B] = vol.vol_raw[VOL_B] >> 4;
+		cur_efx->mem.vols[VOL_B] = vol.vol_raw[VOL_B] >> 4;
+	}
+
+	if(vol.vol_src[VOL_C] == VOL_FROM_ADC){
+		mem->vols[VOL_C] = vol.vol_raw[VOL_C] >> 4;
+		cur_efx->mem.vols[VOL_C] = vol.vol_raw[VOL_C] >> 4;
+	}
+
+	if(vol.vol_src[VOL_D] == VOL_FROM_ADC){
+		mem->vols[VOL_D] = vol.vol_raw[VOL_D] >> 4;
+		cur_efx->mem.vols[VOL_D] = vol.vol_raw[VOL_D] >> 4;
+	}
 }
 
 uint8_t Effect_List_Get_EFX_Element(Efx_t* efx, uint8_t number){

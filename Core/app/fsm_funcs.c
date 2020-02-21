@@ -218,7 +218,7 @@ void Helper_Fp_S2_Btn_F1(App_Handle_t *handle){
 	 * 		2. update actual EFX on EEp
 	 *
 	 * */
-	Effect_List_Modify_Vol_Element(handle->cur_efx, handle->vol.vol_raw);
+	Effect_List_Modify_Vol_Element(handle->cur_efx, handle->vol);
 	handle->state = STATE_1;
 
 	/*

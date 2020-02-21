@@ -83,7 +83,7 @@ void Effect_List_Init(void);
 uint8_t Effect_List_Add_Element(uint8_t main_num, Efx_Preset_t pst, uint32_t *vols);
 uint8_t Effect_List_Get_EFX_Element(Efx_t* efx, uint8_t number);
 size_t Effect_List_Get_List_Size(void);
-void Effect_List_Modify_Vol_Element(Efx_t *number, uint32_t *new_val);
+void Effect_List_Modify_Vol_Element(Efx_t *cur_efx, Vol_t vol);
 
 
 Efx_Base_t *Efx_Get_Base(Efx_Preset_t pst);
