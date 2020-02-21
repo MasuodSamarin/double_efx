@@ -64,8 +64,7 @@ void fp_S3_Btn(App_Handle_t *handle);
 void fp_S3_Enc(App_Handle_t *handle);
 void fp_S3_Vol(App_Handle_t *handle);
 
-
-
+void fp_Service_Menu(void);
 
 
 void App_Init(App_Handle_t *handle);

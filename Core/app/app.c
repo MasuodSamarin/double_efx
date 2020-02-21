@@ -57,10 +57,15 @@ void App_Init(App_Handle_t *handle){
 		while(1){};
 	}
 
+
 	handle->cur_efx = malloc(sizeof(Efx_t));
 	handle->tmp_efx = malloc(sizeof(Efx_t));
 
 	Event_Init(&handle->event, &handle->btn, &handle->enc, &handle->vol);
+
+	fp_Service_Menu();
+
+
 
 	Effect_List_Init();
 

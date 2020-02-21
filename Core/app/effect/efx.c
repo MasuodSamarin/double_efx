@@ -68,10 +68,12 @@ void Effect_List_Modify_Vol_Element(Efx_t *cur_efx, uint32_t *new_val){
 	/*
 	 * adc was 12 bit so shift 4bit to the right to save just 8byte on it
 	 * */
-	cur_efx->mem.vols[VOL_A] = new_val[VOL_A] >> 4;
-	cur_efx->mem.vols[VOL_B] = new_val[VOL_B] >> 4;
-	cur_efx->mem.vols[VOL_C] = new_val[VOL_C] >> 4;
-	cur_efx->mem.vols[VOL_D] = new_val[VOL_D] >> 4;
+	Efx_Memory_t* mem = &mems[cur_efx->mem.main_num-1];
+
+	mem->vols[VOL_A] = new_val[VOL_A] >> 4;
+	mem->vols[VOL_B] = new_val[VOL_B] >> 4;
+	mem->vols[VOL_C] = new_val[VOL_C] >> 4;
+	mem->vols[VOL_D] = new_val[VOL_D] >> 4;
 }
 
 uint8_t Effect_List_Get_EFX_Element(Efx_t* efx, uint8_t number){

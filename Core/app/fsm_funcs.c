@@ -565,10 +565,80 @@ void fp_S3_Vol(App_Handle_t *handle){
 //	handle->state = STATE_1;
 }
 
+#define X_YES	15
+#define Y_YES	40
+#define X_NO	70
+#define Y_NO	40
 
 
+void fp_Service_Menu(void){
 
+	volatile uint8_t answer, value, prevalue;
+	const char *yes = "YES";
+	const char *no = "NO";
+	const char *quest = "RESET FACTORY";
+	const char *javab = "CLEAR EEPROM";
+	const char *menu = "SERVICE MENU";
 
+	if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_SET )
+		return;
+	HAL_Delay(1000);
+	if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_SET )
+		return;
+
+	answer = 1;
+	prevalue = 3;
+	Enc_Event_Set_Span(1);
+
+ 	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
+	glcd_clear();
+ 	glcd_draw_string_P(15, 10, &menu[0]);
+ 	glcd_write();
+
+ 	while(HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET);
+
+	while(answer == 1){
+		value = Enc_Event_Get_val;
+
+		if(value != prevalue)
+		{
+			prevalue = value;
+
+			glcd_clear();
+		 	glcd_draw_string_P(10, 15, &quest[0]);
+
+			if(value == 1){
+			 	glcd_draw_string_P(X_YES, Y_YES, &yes[0]);
+			 	glcd_draw_string_P(X_NO, Y_NO, &no[0]);
+			 	glcd_invert_area(X_YES-4, Y_YES-2, 30, 15);
+			}
+			else if(value == 0){
+			 	glcd_draw_string_P(X_YES, Y_YES, &yes[0]);
+			 	glcd_draw_string_P(X_NO, Y_NO, &no[0]);
+			 	glcd_invert_area(X_NO-5, Y_NO-2, 25, 15);
+			}
+
+		 	glcd_write();
+
+		}
+
+		if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET )
+			answer = 0;
+
+	}
+
+	if(value == 1){
+		glcd_clear();
+
+	 	glcd_draw_string_P(7, 7, &javab[0]);
+	 	glcd_write();
+
+		Helper_Erase_EEP();
+	 	HAL_Delay(4000);
+
+	}
+
+}
 
 
 
