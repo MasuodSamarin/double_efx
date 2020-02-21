@@ -291,7 +291,7 @@ void Helper_Fp_S2_Btn_F1(App_Handle_t *handle){
 void fp_S1_All(App_Handle_t *handle){
 
 	//set the most important field of handle --CUR_EFX--
-//	handle->cur_efx = Effect_List_Get_EFX_Element(Enc_Event_Get_val);
+	Effect_List_Get_EFX_Element(handle->cur_efx, Enc_Event_Get_val);
 	//2. set HC595 shift register values
 
 	glcd_clear_buffer();
@@ -537,7 +537,7 @@ void fp_S3_Btn(App_Handle_t *handle){
 
 	Enc_Event_Set_val(&(handle->enc), handle->tmp_efx->mem.main_num-1);
 	handle->state = STATE_1;
-	handle->cur_efx = handle->tmp_efx;
+	//handle->cur_efx = handle->tmp_efx;
 
 
 }

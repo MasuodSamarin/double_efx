@@ -43,6 +43,10 @@ void glcd_init(void)
 	glcd_select_buffer(glcd_buffer);
 	glcd_clear();
 
+	glcd_pattern();
+	HAL_Delay(3500);
+	glcd_clear();
+
 }
 
 #define write_one_bit_on_spi(c)	 \
@@ -333,10 +337,12 @@ void glcd_pattern(void)
 	uint8_t page;
 	for (page = 0; page < GLCD_NUMBER_OF_BANKS; page++) {
 		uint8_t col;
+		if((page % 2))
+			continue;
 		glcd_set_y_address(page);
 		glcd_set_x_address(0);
 		for (col = 0; col < GLCD_NUMBER_OF_COLS; col++) {
-			glcd_data( (col / 8 + 2) % 2 == 1 ? 0xff : 0x00 );
+			glcd_data( (col / 8 + 2) % 2 == 1 ? 0x00 : 0xff );
 		}			
 	}
 }
