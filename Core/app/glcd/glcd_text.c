@@ -45,11 +45,12 @@ uint8_t glcd_draw_char_xy(uint8_t x, uint8_t y, char c){
 	*/
 
 	for ( i = 0; i < var_width; i++ ) {
-		uint8_t j;
-		for ( j = 0; j < bytes_high; j++ ) {
+
+		for ( uint8_t j = 0; j < bytes_high; j++ ) {
+
 			uint8_t dat = *( p + i*bytes_high + j );
-			uint8_t bit;
-			for (bit = 0; bit < 8; bit++) {
+
+			for (uint8_t bit = 0; bit < 8; bit++) {
 
 				if (x+i >= GLCD_LCD_WIDTH || y+j*8+bit >= GLCD_LCD_HEIGHT) {
 					/* Don't write past the dimensions of the LCD, skip the entire char */

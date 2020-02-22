@@ -35,7 +35,7 @@ const Fsm_Fp_t fsm_fp_box[EVENT_MAX][STATE_MAX]={
 		{ fp_S1_All, fp_S2_Not, fp_S3_Not},
 		{ fp_S1_All, fp_S2_Btn, fp_S3_Btn},
 		{ fp_S1_All, fp_S2_Enc, fp_S3_Enc},
-		{ fp_S1_All, fp_S2_Not, fp_S3_Vol},
+		{ fp_S1_All, fp_S2_Not, fp_S3_Not},
 
 };
 
@@ -63,9 +63,9 @@ void App_Init(App_Handle_t *handle){
 
 	Event_Init(&handle->event, &handle->btn, &handle->enc, &handle->vol);
 
-	fp_Service_Menu();
+	Helper_Service_Menu();
 
-
+	Helper_Security_Check();
 
 	Effect_List_Init();
 

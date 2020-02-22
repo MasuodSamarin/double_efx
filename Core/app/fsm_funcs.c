@@ -16,9 +16,9 @@
 //char tmp_str[10];
 
 #define VOL_X		8
-#define VOL_Y		27
-#define VOL_DIFF	9
-#define VOL_W		65
+#define VOL_Y		25
+#define VOL_DIFF	10
+#define VOL_W		73
 #define VOL_H		3
 
 #define FRAME_X		0
@@ -49,7 +49,7 @@ static void Helper_Print_EFX_Number(Efx_t *efx){
  	glcd_set_font_c(FC_Bebas_Neue18x36_Numbers);
  	sprintf(tmp_str, "%.2d", number);
 
- 	glcd_draw_string(80, 23, tmp_str);
+ 	glcd_draw_string(87, 23, tmp_str);
  	//glcd_invert_area(75, 31, 40, 26);
 
 
@@ -559,24 +559,34 @@ void fp_S3_Enc(App_Handle_t *handle){
  * 	1. change Encoder tim value to handle->cur_efx
  * 	2. goto State 1
  * */
-void fp_S3_Vol(App_Handle_t *handle){
-//
-//	Enc_Event_Set_val(&handle->enc, (uint8_t)handle->cur_efx->mem.main_num);
-//	handle->state = STATE_1;
-}
+//void fp_S3_Vol(App_Handle_t *handle){
+////
+////	Enc_Event_Set_val(&handle->enc, (uint8_t)handle->cur_efx->mem.main_num);
+////	handle->state = STATE_1;
+//}
 
-#define X_YES	15
-#define Y_YES	40
-#define X_NO	70
-#define Y_NO	40
+#define X_YES		25
+#define Y_YES		30
+#define X_YES_BOX	X_YES-3
+#define Y_YES_BOX	Y_YES-2
+#define W_YES_BOX	29
+#define H_YES_BOX	15
+#define X_NO		80
+#define Y_NO		30
+#define X_NO_BOX	X_NO-5
+#define Y_NO_BOX	Y_MARK
+#define W_NO_BOX	25
+#define H_NO_BOX	15
+#define X_MARK		28
+#define Y_MARK		46
 
-
-void fp_Service_Menu(void){
+void Helper_Service_Menu(void){
 
 	volatile uint8_t answer, value, prevalue;
 	const char *yes = "YES";
 	const char *no = "NO";
-	const char *quest = "RESET FACTORY";
+	const char *mark = "<< --- >>";
+	const char *quest = "RESET FACTORY?";
 	const char *javab = "CLEAR EEPROM";
 	const char *menu = "SERVICE MENU";
 
@@ -592,6 +602,7 @@ void fp_Service_Menu(void){
 
  	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
 	glcd_clear();
+	Helper_Draw_Thin_Frame;
  	glcd_draw_string_P(15, 10, &menu[0]);
  	glcd_write();
 
@@ -605,17 +616,20 @@ void fp_Service_Menu(void){
 			prevalue = value;
 
 			glcd_clear();
-		 	glcd_draw_string_P(10, 15, &quest[0]);
+			Helper_Draw_Thin_Frame;
+		 	glcd_draw_string_P(12, 12, &quest[0]);
 
 			if(value == 1){
 			 	glcd_draw_string_P(X_YES, Y_YES, &yes[0]);
 			 	glcd_draw_string_P(X_NO, Y_NO, &no[0]);
-			 	glcd_invert_area(X_YES-4, Y_YES-2, 30, 15);
+			 	glcd_draw_string_P(X_MARK, Y_MARK, &mark[0]);
+			 	glcd_invert_area(X_YES_BOX, Y_YES_BOX, W_YES_BOX, H_YES_BOX);
 			}
 			else if(value == 0){
 			 	glcd_draw_string_P(X_YES, Y_YES, &yes[0]);
 			 	glcd_draw_string_P(X_NO, Y_NO, &no[0]);
-			 	glcd_invert_area(X_NO-5, Y_NO-2, 25, 15);
+			 	glcd_draw_string_P(X_MARK, Y_MARK, &mark[0]);
+			 	glcd_invert_area(X_NO_BOX, Y_YES_BOX, W_NO_BOX, H_NO_BOX);
 			}
 
 		 	glcd_write();
@@ -634,13 +648,105 @@ void fp_Service_Menu(void){
 	 	glcd_write();
 
 		Helper_Erase_EEP();
-	 	HAL_Delay(4000);
 
 	}
+	while(HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET);
 
 }
 
+void Helper_Security_Check(void){
 
+	union uid_t{
+		uint32_t uid_32[3];
+		uint8_t	uid_8[12];
+	}uid, uid_load;
+
+	uint16_t addr_uid = 63 * 16 + 1;
+	uint16_t addr_set = 63 * 16;
+	uint8_t uid_set;
+
+	uid.uid_32[0] = HAL_GetUIDw0();
+	uid.uid_32[1] = HAL_GetUIDw1();
+	uid.uid_32[2] = HAL_GetUIDw2();
+
+
+//	char tmp_str[10];
+// 	int number;
+//
+//  	//print the number of efx and inert it
+// 	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
+//
+// 	sprintf(tmp_str, "%08x", uid.uid_32[2]);
+// 	glcd_draw_string(10, 5, tmp_str);
+//
+// 	sprintf(tmp_str, "%02X", uid.uid_8[8]);
+// 	glcd_draw_string(10, 20, tmp_str);
+// 	sprintf(tmp_str, "%02X", uid.uid_8[9]);
+// 	glcd_draw_string(50, 20, tmp_str);
+// 	sprintf(tmp_str, "%02X", uid.uid_8[10]);
+// 	glcd_draw_string(10, 40, tmp_str);
+// 	sprintf(tmp_str, "%02X", uid.uid_8[11]);
+// 	glcd_draw_string(50, 40, tmp_str);
+//
+// 	glcd_write();
+// 	while(1);
+
+ 	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
+
+//	for (int var = 0; var < 12; ++var) {
+//
+//		EEPROM24XX_Save(addr_uid+var, (void*)&uid.uid_8[var], sizeof(uint8_t));
+//
+//	}
+
+
+
+	EEPROM24XX_Load(addr_set, (void*)&uid_set, sizeof(uid_set));
+
+	if(uid_set == 0xFF)
+	{
+		for (int var = 0; var < 12; ++var) {
+
+			EEPROM24XX_Load(addr_uid+var, (void*)&uid_load.uid_8[var], sizeof(uint8_t));
+
+		}
+
+		if( (uid.uid_32[0] != uid_load.uid_32[0]) || (uid.uid_32[1] != uid_load.uid_32[1]) || (uid.uid_32[2] != uid_load.uid_32[2]) ){
+
+		 	glcd_draw_string(10, 5, "uid != uid_load");
+		 	glcd_write();
+
+			while(1);
+		}
+//	 	glcd_draw_string(10, 5, "uid == uid_load");
+//	 	glcd_write();
+
+		
+
+	}
+	else
+	{
+		for (int var = 0; var < 12; ++var) {
+
+			EEPROM24XX_Save(addr_uid+var, (void*)&uid.uid_8[var], sizeof(uint8_t));
+
+		}
+
+		uid_set = 0xFF;
+		EEPROM24XX_Save(addr_set, (void*)&uid_set, sizeof(uid_set));
+	 	glcd_draw_string(10, 5, "Saving UID");
+		 	glcd_write();
+			while(1);
+
+		
+	}
+
+
+	//			while(1);
+
+//	uid_set = 0xFF;
+//	EEPROM24XX_Save(addr_uid+3, (void*)&uid_set, sizeof(uint8_t));
+}
 
 
 
