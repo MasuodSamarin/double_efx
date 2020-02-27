@@ -53,9 +53,9 @@ void App_Init(App_Handle_t *handle){
 	/*
 	 * EEP connected test
 	 * */
-	if(!(EEPROM24XX_IsConnected())){
-		while(1){};
-	}
+	//	if(!(EEPROM24XX_IsConnected())){
+	//		while(1){};
+	//	}
 
 
 	handle->cur_efx = malloc(sizeof(Efx_t));
@@ -96,5 +96,6 @@ void APP_Exec(App_Handle_t *handle){
 	if(func)
 		func(handle);
 
+	//fsm_fp_box[handle->event.type][handle->state](handle);
 
 }

@@ -11,12 +11,12 @@
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-		* Redistributions of source code must retain the above copyright
+ * Redistributions of source code must retain the above copyright
 		  notice, this list of conditions and the following disclaimer.
-		* Redistributions in binary form must reproduce the above copyright
+ * Redistributions in binary form must reproduce the above copyright
 		  notice, this list of conditions and the following disclaimer in the
 		  documentation and/or other materials provided with the distribution.
-		* Neither the name of Andy Gock nor the
+ * Neither the name of Andy Gock nor the
 		  names of its contributors may be used to endorse or promote products
 		  derived from this software without specific prior written permission.
 
@@ -30,7 +30,7 @@
 	ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 
 #ifndef _GLCD_H
 #define _GLCD_H
@@ -67,13 +67,21 @@
 
 #define GLCD_RESET_TIME 100
 
-#include "stm32f0xx_hal.h"
+//#include "stm32f0xx_hal.h"
 #include "main.h"
 //#include <stdint.h>
 
 //#include "_STM32F10x.h"
 
+#include "fonts/fonts.h"
 
+#include "ST7565R.h"
+
+
+#include "glcd_graphics.h"
+#include "glcd_graphs.h"
+#include "glcd_text.h"
+//#include "unit_tests.h"
 
 
 /* Macros */
@@ -103,15 +111,7 @@ extern uint8_t *glcd_buffer_selected;
 //extern glcd_BoundingBox_t *glcd_bbox_selected;
 
 
-#include "fonts/fonts.h"
 
-#include "ST7565R.h"
-
-
-#include "glcd_graphics.h"
-#include "glcd_graphs.h"
-#include "glcd_text.h"
-#include "unit_tests.h"
 
 /** \name Base Functions 
  *  @{
@@ -150,7 +150,7 @@ void glcd_bbox_reset(void);
  * Marks the entire display for re-writing.
  */
 void glcd_bbox_refresh(void);
-	
+
 /**
  * Clear the display. This will clear the buffer and physically write and commit it to the LCD
  */
@@ -191,7 +191,7 @@ void glcd_scroll_line(uint8_t top);
 /** @}*/
 
 
-extern uint8_t *glcd_buffer_selected;
+//extern uint8_t *glcd_buffer_selected;
 //extern glcd_BoundingBox_t *glcd_bbox_selected;
 
 #endif

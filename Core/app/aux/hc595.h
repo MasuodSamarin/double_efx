@@ -16,7 +16,7 @@
 
 
 
-void HC595_Init(void);
+//void HC595_Init(void);
 void HC595_SendByte(uint8_t byte);
 
 

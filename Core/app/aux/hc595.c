@@ -34,23 +34,21 @@
 
 
 
-void HC595_Init(void){
-
-	/*
-	 * init the gpio as output pushpull
-	 * */
-}
+//void HC595_Init(void){
+//
+//	/*
+//	 * init the gpio as output pushpull
+//	 * */
+//}
 
 void HC595_SendByte(uint8_t byte){
 
-	//uint16_t clock_timeout = 10000;
-	//uint16_t latch_timeout = 1000;
-
 	for (int8_t i = 7; i >= 0; --i) {
 
-		uint8_t bit = byte & (0x1 << i);							// Read bit
-		HAL_GPIO_WritePin(SHR_DATA_GPIO_Port, SHR_DATA_Pin, (GPIO_PinState)bit);		// Send bit
-
+		// Read bit
+		uint8_t bit = byte & (0x1 << i);
+		// Send bit
+		HAL_GPIO_WritePin(SHR_DATA_GPIO_Port, SHR_DATA_Pin, (GPIO_PinState)bit);
 		// Toggle clock
 		HAL_GPIO_WritePin(SHR_CLK_GPIO_Port, SHR_CLK_Pin, GPIO_PIN_SET);
 		//while(clock_timeout--);

@@ -112,7 +112,7 @@ uint8_t Effect_List_Get_EFX_Element(Efx_t* efx, uint8_t number){
 	return 1;
 }
 
-size_t Effect_List_Get_List_Size(void){
-	return efx_cnt;
-}
+//size_t Effect_List_Get_List_Size(void){
+//	return efx_cnt;
+//}
 

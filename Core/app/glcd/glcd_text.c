@@ -14,7 +14,7 @@ uint8_t glcd_draw_char_xy(uint8_t x, uint8_t y, char c){
 	- variable width fonts allowed
 	a complete column is written before moving to the next */
 	if (c < font_current.start_char || c > font_current.end_char) {
-			c = '.';
+		c = '.';
 	}
 	uint8_t i;
 	uint8_t var_width;
@@ -42,7 +42,7 @@ uint8_t glcd_draw_char_xy(uint8_t x, uint8_t y, char c){
 	if (x+var_width >= GLCD_LCD_WIDTH || y+font_current.height >= GLCD_LCD_HEIGHT) {
 	return;
 	}
-	*/
+	 */
 
 	for ( i = 0; i < var_width; i++ ) {
 

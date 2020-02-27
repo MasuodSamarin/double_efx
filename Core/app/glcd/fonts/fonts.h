@@ -13,7 +13,7 @@ typedef enum {
 	MIKRO,
 	GLCD_UTILS
 } font_table_type_t;
-*/
+ */
 
 typedef struct {
 	const char *font_table;

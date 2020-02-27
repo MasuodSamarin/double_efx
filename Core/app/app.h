@@ -57,12 +57,12 @@ void fp_S1_All(App_Handle_t *handle);
 void fp_S2_Not(App_Handle_t *handle);
 void fp_S2_Btn(App_Handle_t *handle);
 void fp_S2_Enc(App_Handle_t *handle);
-void fp_S2_Vol(App_Handle_t *handle);
+//void fp_S2_Vol(App_Handle_t *handle);
 
 void fp_S3_Not(App_Handle_t *handle);
 void fp_S3_Btn(App_Handle_t *handle);
 void fp_S3_Enc(App_Handle_t *handle);
-void fp_S3_Vol(App_Handle_t *handle);
+//void fp_S3_Vol(App_Handle_t *handle);
 
 void Helper_Service_Menu(void);
 void Helper_Security_Check(void);

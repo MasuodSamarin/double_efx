@@ -12,12 +12,12 @@
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-		* Redistributions of source code must retain the above copyright
+ * Redistributions of source code must retain the above copyright
 		  notice, this list of conditions and the following disclaimer.
-		* Redistributions in binary form must reproduce the above copyright
+ * Redistributions in binary form must reproduce the above copyright
 		  notice, this list of conditions and the following disclaimer in the
 		  documentation and/or other materials provided with the distribution.
-		* Neither the name of Andy Gock nor the
+ * Neither the name of Andy Gock nor the
 		  names of its contributors may be used to endorse or promote products
 		  derived from this software without specific prior written permission.
 
@@ -31,7 +31,7 @@
 	ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 
 #include <string.h>
 #include <stdio.h>
@@ -140,13 +140,13 @@ void glcd_select_buffer(uint8_t *buffer)
 void glcd_scroll(int8_t x, int8_t y)
 {
 	/** \todo Skeleton */
-	
+
 	uint8_t row;
-	
+
 	for (row=0; row<(GLCD_LCD_HEIGHT / 8); row++) {
 		uint8_t x;
 		for (x=0; x<GLCD_LCD_WIDTH; x++) {
-			
+
 		}
 	}
 }
@@ -163,7 +163,7 @@ void glcd_scroll_line(uint8_t top)
 		top = 8;
 	for (; top<number_of_rows-1; top++) {
 		//if (y < (number_of_rows - 1)) {
-			/* All lines except the last */
+		/* All lines except the last */
 		memcpy(glcd_buffer_selected + top*GLCD_LCD_WIDTH, glcd_buffer_selected + top*GLCD_LCD_WIDTH + GLCD_LCD_WIDTH, GLCD_LCD_WIDTH);
 		//} else {
 		//}
