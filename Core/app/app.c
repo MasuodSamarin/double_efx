@@ -61,7 +61,7 @@ void App_Init(App_Handle_t *handle){
 	handle->cur_efx = malloc(sizeof(Efx_t));
 	handle->tmp_efx = malloc(sizeof(Efx_t));
 
-	Event_Init(&handle->event, &handle->btn, &handle->enc, &handle->vol);
+	Event_Init(&handle->event, &handle->btn, &handle->vol);
 
 	Helper_Service_Menu();
 

@@ -29,7 +29,7 @@ typedef struct App_Handle_t{
 	Event_t event;
 	State_t state;
 
-	Enc_t enc;
+//	Enc_t enc;
 	Btn_t btn;
 	Vol_t vol;
 

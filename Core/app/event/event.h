@@ -25,19 +25,19 @@ typedef enum{
 
 typedef struct Event_t{
 
-	uint8_t has_e;
+	//uint8_t has_e;
 	Event_Type_t type;
 	union{
 		Btn_t *btn;
-		Enc_t *enc;
+		//Enc_t *enc;
 		Vol_t *vol;
 	};
 }Event_t;
 
 
 
-void Event_Init(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol);
-void Event_Handle(Event_t *event, Btn_t *btn, Enc_t *enc, Vol_t *vol);
+void Event_Init(Event_t *event, Btn_t *btn, Vol_t *vol);
+void Event_Handle(Event_t *event, Btn_t *btn, Vol_t *vol);
 
 
 

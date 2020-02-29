@@ -28,12 +28,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-//#include "btn.h"
-//#include "glcd.h"
-//#include "efx.h"
-//#include "event.h"
 #include "app.h"
-//#include "eep.h"
 
 
 App_Handle_t handle;
@@ -43,24 +38,18 @@ App_Handle_t handle;
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-//void test_btn_test(void);
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-
 /* USER CODE BEGIN PV */
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -75,7 +64,7 @@ void SystemClock_Config(void);
 
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	Event_Handle(&handle.event, &handle.btn, &handle.enc, &handle.vol);
+	Event_Handle(&handle.event, &handle.btn, &handle.vol);
 }
 /* USER CODE END 0 */
 
@@ -127,7 +116,6 @@ int main(void)
 	{
 		/* USER CODE END WHILE */
 		APP_Exec(&handle);
-		//test_btn_test();
 		/* USER CODE BEGIN 3 */
 	}
 	/* USER CODE END 3 */
