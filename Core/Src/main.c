@@ -29,7 +29,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "app.h"
-
+#include "iwdg.h"
 
 App_Handle_t handle;
 
@@ -104,7 +104,7 @@ int main(void)
 	MX_TIM3_Init();
 	MX_TIM14_Init();
 	/* USER CODE BEGIN 2 */
-
+	MX_IWDG_Init();
 
 	App_Init(&handle);
 	/* USER CODE END 2 */
@@ -116,6 +116,8 @@ int main(void)
 	{
 		/* USER CODE END WHILE */
 		APP_Exec(&handle);
+	    /* Refresh IWDG: reload counter */
+
 		/* USER CODE BEGIN 3 */
 	}
 	/* USER CODE END 3 */

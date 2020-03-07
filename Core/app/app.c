@@ -7,6 +7,8 @@
 
 
 #include "app.h"
+#include "iwdg.h"
+
 //extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim14;
@@ -90,12 +92,14 @@ void APP_Exec(App_Handle_t *handle){
 	Fsm_Fp_t func = NULL;
 
 	func = fsm_fp_box[handle->event.type][handle->state];
-	//handle->event.has_e = 0;
 	handle->event.type = Event_NOT;
 
 	if(func)
 		func(handle);
 
-	//fsm_fp_box[handle->event.type][handle->state](handle);
+   	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
+    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
+    	Error_Handler();
+
 
 }

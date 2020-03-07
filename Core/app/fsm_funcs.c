@@ -55,6 +55,14 @@ void Helper_Print_EFX_Number(Efx_t *efx){
 
 }
 
+void Helper_Print_Message(void){
+	const char *msg = "Watch DOG";
+
+	//print the name of efx
+	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
+	glcd_draw_string_P(7, 7, &msg[0]);
+	glcd_write();
+}
 //void Helper_Print_EFX_Mem_Vol(Efx_t *efx, Vol_Name_t name){
 //
 //	glcd_bar_graph_volume_shape(VOL_X, (VOL_Y + (name*VOL_DIFF)), VOL_W, VOL_H, efx->mem.vols[name]);

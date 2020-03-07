@@ -66,7 +66,7 @@ void fp_S3_Enc(App_Handle_t *handle);
 
 void Helper_Service_Menu(void);
 void Helper_Security_Check(void);
-
+void Helper_Print_Message(void);
 
 void App_Init(App_Handle_t *handle);
 void APP_Exec(App_Handle_t *handle);
