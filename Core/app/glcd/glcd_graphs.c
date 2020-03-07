@@ -65,20 +65,21 @@ void glcd_bar_graph_volume_shape(uint8_t x, uint8_t y, uint8_t width, uint8_t he
 	if (height < 3)
 		return;
 	uint8_t x_place;
-	if(glcd_map(x,width,val)-2 < x)
-		x_place = x+9;
-	else if(glcd_map(x,width,val) > x+width)
-		x_place = x+width-3;
+	uint8_t x_mean = glcd_map(x, width, val);
+	if( x_mean < x)
+		x_place = x + 7;
+	else if( x_mean > x + width)
+		x_place = x+width - 3;
 	else
-		x_place = (x+glcd_map(x,width,val));
+		x_place = (x + x_mean + 2);
 
 	glcd_draw_rect_fill(x, y-2, width, height+4 , WHITE);
 
 	glcd_draw_rect_fill(x, y, width, height , BLACK);
 
-	glcd_draw_rect_fill( x_place-8, y-2, 4, height+4 , BLACK);
+	glcd_draw_rect_fill(x_place-8, y-2, 4, height+4 , BLACK);
 
-	glcd_draw_rect_fill( x_place-7, y, 2, height , WHITE);
+	glcd_draw_rect_fill(x_place-7, y, 2, height , WHITE);
 }
 
 void glcd_bar_graph_vertical(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t val)

@@ -12,6 +12,13 @@ const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers = {
 		.end_char = 57,
 };
 
+/*const glcd_FontConfig_t FC_Arial36x38_Number = {
+		.font_table = Arial36x38,
+		.width = 17,
+		.height = 40,
+		.start_char = 46,
+		.end_char = 57,
+};*/
 //const glcd_FontConfig_t FC_Bebas_Neue20x36_Bold_Numbers = {
 //		.font_table = Bebas_Neue20x36_Bold_Numbers,
 //		.width = 20,

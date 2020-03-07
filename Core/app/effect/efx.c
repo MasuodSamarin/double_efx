@@ -104,10 +104,10 @@ uint8_t Effect_List_Get_EFX_Element(Efx_t* efx, uint8_t number){
 
 	efx->base = Efx_Get_Base(efx->mem.pst_num);
 
-	if(efx->mem.main_num > 16)
-		efx->pmode = EFX_USER_PRESET_MODE;
-	else
-		efx->pmode = EFX_FACT_PRESET_MODE;
+//	if(efx->mem.main_num > 16)
+//		efx->pmode = EFX_USER_PRESET_MODE;
+//	else
+//		efx->pmode = EFX_FACT_PRESET_MODE;
 
 	return 1;
 }

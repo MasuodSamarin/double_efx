@@ -15,6 +15,7 @@
 #define half(x)		( (x) / 2 )
 #define nhalf(x)	( (-(x)) / 2 )
 
+static uint32_t cnt;
 
 void Enc_Event_Init(void){
 
@@ -29,7 +30,7 @@ void Enc_Event_Init(void){
 
 uint8_t Enc_Event_Handle(void){
 
-	 static uint32_t cnt;
+
 	 uint32_t diff = 0;
 	//__IO uint32_t span = Enc_Event_Get_Span;
 
@@ -82,6 +83,8 @@ uint8_t Enc_Event_Handle(void){
 
 void Enc_Event_Set_val(uint32_t val){
 	__HAL_TIM_SET_COUNTER(&htim1, val);
+	cnt = Enc_Event_Get_val;
+
 	//enc->tim_cnt = val;
 	//enc->value = 0;
 	//enc->direction = Enc_Rotate_Nothing;

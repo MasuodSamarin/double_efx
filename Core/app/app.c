@@ -10,7 +10,6 @@
 //extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim14;
-Fsm_Fp_t func = NULL;
 
 
 
@@ -88,6 +87,7 @@ void App_Init(App_Handle_t *handle){
 
 void APP_Exec(App_Handle_t *handle){
 
+	Fsm_Fp_t func = NULL;
 
 	func = fsm_fp_box[handle->event.type][handle->state];
 	//handle->event.has_e = 0;
