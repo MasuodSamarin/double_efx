@@ -89,9 +89,7 @@ void App_Init(App_Handle_t *handle){
 
 void APP_Exec(App_Handle_t *handle){
 
-	Fsm_Fp_t func = NULL;
-
-	func = fsm_fp_box[handle->event.type][handle->state];
+	Fsm_Fp_t func = fsm_fp_box[handle->event.type][handle->state];
 	handle->event.type = Event_NOT;
 
 	if(func)
@@ -100,6 +98,11 @@ void APP_Exec(App_Handle_t *handle){
    	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
     if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
     	Error_Handler();
-
-
 }
+
+
+
+
+
+
+
