@@ -11,7 +11,73 @@ const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers = {
 		.start_char = 46,
 		.end_char = 57,
 };
+//const glcd_FontConfig_t FC_Tahoma11x13_AlphaNumber = {
+//		.font_table = Tahoma11x13,
+//		.width = 11,
+//		.height = 13,
+//		.start_char = 32,
+//		.end_char = 127,
+//
+//};
+//
+const glcd_FontConfig_t FC_Tekton_Pro_Ext27x28_AlphaNumber = {
+		.font_table = Tekton_Pro_Ext27x28,
+		.width = 27,
+		.height = 28,
+		.start_char = 32,
+		.end_char = 127,
 
+};
+
+const glcd_FontConfig_t FC_FONT1 = {
+		.font_table = font1,
+		.width = 15,
+		.height = 12,
+		.start_char = 32,
+		.end_char = 90,
+};
+//const glcd_FontConfig_t FC_FONT2 = {
+//		.font_table = font2,
+//		.width = 14,
+//		.height = 18,
+//		.start_char = 48,
+//		.end_char = 57,
+//};
+//const glcd_FontConfig_t FC_FONT3 = {
+//		.font_table = font3,
+//		.width = 22,
+//		.height = 20,
+//		.start_char = 48,
+//		.end_char = 86,
+//};
+//const glcd_FontConfig_t FC_FONT4 = {
+//		.font_table = font4,
+//		.width = 46,
+//		.height = 46,
+//		.start_char = 48,
+//		.end_char = 57,
+//};
+//const glcd_FontConfig_t FC_FONT5 = {
+//		.font_table = font5,
+//		.width = 24,
+//		.height = 27,
+//		.start_char = 46,
+//		.end_char = 57,
+//};
+//const glcd_FontConfig_t FC_FONT6 = {
+//		.font_table = font6,
+//		.width = 26,
+//		.height = 28,
+//		.start_char = 46,
+//		.end_char = 57,
+//};
+//const glcd_FontConfig_t FC_FONT7 = {
+//		.font_table = font7,
+//		.width = 28,
+//		.height = 29,
+//		.start_char = 46,
+//		.end_char = 57,
+//};
 /*const glcd_FontConfig_t FC_Arial36x38_Number = {
 		.font_table = Arial36x38,
 		.width = 17,
@@ -72,23 +138,6 @@ const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers = {
 //		.start_char = 46,
 //		.end_char = 90,
 //};
-const glcd_FontConfig_t FC_Tahoma11x13_AlphaNumber = {
-		.font_table = Tahoma11x13,
-		.width = 11,
-		.height = 13,
-		.start_char = 32,
-		.end_char = 127,
-
-};
-
-const glcd_FontConfig_t FC_Tekton_Pro_Ext27x28_AlphaNumber = {
-		.font_table = Tekton_Pro_Ext27x28,
-		.width = 27,
-		.height = 28,
-		.start_char = 32,
-		.end_char = 127,
-
-};
 
 //const glcd_FontConfig_t FC_Default_Font_5x8_AlphaNumber = {
 //		.font_table = Font5x8,

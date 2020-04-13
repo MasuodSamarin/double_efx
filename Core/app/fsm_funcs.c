@@ -8,6 +8,7 @@
 #include "app.h"
 
 #include "eep_helper.h"
+#include "iwdg.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -16,9 +17,9 @@
 //char tmp_str[10];
 
 #define VOL_X		8
-#define VOL_Y		25
-#define VOL_DIFF	10
-#define VOL_W		73
+#define VOL_Y		31
+#define VOL_DIFF	8
+#define VOL_W		63
 #define VOL_H		3
 
 #define FRAME_X		0
@@ -36,7 +37,7 @@ void Helper_Print_EFX_Name(Efx_t *efx){
 	const char *name = efx->base->name;
 
 	//print the name of efx
-	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
+	glcd_set_font_c(FC_FONT1);
 	glcd_draw_string_P(7, 7, &name[0]);
 
 }
@@ -49,20 +50,20 @@ void Helper_Print_EFX_Number(Efx_t *efx){
 	glcd_set_font_c(FC_Bebas_Neue18x36_Numbers);
 	sprintf(tmp_str, "%.2d", number);
 
-	glcd_draw_string(87, 23, tmp_str);
+	glcd_draw_string(80, 24, tmp_str);
 	//glcd_invert_area(75, 31, 40, 26);
 
 
 }
 
-void Helper_Print_Message(void){
-	const char *msg = "Watch DOG";
-
-	//print the name of efx
-	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
-	glcd_draw_string_P(7, 7, &msg[0]);
-	glcd_write();
-}
+//void Helper_Print_Message(void){
+//	const char *msg = "Watch DOG";
+//
+//	//print the name of efx
+//	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
+//	glcd_draw_string_P(7, 7, &msg[0]);
+//	glcd_write();
+//}
 //void Helper_Print_EFX_Mem_Vol(Efx_t *efx, Vol_Name_t name){
 //
 //	glcd_bar_graph_volume_shape(VOL_X, (VOL_Y + (name*VOL_DIFF)), VOL_W, VOL_H, efx->mem.vols[name]);
@@ -692,7 +693,7 @@ void Helper_Service_Menu(void){
 	const char *mark = "<< --- >>";
 	const char *quest = "RESET FACTORY?";
 	const char *javab = "CLEAR EEPROM";
-	const char *menu = "RELEASE BTN PLZ";
+	//const char *menu = "RELEASE BTN PLZ";
 
 	if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_SET )
 		return;
@@ -704,13 +705,17 @@ void Helper_Service_Menu(void){
 	prevalue = 3;
 	Enc_Event_Set_Span(1);
 
-	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
+	glcd_set_font_c(FC_FONT1);
 	glcd_clear();
 	Helper_Draw_Thin_Frame;
-	glcd_draw_string_P(15, 10, &menu[0]);
+	glcd_draw_string_P(12, 12, &quest[0]);
 	glcd_write();
 
-	while(HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET);
+	while(HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET){
+	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
+	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
+	    	Error_Handler();
+	}
 
 	while(answer == 1){
 		value = Enc_Event_Get_val;
@@ -740,8 +745,14 @@ void Helper_Service_Menu(void){
 
 		}
 
-		if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET )
-			answer = 0;
+		if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET ){
+			HAL_Delay(100);
+			if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET )
+				answer = 0;
+		}
+	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
+	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
+	    	Error_Handler();
 
 	}
 
@@ -754,7 +765,11 @@ void Helper_Service_Menu(void){
 		Helper_Erase_EEP();
 
 	}
-	while(HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET);
+	while(HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET){
+	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
+	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
+	    	Error_Handler();
+	}
 
 }
 
@@ -795,7 +810,7 @@ void Helper_Security_Check(void){
 	// 	glcd_write();
 	// 	while(1);
 
-	glcd_set_font_c(FC_Tahoma11x13_AlphaNumber);
+	glcd_set_font_c(FC_FONT1);
 
 	//	for (int var = 0; var < 12; ++var) {
 	//

@@ -35,9 +35,16 @@ extern glcd_FontConfig_t font_current;
 //#include "Liberation_Sans27x36_Numbers.h"
 //
 //#include "Font5x8.h"
-#include "Tahoma11x13.h"
+//#include "Tahoma11x13.h"
 #include "Bebas_Neue18x36_Numbers.h"
 #include "Tekton_Pro_Ext27x28.h"
+#include "font1.h"
+//#include "font2.h"
+//#include "font3.h"
+//#include "font4.h"
+//#include "font5.h"
+//#include "font6.h"
+//#include "font7.h"
 //#include "Arial36x38.h"
 /*TODO: this font not working good*/
 /*bad font*/
@@ -56,7 +63,14 @@ extern glcd_FontConfig_t font_current;
 
 extern const glcd_FontConfig_t FC_Tekton_Pro_Ext27x28_AlphaNumber;
 extern const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers;
-extern const glcd_FontConfig_t FC_Tahoma11x13_AlphaNumber;
+//extern const glcd_FontConfig_t FC_Tahoma11x13_AlphaNumber;
+extern const glcd_FontConfig_t FC_FONT1;
+//extern const glcd_FontConfig_t FC_FONT2;
+//extern const glcd_FontConfig_t FC_FONT3;
+//extern const glcd_FontConfig_t FC_FONT4;
+//extern const glcd_FontConfig_t FC_FONT5;
+//extern const glcd_FontConfig_t FC_FONT6;
+//extern const glcd_FontConfig_t FC_FONT7;
 //extern const glcd_FontConfig_t FC_Arial36x38_Number;
 
 

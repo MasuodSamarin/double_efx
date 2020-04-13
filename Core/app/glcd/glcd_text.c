@@ -28,9 +28,9 @@ uint8_t glcd_draw_char_xy(uint8_t x, uint8_t y, char c){
 	else{
 		bytes_high = (font_current.height / 8);
 	}
-	bytes_per_char = font_current.width * bytes_high + 1; /* The +1 is the width byte at the start */
+	bytes_per_char = font_current.width * bytes_high + 1; /* The +1 is the width byte at the start *///43
 
-	p = font_current.font_table + (c - font_current.start_char) * bytes_per_char;
+	p = font_current.font_table + ((c - font_current.start_char) * bytes_per_char);
 
 	/* The first byte per character is always the width of the character */
 
@@ -48,7 +48,7 @@ uint8_t glcd_draw_char_xy(uint8_t x, uint8_t y, char c){
 
 		for ( uint8_t j = 0; j < bytes_high; j++ ) {
 
-			uint8_t dat = *( p + i*bytes_high + j );
+			uint8_t dat = *( p + ((i*bytes_high) + j) );
 
 			for (uint8_t bit = 0; bit < 8; bit++) {
 
@@ -57,7 +57,11 @@ uint8_t glcd_draw_char_xy(uint8_t x, uint8_t y, char c){
 					return 0;
 				}
 
-				/* We should not write if the y bit exceeds font height */
+				/* We should not write if the y bit exceeds font height
+				 *
+				 * TODO:	i guess continue must change to break;
+				 *
+				 * 	*/
 				if ((j*8 + bit) >= font_current.height) {
 					/* Skip the bit */
 					continue;

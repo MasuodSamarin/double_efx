@@ -109,6 +109,7 @@ int main(void)
 	App_Init(&handle);
 	/* USER CODE END 2 */
 
+	//glcd_init();
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */

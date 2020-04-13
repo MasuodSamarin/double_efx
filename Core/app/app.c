@@ -66,7 +66,8 @@ void App_Init(App_Handle_t *handle){
 
 	Helper_Service_Menu();
 
-	Helper_Security_Check();
+	//set option byte2
+	//Helper_Security_Check();
 
 	Effect_List_Init();
 

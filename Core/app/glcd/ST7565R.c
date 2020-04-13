@@ -98,12 +98,29 @@ void glcd_init(void)
 
 	//glcd_select_buffer(glcd_buffer);
 	glcd_buffer_selected = glcd_buffer;
-
 	glcd_clear();
+	glcd_write();
 
 //		glcd_pattern();
 //		HAL_Delay(1000);
 //		glcd_clear();
+
+	/*
+	 * for test new fonts
+	 * */
+
+
+
+//	//print the name of efx
+//	glcd_set_font_c(FC_FONT6);
+//	glcd_draw_string_P(1, 7, "0123456");
+//	glcd_set_font_c(FC_FONT7);
+//	glcd_draw_string_P(1, 32, "0123456");
+//	//glcd_draw_char_xy(30, 10, 49);
+//	glcd_write();
+
+
+
 
 }
 
