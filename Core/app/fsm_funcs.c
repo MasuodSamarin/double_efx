@@ -612,7 +612,7 @@ void fp_S3_Not(App_Handle_t *handle){
 
 	/*show volumes on LCD*/
 	if ((handle->tmp_efx->base->vgrp) & VOL_GROUP_1){
-		if(handle->cur_efx->mem.main_num <= 16)
+		if(handle->tmp_efx->mem.main_num <= 16)
 			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_A])>>4);
 		else
 			vol_val = (uint32_t)((handle->tmp_efx->mem.vols[VOL_A]));
@@ -621,7 +621,7 @@ void fp_S3_Not(App_Handle_t *handle){
 	}
 
 	if ((handle->tmp_efx->base->vgrp) & VOL_GROUP_2){
-		if(handle->cur_efx->mem.main_num <= 16)
+		if(handle->tmp_efx->mem.main_num <= 16)
 			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_B])>>4);
 		else
 			vol_val = (uint32_t)((handle->tmp_efx->mem.vols[VOL_B]));
@@ -630,7 +630,7 @@ void fp_S3_Not(App_Handle_t *handle){
 	}
 
 	if ((handle->tmp_efx->base->vgrp) & VOL_GROUP_3){
-		if(handle->cur_efx->mem.main_num <= 16)
+		if(handle->tmp_efx->mem.main_num <= 16)
 			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_C])>>4);
 		else
 			vol_val = (uint32_t)((handle->tmp_efx->mem.vols[VOL_C]));
@@ -639,7 +639,7 @@ void fp_S3_Not(App_Handle_t *handle){
 	}
 
 	if ((handle->tmp_efx->base->vgrp) & VOL_GROUP_4){
-		if(handle->cur_efx->mem.main_num <= 16)
+		if(handle->tmp_efx->mem.main_num <= 16)
 			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_D])>>4);
 		else
 			vol_val = (uint32_t)((handle->tmp_efx->mem.vols[VOL_D]));
