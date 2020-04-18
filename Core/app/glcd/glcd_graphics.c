@@ -277,6 +277,18 @@ void glcd_invert_area(uint8_t x, uint8_t y, uint8_t w, uint8_t h)
 	}
 }
 
+//void glcd_draw_bitmap2(const unsigned char *data, int x, int y, int w, int h)
+//{
+//
+//	int c=0;
+//	for (int var = x; var < x+w; ++var, ++c) {
+//
+//		glcd_buffer_selected[var] = data[c];
+//
+//	}
+//
+//}
+
 void glcd_draw_bitmap(const unsigned char *data)
 {
 

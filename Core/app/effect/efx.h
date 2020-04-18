@@ -57,7 +57,8 @@ typedef enum {
 
 typedef struct Efx_Base_t{
 
-	const char *name;
+	const char *n1;
+	const char *n2;
 	const uint8_t code;
 	const uint8_t vgrp;
 

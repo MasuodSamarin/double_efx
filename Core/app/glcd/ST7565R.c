@@ -68,7 +68,13 @@ uint8_t bmp_oslogo[] = {
 		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   //
 };
-void glcd_init(void)
+
+
+
+
+
+
+ void glcd_init(void)
 {
 
 	/* Initialization of glcd module
@@ -99,7 +105,8 @@ void glcd_init(void)
 	//glcd_select_buffer(glcd_buffer);
 	glcd_buffer_selected = glcd_buffer;
 	glcd_clear();
-	glcd_write();
+	//glcd_write();
+
 
 //		glcd_pattern();
 //		HAL_Delay(1000);
@@ -533,6 +540,7 @@ void glcd_ST7565R_init(void) {
 	glcd_command(ST7565_LCD_CMD_SET_VOLUME_SECOND); /* Set contrast, value experimentally determined, can set to 6-bit value, 0 to 63 */
 	glcd_command(ST7565_LCD_CMD_DISPLAY_ON); /* Display on */
 	glcd_command(ST7565_LCD_CMD_SET_DISP_NORMAL);
+
 
 #else
 

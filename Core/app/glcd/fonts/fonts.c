@@ -1,16 +1,146 @@
 #include "fonts.h"
 #include "../glcd_text.h"
 
+
+
+const glcd_FontConfig_t FC_Segoe_UI_Symbol16x17 = {
+		.font_table = Segoe_UI_Symbol16x17,
+		.width = 16,
+		.height = 17,
+		.start_char = 44,
+		.end_char = 122
+};
+
+//const glcd_FontConfig_t FC_Segoe_UI_Symbol19x18 = {
+//		.font_table = Segoe_UI_Symbol19x18,
+//		.width = 19,
+//		.height = 18,
+//		.start_char = 44,
+//		.end_char = 122
+//};
+
+//const glcd_FontConfig_t FC_Segoe_UI_Symbol20x24 = {
+//		.font_table = Segoe_UI_Symbol20x24,
+//		.width = 20,
+//		.height = 24,
+//		.start_char = 44,
+//		.end_char = 122
+//};
+//
+//const glcd_FontConfig_t FC_Segoe_UI_Symbol12x12 = {
+//		.font_table = Segoe_UI_Symbol12x12,
+//		.width = 12,
+//		.height = 12,
+//		.start_char = 44,
+//		.end_char = 122
+//};
+//
+//const glcd_FontConfig_t FC_Nova_SSi12x11 = {
+//		.font_table = Nova_SSi12x11,
+//		.width = 12,
+//		.height = 11,
+//		.start_char = 44,
+//		.end_char = 122
+//};
+//
+//const glcd_FontConfig_t FC_Helvetica12x12 = {
+//		.font_table = Helvetica12x12,
+//		.width = 12,
+//		.height = 12,
+//		.start_char = 44,
+//		.end_char = 122
+//};
+//
+const glcd_FontConfig_t FC_Helvetica14x15 = {
+		.font_table = Helvetica14x15,
+		.width = 14,
+		.height = 15,
+		.start_char = 44,
+		.end_char = 122
+};
+
+const glcd_FontConfig_t FC_Univers_Black_Thin16x16 = {
+		.font_table = Univers_Black_Thin16x16,
+		.width = 16,
+		.height = 16,
+		.start_char = 48,
+		.end_char = 57
+};
+
+//
+//const glcd_FontConfig_t FC_Helvetica_Narrow10x13 = {
+//		.font_table = Helvetica_Narrow10x13,
+//		.width = 10,
+//		.height = 13,
+//		.start_char = 44,
+//		.end_char = 122
+//};
+//
+//const glcd_FontConfig_t FC_Univers_BoldExt23x15 = {
+//		.font_table = Univers_BoldExt23x15,
+//		.width = 23,
+//		.height = 15,
+//		.start_char = 45,
+//		.end_char = 122
+//};
+//
+//const glcd_FontConfig_t FC_Univers_BoldExt26x18 = {
+//		.font_table = Univers_BoldExt26x18,
+//		.width = 23,
+//		.height = 15,
+//		.start_char = 44,
+//		.end_char = 122
+//};
+//
+//const glcd_FontConfig_t FC_Arial10x17 = {
+//		.font_table = Arial10x17,
+//		.width = 10,
+//		.height = 17,
+//		.start_char = 48,
+//		.end_char = 57
+//};
+//
+//const glcd_FontConfig_t FC_Seas10x14 = {
+//		.font_table = Seas10x14,
+//		.width = 10,
+//		.height = 14,
+//		.start_char = 48,
+//		.end_char = 57
+//};
+//
+//const glcd_FontConfig_t FC_Univers10x13 = {
+//		.font_table = Univers10x13,
+//		.width = 10,
+//		.height = 13,
+//		.start_char = 48,
+//		.end_char = 57
+//};
+//
+//const glcd_FontConfig_t FC_Univers12x14 = {
+//		.font_table = Univers12x14,
+//		.width = 12,
+//		.height = 14,
+//		.start_char = 48,
+//		.end_char = 57
+//};
+
+const glcd_FontConfig_t FC_Univers14x17 = {
+		.font_table = Univers14x17,
+		.width = 14,
+		.height = 17,
+		.start_char = 48,
+		.end_char = 57
+};
 /*
  * number only fonts
  * */
-const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers = {
-		.font_table = Bebas_Neue18x36_Numbers,
-		.width = 18,
-		.height = 36,
-		.start_char = 46,
-		.end_char = 57,
-};
+//const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers = {
+//		.font_table = Bebas_Neue18x36_Numbers,
+//		.width = 18,
+//		.height = 36,
+//		.start_char = 46,
+//		.end_char = 57,
+//};
 //const glcd_FontConfig_t FC_Tahoma11x13_AlphaNumber = {
 //		.font_table = Tahoma11x13,
 //		.width = 11,
@@ -20,23 +150,23 @@ const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers = {
 //
 //};
 //
-const glcd_FontConfig_t FC_Tekton_Pro_Ext27x28_AlphaNumber = {
-		.font_table = Tekton_Pro_Ext27x28,
-		.width = 27,
-		.height = 28,
-		.start_char = 32,
-		.end_char = 127,
+//const glcd_FontConfig_t FC_Tekton_Pro_Ext27x28_AlphaNumber = {
+//		.font_table = Tekton_Pro_Ext27x28,
+//		.width = 27,
+//		.height = 28,
+//		.start_char = 32,
+//		.end_char = 127,
+//
+//};
 
-};
-
-const glcd_FontConfig_t FC_FONT1 = {
-		.font_table = font1,
-		.width = 15,
-		.height = 12,
-		.start_char = 32,
-		.end_char = 90,
-};
-//const glcd_FontConfig_t FC_FONT2 = {
+//const glcd_FontConfig_t FC_FONT1 = {
+//		.font_table = font1,
+//		.width = 15,
+//		.height = 12,
+//		.start_char = 32,
+//		.end_char = 90,
+//};
+////const glcd_FontConfig_t FC_FONT2 = {
 //		.font_table = font2,
 //		.width = 14,
 //		.height = 18,

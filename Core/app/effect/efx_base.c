@@ -14,23 +14,23 @@
 
 Efx_Base_t *efx_base_box[EFX_PRST_MAX] = {
 		/*this is efx_box 	NAME		     CODE SHR595							VOLUMES GROUP*/
-		&((Efx_Base_t){"MONO ECHO 1",	( FV1_EEP_0 | FV1_CODE_0 ),		( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
-		&((Efx_Base_t){"MONO ECHO 2", 	( FV1_EEP_0 | FV1_CODE_1 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
-		&((Efx_Base_t){"MONO ECHO 3", 	( FV1_EEP_0 | FV1_CODE_2 ), 	( VOL_GROUP_1 | VOL_GROUP_2 )}),
-		&((Efx_Base_t){"MONO ECHO 4", 	( FV1_EEP_0 | FV1_CODE_3 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
-		&((Efx_Base_t){"MULTI PONG", 	( FV1_EEP_0 | FV1_CODE_4 ), 	( VOL_GROUP_1 | VOL_GROUP_2 )}),
-		&((Efx_Base_t){"PING PONG", 	( FV1_EEP_0 | FV1_CODE_5 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
-		&((Efx_Base_t){"ECHO + DELAY", 	( FV1_EEP_0 | FV1_CODE_6 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
-		&((Efx_Base_t){"ECHO + REVERB",	( FV1_EEP_0 | FV1_CODE_7 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((Efx_Base_t){"MONO", 	"ECHO 1",	( FV1_EEP_0 | FV1_CODE_0 ),		( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((Efx_Base_t){"MONO", 	"ECHO 2", 	( FV1_EEP_0 | FV1_CODE_1 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((Efx_Base_t){"MONO", 	"ECHO 3", 	( FV1_EEP_0 | FV1_CODE_2 ), 	( VOL_GROUP_1 | VOL_GROUP_2 )}),
+		&((Efx_Base_t){"MONO", 	"ECHO 4", 	( FV1_EEP_0 | FV1_CODE_3 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((Efx_Base_t){"MULTI", "PONG", 	( FV1_EEP_0 | FV1_CODE_4 ), 	( VOL_GROUP_1 | VOL_GROUP_2 )}),
+		&((Efx_Base_t){"PING", 	"PONG", 	( FV1_EEP_0 | FV1_CODE_5 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((Efx_Base_t){"ECHO", 	"DELAY", 	( FV1_EEP_0 | FV1_CODE_6 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((Efx_Base_t){"ECHO", 	"REVERB",	( FV1_EEP_0 | FV1_CODE_7 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
 
-		&((Efx_Base_t){"VOICE DELAY", 	( FV1_EEP_1 | FV1_CODE_0 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
-		&((Efx_Base_t){"HALL REVERB", 	( FV1_EEP_1 | FV1_CODE_1 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
-		&((Efx_Base_t){"REVERB + FLNG", ( FV1_EEP_1 | FV1_CODE_2 ), 	( VOL_GROUP_2 | VOL_GROUP_4 )}),
-		&((Efx_Base_t){"ECHO + FLANG", 	( FV1_EEP_1 | FV1_CODE_3 ), 	( VOL_GROUP_1 | VOL_GROUP_4 )}),
-		&((Efx_Base_t){"VOICE FLANG", 	( FV1_EEP_1 | FV1_CODE_4 ), 	( VOL_GROUP_1 | VOL_GROUP_3 | VOL_GROUP_4 )}),
-		&((Efx_Base_t){"VOICE FLANG", 	( FV1_EEP_1 | FV1_CODE_5 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
-		&((Efx_Base_t){"VOICE CHUOROS", ( FV1_EEP_1 | FV1_CODE_6 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
-		&((Efx_Base_t){"VOICE REVERB", 	( FV1_EEP_1 | FV1_CODE_7 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )})
+		&((Efx_Base_t){"VOICE", "DELAY", 	( FV1_EEP_1 | FV1_CODE_0 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((Efx_Base_t){"HALL", 	"REVERB", 	( FV1_EEP_1 | FV1_CODE_1 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((Efx_Base_t){"REVERB","FLNG", 	( FV1_EEP_1 | FV1_CODE_2 ), 	( VOL_GROUP_2 | VOL_GROUP_4 )}),
+		&((Efx_Base_t){"ECHO", 	"FLANG", 	( FV1_EEP_1 | FV1_CODE_3 ), 	( VOL_GROUP_1 | VOL_GROUP_4 )}),
+		&((Efx_Base_t){"VOICE", "FLANG", 	( FV1_EEP_1 | FV1_CODE_4 ), 	( VOL_GROUP_1 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((Efx_Base_t){"VOICE", "FLANG", 	( FV1_EEP_1 | FV1_CODE_5 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )}),
+		&((Efx_Base_t){"VOICE", "CHUOROS", 	( FV1_EEP_1 | FV1_CODE_6 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 | VOL_GROUP_4 )}),
+		&((Efx_Base_t){"VOICE", "REVERB", 	( FV1_EEP_1 | FV1_CODE_7 ), 	( VOL_GROUP_1 | VOL_GROUP_2 | VOL_GROUP_3 )})
 
 };
 

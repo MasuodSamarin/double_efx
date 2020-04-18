@@ -33,10 +33,15 @@
  */
 
 #include "glcd.h"
-
-static uint8_t glcd_map(uint8_t x1, uint8_t x2, uint8_t x)
+//69 53 val
+static uint8_t glcd_map(uint8_t x, uint8_t width, uint8_t val)
 {
-	return x1+(x2-x1)*x/250;
+	return ((width * val / 256) + x);
+//	if(width>x)
+//		return x+((width-x)*val/250);
+//	else if(x>width)
+//		return x+(x-width)*val/255;
+
 	/*
 		TODO: because the horizontal box doesn't fill
 		return x1+(x2-x1)*x/255;
@@ -66,20 +71,21 @@ void glcd_bar_graph_volume_shape(uint8_t x, uint8_t y, uint8_t width, uint8_t he
 		return;
 	uint8_t x_place;
 	uint8_t x_mean = glcd_map(x, width, val);
-	if( x_mean < x)
-		x_place = x + 7;
-	else if( x_mean > x + width)
-		x_place = x+width - 3;
+	if( x_mean < x + 4)
+		x_place = x+4 ;
+	else if( x_mean > x + width - 4)
+		x_place = x+width-4;
 	else
-		x_place = (x + x_mean + 2);
+		x_place = x_mean;
 
+	//x_place = x_mean;
 	glcd_draw_rect_fill(x, y-2, width, height+4 , WHITE);
 
 	glcd_draw_rect_fill(x, y, width, height , BLACK);
 
-	glcd_draw_rect_fill(x_place-8, y-2, 4, height+4 , BLACK);
+	glcd_draw_rect_fill(x_place-2, y-2, 4, height+4 , BLACK);
 
-	glcd_draw_rect_fill(x_place-7, y, 2, height , WHITE);
+	glcd_draw_rect_fill(x_place-1, y, 2, height , WHITE);
 }
 
 void glcd_bar_graph_vertical(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t val)

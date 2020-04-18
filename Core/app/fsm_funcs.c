@@ -16,11 +16,25 @@
  * */
 //char tmp_str[10];
 
-#define VOL_X		8
-#define VOL_Y		31
-#define VOL_DIFF	8
-#define VOL_W		63
+//#define VOL_X		8
+//#define VOL_Y		31
+//#define VOL_DIFF	8
+#define VOL_W		53
 #define VOL_H		3
+
+
+
+uint8_t VOL_Xs[] = {6, 6, 69, 69};
+uint8_t VOL_Ys[] = {45, 52, 45, 52};
+
+//#define VOL_DIFF	8
+//#define VOL_W		50
+//#define VOL_H		3
+
+
+
+
+
 
 #define FRAME_X		0
 #define FRAME_Y		0
@@ -30,15 +44,25 @@
 #define FRAME_H		64
 #define FRAME_COLOR	BLACK
 
+#define N1_X		4
+#define N1_Y		5
+#define N2_X		4
+#define N2_Y		20
+
+#define NUM_X		75
+#define NUM_Y		10
+
 #define Helper_Draw_Thin_Frame	glcd_draw_rect(FRAME_X, FRAME_Y, FRAME_W, FRAME_H, FRAME_COLOR)
 #define Helper_Draw_Thick_Frame	glcd_draw_rect_thick(FRAME_X, FRAME_Y, FRAME_W, FRAME_H, FRAME_TX, FRAME_TY, FRAME_COLOR)
 
 void Helper_Print_EFX_Name(Efx_t *efx){
-	const char *name = efx->base->name;
+	const char *n1 = efx->base->n1;
+	const char *n2 = efx->base->n2;
 
 	//print the name of efx
-	glcd_set_font_c(FC_FONT1);
-	glcd_draw_string_P(7, 7, &name[0]);
+	glcd_set_font_c(FONT_EFX_NAME);
+	glcd_draw_string_P(N1_X, N1_Y, &n1[0]);
+	glcd_draw_string_P(N2_X, N2_Y, &n2[0]);
 
 }
 
@@ -47,10 +71,10 @@ void Helper_Print_EFX_Number(Efx_t *efx){
 	int number = efx->mem.main_num;
 
 	//print the number of efx and inert it
-	glcd_set_font_c(FC_Bebas_Neue18x36_Numbers);
+	glcd_set_font_c(FONT_EFX_NUMBER);
 	sprintf(tmp_str, "%.2d", number);
 
-	glcd_draw_string(80, 24, tmp_str);
+	glcd_draw_string(NUM_X, NUM_Y, tmp_str);
 	//glcd_invert_area(75, 31, 40, 26);
 
 
@@ -76,7 +100,7 @@ void Helper_Print_EFX_Number(Efx_t *efx){
 
 void Helper_Print_EFX_Vol(uint32_t Vol_Value, Vol_Name_t name){
 
-	glcd_bar_graph_volume_shape(VOL_X, (VOL_Y + (name*VOL_DIFF)), VOL_W, VOL_H, (uint8_t)(Vol_Value));
+	glcd_bar_graph_volume_shape(VOL_Xs[(int)name], VOL_Ys[(int)name] , VOL_W, VOL_H, (uint8_t)(Vol_Value));
 
 }
 
@@ -380,6 +404,7 @@ void fp_S2_Not(App_Handle_t *handle){
 			vol_val = (uint32_t)((handle->cur_efx->mem.vols[VOL_C]));
 		else
 			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_C])>>4);
+		//vol_val = 250;
 		//vol_val = Helper_Get_Vol_Value(handle, VOL_C);
 		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, vol_val);
 		Helper_Print_EFX_Vol(vol_val, VOL_C);
@@ -444,12 +469,12 @@ void fp_S2_Btn(App_Handle_t *handle){
 		if(Helper_Svae_Efx_EEP(handle, handle->cur_efx->mem.main_num) == 1){
 			glcd_clear_buffer();
 			Helper_Draw_Thin_Frame;
-			glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+			glcd_set_font_c(FONT_EFX_MSG);
 			glcd_draw_string(23, 25, "SAVE");
 		}else{
 			glcd_clear_buffer();
 			Helper_Draw_Thin_Frame;
-			glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+			glcd_set_font_c(FONT_EFX_MSG);
 			glcd_draw_string(23, 25, "ERROR");
 		}
 
@@ -473,12 +498,12 @@ void fp_S2_Btn(App_Handle_t *handle){
 		if(Helper_Svae_Efx_EEP(handle, handle->cur_efx->mem.main_num) == 1){
 			glcd_clear_buffer();
 			Helper_Draw_Thin_Frame;
-			glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+			glcd_set_font_c(FONT_EFX_MSG);
 			glcd_draw_string(3, 25, "UPDATE");
 		}else{
 			glcd_clear_buffer();
 			Helper_Draw_Thin_Frame;
-			glcd_set_font_c(FC_Tekton_Pro_Ext27x28_AlphaNumber);
+			glcd_set_font_c(FONT_EFX_MSG);
 			glcd_draw_string(23, 25, "ERROR");
 		}
 
@@ -670,20 +695,20 @@ void fp_S3_Enc(App_Handle_t *handle){
 ////	handle->state = STATE_1;
 //}
 
-#define X_YES		25
-#define Y_YES		30
+#define X_YES		20
+#define Y_YES		12
 #define X_YES_BOX	X_YES-3
 #define Y_YES_BOX	Y_YES-2
 #define W_YES_BOX	29
 #define H_YES_BOX	15
-#define X_NO		80
-#define Y_NO		30
+#define X_NO		30
+#define Y_NO		20
 #define X_NO_BOX	X_NO-5
 #define Y_NO_BOX	Y_MARK
 #define W_NO_BOX	25
 #define H_NO_BOX	15
-#define X_MARK		28
-#define Y_MARK		46
+#define X_MARK		30
+#define Y_MARK		30
 
 void Helper_Service_Menu(void){
 
@@ -705,7 +730,7 @@ void Helper_Service_Menu(void){
 	prevalue = 3;
 	Enc_Event_Set_Span(1);
 
-	glcd_set_font_c(FC_FONT1);
+	glcd_set_font_c(FONT_EFX_MSG);
 	glcd_clear();
 	Helper_Draw_Thin_Frame;
 	glcd_draw_string_P(12, 12, &quest[0]);

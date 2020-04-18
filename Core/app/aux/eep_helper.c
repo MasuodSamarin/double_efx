@@ -82,7 +82,7 @@ void Helper_Load_Efx_EEP(void){
 }
 
 void Helper_Erase_EEP(void){
-	uint8_t zeros[16] = {0};
+	uint8_t zeros[16] = {0xFF};
 	uint8_t addr;
 
 	for (int val = 0; val < 64; ++val) {
