@@ -56,6 +56,14 @@ extern glcd_FontConfig_t font_current;
 #include "Univers12x14.h"
 #include "Univers14x17.h"
 #include "Univers_Black_Thin16x16.h"
+#include "Boost_SSi16x16.h"
+#include "One_BitDust_Two16x15.h"
+#include "Boost_SSi19x17.h"
+#include "Boost_SSi26x20.h"
+
+
+
+
 //#include "font2.h"
 //#include "font3.h"
 //#include "font4.h"
@@ -79,10 +87,10 @@ extern glcd_FontConfig_t font_current;
 
 
 
-extern const glcd_FontConfig_t FC_Tekton_Pro_Ext27x28_AlphaNumber;
-extern const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers;
-extern const glcd_FontConfig_t FC_Tahoma11x13_AlphaNumber;
-extern const glcd_FontConfig_t FC_FONT1;
+//extern const glcd_FontConfig_t FC_Tekton_Pro_Ext27x28_AlphaNumber;
+//extern const glcd_FontConfig_t FC_Bebas_Neue18x36_Numbers;
+//extern const glcd_FontConfig_t FC_Tahoma11x13_AlphaNumber;
+//extern const glcd_FontConfig_t FC_FONT1;
 
 //extern const glcd_FontConfig_t FC_FONT2;
 //extern const glcd_FontConfig_t FC_FONT3;
@@ -111,13 +119,15 @@ extern const glcd_FontConfig_t FC_Helvetica14x15;
 //extern const glcd_FontConfig_t FC_Univers10x13;
 //extern const glcd_FontConfig_t FC_Univers12x14;
 //extern const glcd_FontConfig_t FC_Univers14x17;
-extern const glcd_FontConfig_t FC_Univers_Black_Thin16x16;
-
-
+//extern const glcd_FontConfig_t FC_Univers_Black_Thin16x16;
+//extern const glcd_FontConfig_t FC_Boost_SSi16x16;
+//extern const glcd_FontConfig_t FC_One_BitDust_Two16x15;
+extern const glcd_FontConfig_t FC_Boost_SSi19x17;
+extern const glcd_FontConfig_t FC_Boost_SSi26x20;
 
 #define FONT_EFX_NAME FC_Helvetica14x15
-#define FONT_EFX_NUMBER FC_Univers_Black_Thin16x16
-#define FONT_EFX_MSG FC_Helvetica14x15
+#define FONT_EFX_NUMBER FC_Boost_SSi19x17
+#define FONT_EFX_MSG FC_Boost_SSi26x20
 
 
 #endif //_FONTS_H_

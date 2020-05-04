@@ -93,7 +93,12 @@ void Effect_List_Modify_Vol_Element(Efx_t *cur_efx, Vol_t vol){
 
 uint8_t Effect_List_Get_EFX_Element(Efx_t* efx, uint8_t number){
 
-	Efx_Memory_t* mem = &mems[number];
+	Efx_Memory_t* mem;
+
+	if (number > efx_cnt)
+		return 0;
+
+	mem = &mems[number];
 
 	efx->mem.main_num = mem->main_num;
 	efx->mem.pst_num = mem->pst_num;

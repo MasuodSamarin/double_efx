@@ -128,7 +128,8 @@ void glcd_clear(void) {
 
 void glcd_clear_buffer(void) {
 	memset(glcd_buffer_selected, 0x00, GLCD_LCD_WIDTH * GLCD_LCD_HEIGHT / 8);
-	glcd_update_bbox(0,0,GLCD_LCD_WIDTH - 1,GLCD_LCD_HEIGHT - 1);
+	//glcd_update_bbox(0,0,GLCD_LCD_WIDTH - 1,GLCD_LCD_HEIGHT - 1);
+	glcd_bbox_refresh();
 }
 
 void glcd_select_buffer(uint8_t *buffer)
@@ -167,6 +168,9 @@ void glcd_scroll_line(uint8_t top)
 		memcpy(glcd_buffer_selected + top*GLCD_LCD_WIDTH, glcd_buffer_selected + top*GLCD_LCD_WIDTH + GLCD_LCD_WIDTH, GLCD_LCD_WIDTH);
 		//} else {
 		//}
+		glcd_update_bbox(0,0,GLCD_LCD_WIDTH - 1,GLCD_LCD_HEIGHT - 1);
+
+
 	}
 	/* Last line, clear it */
 	memset(glcd_buffer_selected + (number_of_rows - 1)*GLCD_LCD_WIDTH, 0x00, GLCD_LCD_WIDTH);

@@ -82,14 +82,14 @@ void Helper_Load_Efx_EEP(void){
 }
 
 void Helper_Erase_EEP(void){
-	uint8_t zeros[16] = {0xFF};
+	uint8_t data[16] = {0xFF};
 	uint8_t addr;
 
 	for (int val = 0; val < 64; ++val) {
 
 		addr = val * 16;
 
-		EEPROM24XX_Save(addr, (void*)&zeros, sizeof(zeros));
+		EEPROM24XX_Save(addr, (void*)&data, sizeof(data));
 
 
 	}

@@ -3,13 +3,13 @@
 
 
 
-const glcd_FontConfig_t FC_Segoe_UI_Symbol16x17 = {
-		.font_table = Segoe_UI_Symbol16x17,
-		.width = 16,
-		.height = 17,
-		.start_char = 44,
-		.end_char = 122
-};
+//const glcd_FontConfig_t FC_Segoe_UI_Symbol16x17 = {
+//		.font_table = Segoe_UI_Symbol16x17,
+//		.width = 16,
+//		.height = 17,
+//		.start_char = 44,
+//		.end_char = 122
+//};
 
 //const glcd_FontConfig_t FC_Segoe_UI_Symbol19x18 = {
 //		.font_table = Segoe_UI_Symbol19x18,
@@ -51,6 +51,16 @@ const glcd_FontConfig_t FC_Segoe_UI_Symbol16x17 = {
 //		.end_char = 122
 //};
 //
+
+//const glcd_FontConfig_t FC_Univers14x17 = {
+//		.font_table = Univers14x17,
+//		.width = 14,
+//		.height = 17,
+//		.start_char = 48,
+//		.end_char = 57
+//};
+
+
 const glcd_FontConfig_t FC_Helvetica14x15 = {
 		.font_table = Helvetica14x15,
 		.width = 14,
@@ -59,14 +69,46 @@ const glcd_FontConfig_t FC_Helvetica14x15 = {
 		.end_char = 122
 };
 
-const glcd_FontConfig_t FC_Univers_Black_Thin16x16 = {
-		.font_table = Univers_Black_Thin16x16,
-		.width = 16,
-		.height = 16,
+//const glcd_FontConfig_t FC_Univers_Black_Thin16x16 = {
+//		.font_table = Univers_Black_Thin16x16,
+//		.width = 16,
+//		.height = 16,
+//		.start_char = 48,
+//		.end_char = 57
+//};
+
+//const glcd_FontConfig_t FC_Boost_SSi16x16 = {
+//		.font_table = Boost_SSi16x16,
+//		.width = 16,
+//		.height = 16,
+//		.start_char = 48,
+//		.end_char = 57
+//};
+//
+//const glcd_FontConfig_t FC_One_BitDust_Two16x15 = {
+//		.font_table = One_BitDust_Two16x15,
+//		.width = 16,
+//		.height = 15,
+//		.start_char = 48,
+//		.end_char = 57
+//};
+
+const glcd_FontConfig_t FC_Boost_SSi19x17 = {
+		.font_table = Boost_SSi19x17,
+		.width = 19,
+		.height = 17,
 		.start_char = 48,
 		.end_char = 57
 };
 
+
+const glcd_FontConfig_t FC_Boost_SSi26x20 = {
+		.font_table = Boost_SSi26x20,
+		.width = 26,
+		.height = 20,
+		.start_char = 65,
+		.end_char = 90
+};
 //
 //const glcd_FontConfig_t FC_Helvetica_Narrow10x13 = {
 //		.font_table = Helvetica_Narrow10x13,
@@ -124,13 +166,7 @@ const glcd_FontConfig_t FC_Univers_Black_Thin16x16 = {
 //		.end_char = 57
 //};
 
-const glcd_FontConfig_t FC_Univers14x17 = {
-		.font_table = Univers14x17,
-		.width = 14,
-		.height = 17,
-		.start_char = 48,
-		.end_char = 57
-};
+
 /*
  * number only fonts
  * */

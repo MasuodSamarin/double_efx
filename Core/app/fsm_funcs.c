@@ -12,29 +12,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
- * HELPER FUNCTION USED IN FSM
+ * HELPER DEFINE USED IN FSM
  * */
-//char tmp_str[10];
-
-//#define VOL_X		8
-//#define VOL_Y		31
-//#define VOL_DIFF	8
-#define VOL_W		53
-#define VOL_H		3
-
-
-
-uint8_t VOL_Xs[] = {6, 6, 69, 69};
-uint8_t VOL_Ys[] = {45, 52, 45, 52};
-
-//#define VOL_DIFF	8
-//#define VOL_W		50
-//#define VOL_H		3
-
-
-
-
-
 
 #define FRAME_X		0
 #define FRAME_Y		0
@@ -44,16 +23,26 @@ uint8_t VOL_Ys[] = {45, 52, 45, 52};
 #define FRAME_H		64
 #define FRAME_COLOR	BLACK
 
-#define N1_X		4
-#define N1_Y		5
-#define N2_X		4
-#define N2_Y		20
-
-#define NUM_X		75
-#define NUM_Y		10
-
 #define Helper_Draw_Thin_Frame	glcd_draw_rect(FRAME_X, FRAME_Y, FRAME_W, FRAME_H, FRAME_COLOR)
 #define Helper_Draw_Thick_Frame	glcd_draw_rect_thick(FRAME_X, FRAME_Y, FRAME_W, FRAME_H, FRAME_TX, FRAME_TY, FRAME_COLOR)
+
+#define EFX_NAME_1_X	6
+#define EFX_NAME_1_Y	7
+#define EFX_NAME_2_X	6
+#define EFX_NAME_2_Y	24
+
+#define EFX_NUM_X		83
+#define EFX_NUM_Y		21
+
+uint8_t VOL_Xs[] = {6, 6, 69, 69};
+uint8_t VOL_Ys[] = {43, 53, 43, 53};
+#define VOL_W		53
+#define VOL_H		3
+
+
+/*
+ * HELPER FUNCTION USED IN FSM
+ * */
 
 void Helper_Print_EFX_Name(Efx_t *efx){
 	const char *n1 = efx->base->n1;
@@ -61,8 +50,8 @@ void Helper_Print_EFX_Name(Efx_t *efx){
 
 	//print the name of efx
 	glcd_set_font_c(FONT_EFX_NAME);
-	glcd_draw_string_P(N1_X, N1_Y, &n1[0]);
-	glcd_draw_string_P(N2_X, N2_Y, &n2[0]);
+	glcd_draw_string_P(EFX_NAME_1_X, EFX_NAME_1_Y, &n1[0]);
+	glcd_draw_string_P(EFX_NAME_2_X, EFX_NAME_2_Y, &n2[0]);
 
 }
 
@@ -74,7 +63,7 @@ void Helper_Print_EFX_Number(Efx_t *efx){
 	glcd_set_font_c(FONT_EFX_NUMBER);
 	sprintf(tmp_str, "%.2d", number);
 
-	glcd_draw_string(NUM_X, NUM_Y, tmp_str);
+	glcd_draw_string(EFX_NUM_X, EFX_NUM_Y, tmp_str);
 	//glcd_invert_area(75, 31, 40, 26);
 
 
@@ -470,12 +459,12 @@ void fp_S2_Btn(App_Handle_t *handle){
 			glcd_clear_buffer();
 			Helper_Draw_Thin_Frame;
 			glcd_set_font_c(FONT_EFX_MSG);
-			glcd_draw_string(23, 25, "SAVE");
+			glcd_draw_string(27, 20, "SAVE");
 		}else{
 			glcd_clear_buffer();
 			Helper_Draw_Thin_Frame;
 			glcd_set_font_c(FONT_EFX_MSG);
-			glcd_draw_string(23, 25, "ERROR");
+			glcd_draw_string(23, 20, "ERROR");
 		}
 
 		glcd_write();
@@ -499,12 +488,12 @@ void fp_S2_Btn(App_Handle_t *handle){
 			glcd_clear_buffer();
 			Helper_Draw_Thin_Frame;
 			glcd_set_font_c(FONT_EFX_MSG);
-			glcd_draw_string(3, 25, "UPDATE");
+			glcd_draw_string(9, 20, "UPDATE");
 		}else{
 			glcd_clear_buffer();
 			Helper_Draw_Thin_Frame;
 			glcd_set_font_c(FONT_EFX_MSG);
-			glcd_draw_string(23, 25, "ERROR");
+			glcd_draw_string(23, 20, "ERROR");
 		}
 
 
@@ -835,7 +824,7 @@ void Helper_Security_Check(void){
 	// 	glcd_write();
 	// 	while(1);
 
-	glcd_set_font_c(FC_FONT1);
+	glcd_set_font_c(FONT_EFX_MSG);
 
 	//	for (int var = 0; var < 12; ++var) {
 	//
