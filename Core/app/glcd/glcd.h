@@ -169,7 +169,7 @@ void glcd_clear_buffer(void);
  * \param bbox   Pointer to bounding box object.
  * \see glcd_BoundingBox_t
  */
-void glcd_select_buffer(uint8_t *buffer);
+//void glcd_select_buffer(uint8_t *buffer);
 
 /**
  * Scroll entire screne buffer by x and y pixels. (not implemented yet)

@@ -1,0 +1,1 @@
+2 tee /proc/sys/vm/drop_caches

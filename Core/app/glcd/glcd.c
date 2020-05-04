@@ -132,11 +132,11 @@ void glcd_clear_buffer(void) {
 	glcd_bbox_refresh();
 }
 
-void glcd_select_buffer(uint8_t *buffer)
-{
-	glcd_buffer_selected = buffer;
-	//glcd_bbox_selected = bbox;
-}
+//void glcd_select_buffer(uint8_t *buffer)
+//{
+//	glcd_buffer_selected = buffer;
+//	//glcd_bbox_selected = bbox;
+//}
 
 void glcd_scroll(int8_t x, int8_t y)
 {

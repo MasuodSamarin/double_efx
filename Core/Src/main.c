@@ -133,6 +133,23 @@ int main(void)
 {
 	/* USER CODE BEGIN 1 */
 
+	/*
+	 *
+
+text	   data	    bss	    dec	    hex	filename
+23012	    376	   2208	  25596	   63fc	test_defx.elf
+
+  text	   data	    bss	    dec	    hex	filename
+  23012	    376	   2208	  25596	   63fc	test_defx.elf
+
+
+
+	 *
+	 *
+	 *
+	 * */
+
+
 	/* USER CODE END 1 */
 
 
@@ -162,9 +179,10 @@ int main(void)
 	MX_TIM14_Init();
 
 	/* USER CODE BEGIN 2 */
-	MX_IWDG_Init();
 
 	App_Init(&handle);
+
+	MX_IWDG_Init();
 
 	//test_app();
 	//test_font();

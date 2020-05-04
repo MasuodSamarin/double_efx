@@ -683,30 +683,41 @@ void fp_S3_Enc(App_Handle_t *handle){
 ////	Enc_Event_Set_val(&handle->enc, (uint8_t)handle->cur_efx->mem.main_num);
 ////	handle->state = STATE_1;
 //}
+#define X_QEST		15
+#define Y_QEST		7
 
-#define X_YES		20
-#define Y_YES		12
-#define X_YES_BOX	X_YES-3
+#define X_ANS		22
+#define Y_ANS		15
+
+#define X_YES		12
+#define Y_YES		27
+#define X_YES_BOX	X_YES-1
 #define Y_YES_BOX	Y_YES-2
-#define W_YES_BOX	29
+#define W_YES_BOX	32
 #define H_YES_BOX	15
-#define X_NO		30
-#define Y_NO		20
-#define X_NO_BOX	X_NO-5
-#define Y_NO_BOX	Y_MARK
+
+#define X_NO		90
+#define Y_NO		27
+#define X_NO_BOX	X_NO-1
+#define Y_NO_BOX	Y_NO-2
 #define W_NO_BOX	25
 #define H_NO_BOX	15
-#define X_MARK		30
-#define Y_MARK		30
+
+#define X_MARK		25
+#define Y_MARK		47
+
+#define X_SIZE		57
+#define Y_SIZE		27
 
 void Helper_Service_Menu(void){
 
 	volatile uint8_t answer, value, prevalue;
 	const char *yes = "YES";
 	const char *no = "NO";
-	const char *mark = "<< --- >>";
-	const char *quest = "RESET FACTORY?";
-	const char *javab = "CLEAR EEPROM";
+	const char *mark = "<<< --- >>>";
+	const char *quest = "CLR PRESET";
+	const char *ans = "DELETING";
+	char temp[6];
 	//const char *menu = "RELEASE BTN PLZ";
 
 	if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_SET )
@@ -719,17 +730,23 @@ void Helper_Service_Menu(void){
 	prevalue = 3;
 	Enc_Event_Set_Span(1);
 
-	glcd_set_font_c(FONT_EFX_MSG);
+	glcd_set_font_c(FONT_EFX_SEQ_CHK);
 	glcd_clear();
 	Helper_Draw_Thin_Frame;
-	glcd_draw_string_P(12, 12, &quest[0]);
+	glcd_draw_string_P(X_QEST, Y_QEST, &quest[0]);
 	glcd_write();
 
 	while(HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET){
-	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
-	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
-	    	Error_Handler();
+//	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
+//	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
+//	    	Error_Handler();
 	}
+
+
+	uint8_t size;
+	EEPROM24XX_Load(7, (void*)&size, sizeof(size));
+	sprintf(temp, "%.2d", size);
+	glcd_draw_string(X_SIZE, Y_SIZE, temp);
 
 	while(answer == 1){
 		value = Enc_Event_Get_val;
@@ -740,16 +757,18 @@ void Helper_Service_Menu(void){
 
 			glcd_clear();
 			Helper_Draw_Thin_Frame;
-			glcd_draw_string_P(12, 12, &quest[0]);
+			glcd_draw_string_P(X_QEST, Y_QEST, &quest[0]);
 
 			if(value == 1){
 				glcd_draw_string_P(X_YES, Y_YES, &yes[0]);
+				glcd_draw_string(X_SIZE, Y_SIZE, temp);
 				glcd_draw_string_P(X_NO, Y_NO, &no[0]);
 				glcd_draw_string_P(X_MARK, Y_MARK, &mark[0]);
 				glcd_invert_area(X_YES_BOX, Y_YES_BOX, W_YES_BOX, H_YES_BOX);
 			}
 			else if(value == 0){
 				glcd_draw_string_P(X_YES, Y_YES, &yes[0]);
+				glcd_draw_string(X_SIZE, Y_SIZE, temp);
 				glcd_draw_string_P(X_NO, Y_NO, &no[0]);
 				glcd_draw_string_P(X_MARK, Y_MARK, &mark[0]);
 				glcd_invert_area(X_NO_BOX, Y_YES_BOX, W_NO_BOX, H_NO_BOX);
@@ -764,25 +783,29 @@ void Helper_Service_Menu(void){
 			if ( HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET )
 				answer = 0;
 		}
-	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
-	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
-	    	Error_Handler();
+//	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
+//	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
+//	    	Error_Handler();
 
 	}
 
 	if(value == 1){
-		glcd_clear();
-
-		glcd_draw_string_P(7, 7, &javab[0]);
-		glcd_write();
 
 		Helper_Erase_EEP();
 
+		glcd_clear();
+		glcd_draw_string_P(X_ANS, Y_ANS, &ans[0]);
+
+		for (int var = 0; var < 255; ++var) {
+			glcd_bar_graph_horizontal(19, 47, 90, 8, var);
+			glcd_write();
+			HAL_Delay(2);
+		}
 	}
 	while(HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET){
-	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
-	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
-	    	Error_Handler();
+//	  	/* IF WATCH-DOG TURN ON SO, ---> RESET THE DEVICE */
+//	    if(HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
+//	    	Error_Handler();
 	}
 
 }

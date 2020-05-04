@@ -122,7 +122,7 @@ void glcd_draw_logo (const uint8_t *logo){
 
 	/* Send reset pulse to LCD */
 	glcd_reset();
-	HAL_Delay(GLCD_RESET_TIME);
+	//HAL_Delay(GLCD_RESET_TIME);
 
 	/*
 	 * send HW-base commands
@@ -130,14 +130,14 @@ void glcd_draw_logo (const uint8_t *logo){
 	 *  */
 	glcd_ST7565R_init();
 
-	glcd_buffer_selected = glcd_buffer;
+	//glcd_buffer_selected = glcd_buffer;
 
 	/* Set all dots black and hold for 1s, then clear it, we do this so we can visually check init sequence is working */
 //		glcd_all_on();
 //		HAL_Delay(5000);
 //		glcd_normal();
 //
-		glcd_set_start_line(0);
+	//	glcd_set_start_line(0);
 	//	glcd_clear_now();
 
 	//glcd_select_buffer(glcd_buffer);
@@ -170,7 +170,7 @@ void glcd_draw_logo (const uint8_t *logo){
 	glcd_buffer_selected = (uint8_t*)((void*)logo_1);
 	glcd_bbox_refresh();
 	glcd_write();
-	HAL_Delay(3000);
+	HAL_Delay(2000);
 
 
 
