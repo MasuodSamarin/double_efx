@@ -10,6 +10,7 @@
 
 #define eep_offset 16
 #define eep_saved_addr 7
+#define eep_last_efx_addr 720
 
 
 uint8_t Helper_Svae_Efx_EEP(App_Handle_t *handle, uint8_t num){
@@ -27,6 +28,15 @@ uint8_t Helper_Svae_Efx_EEP(App_Handle_t *handle, uint8_t num){
 }
 
 
+void Helper_Save_Last_Efx_EEP(uint32_t num){
+	EEPROM24XX_Save(eep_last_efx_addr, (void*)&num, sizeof(num));
+}
+
+uint32_t Helper_Load_Last_Efx_EEP(void){
+	uint32_t num;
+	EEPROM24XX_Load(eep_last_efx_addr, (void*)&num, sizeof(num));
+	return num;
+}
 //uint8_t Helper_Load_Efx_EEP(uint8_t num){
 //
 //	Efx_Memory_t mem;
@@ -82,7 +92,7 @@ void Helper_Load_Efx_EEP(void){
 }
 
 void Helper_Erase_EEP(void){
-	uint8_t data[16] = {0xFF};
+	uint8_t data[16] = {0x00};
 	uint8_t addr;
 
 	for (int val = 0; val < 64; ++val) {

@@ -12,8 +12,8 @@
 
 
 
-#define half(x)		( (x) / 2 )
-#define nhalf(x)	( (-(x)) / 2 )
+//#define half(x)		( (x) / 2 )
+//#define nhalf(x)	( (-(x)) / 2 )
 
 static uint32_t cnt;
 
@@ -83,7 +83,10 @@ uint8_t Enc_Event_Handle(void){
 
 void Enc_Event_Set_val(uint32_t val){
 	__HAL_TIM_SET_COUNTER(&htim1, val);
-	cnt = Enc_Event_Get_val;
+	//cnt = Enc_Event_Get_val;
+	cnt = val;
+
+
 
 	//enc->tim_cnt = val;
 	//enc->value = 0;

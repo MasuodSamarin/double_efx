@@ -508,6 +508,7 @@ void fp_S2_Btn(App_Handle_t *handle){
 
 	//	#TODO * 	2. goto the effect
 	//	 * 	3. update the EEP value
+	Helper_Save_Last_Efx_EEP(Enc_Event_Get_val);
 
 
 }
@@ -654,10 +655,11 @@ void fp_S3_Not(App_Handle_t *handle){
  * */
 void fp_S3_Btn(App_Handle_t *handle){
 
-	Enc_Event_Set_val( handle->tmp_efx->mem.main_num-1);
+	Enc_Event_Set_val(handle->tmp_efx->mem.main_num-1);
 	handle->state = STATE_1;
 	//handle->cur_efx = handle->tmp_efx;
 
+	Helper_Save_Last_Efx_EEP(Enc_Event_Get_val);
 
 }
 

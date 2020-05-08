@@ -43,6 +43,9 @@ void Effect_List_Init(void){
 
 	//Helper_Erase_EEP();
 	Helper_Load_Efx_EEP();
+	//uint32_t num = ;
+	Enc_Event_Set_val(Helper_Load_Last_Efx_EEP());
+	//Enc_Event_Set_val(1);
 }
 
 uint8_t Effect_List_Add_Element(uint8_t main_num, Efx_Preset_t pst, uint32_t *vols){

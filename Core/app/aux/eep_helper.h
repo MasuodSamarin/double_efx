@@ -24,4 +24,10 @@ uint8_t Helper_Svae_Efx_EEP(App_Handle_t *handle, uint8_t num);
 void Helper_Load_Efx_EEP(void);
 void Helper_Erase_EEP(void);
 
+
+
+void Helper_Save_Last_Efx_EEP(uint32_t num);
+uint32_t Helper_Load_Last_Efx_EEP(void);
+
+
 #endif /* APP_AUX_EEP_HELPER_H_ */

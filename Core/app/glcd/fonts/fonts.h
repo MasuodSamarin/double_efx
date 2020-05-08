@@ -38,7 +38,7 @@ extern glcd_FontConfig_t font_current;
 //#include "Tahoma11x13.h"
 //#include "Bebas_Neue18x36_Numbers.h"
 //#include "Tekton_Pro_Ext27x28.h"
-#include "font1.h"
+#include <fonts/Slicker15x12.h>
 #include "Segoe_UI_Symbol16x17.h"
 #include "Segoe_UI_Symbol19x18.h"
 #include "Segoe_UI_Symbol20x24.h"
@@ -60,7 +60,10 @@ extern glcd_FontConfig_t font_current;
 #include "One_BitDust_Two16x15.h"
 #include "Boost_SSi19x17.h"
 #include "Boost_SSi26x20.h"
-
+#include "SimplixSSK19x12.h"
+#include "Boost_SSi22x20.h"
+#include "SimplixSSK15x10.h"
+#include "SimplixSSK14x9.h"
 
 
 
@@ -124,11 +127,19 @@ extern const glcd_FontConfig_t FC_Helvetica14x15;
 //extern const glcd_FontConfig_t FC_One_BitDust_Two16x15;
 extern const glcd_FontConfig_t FC_Boost_SSi19x17;
 extern const glcd_FontConfig_t FC_Boost_SSi26x20;
+extern const glcd_FontConfig_t FC_SimplixSSK19x12;
+extern const glcd_FontConfig_t FC_Boost_SSi22x20;
+extern const glcd_FontConfig_t FC_SimplixSSK15x10;
+extern const glcd_FontConfig_t FC_SimplixSSK14x9;
+
+
+
 
 #define FONT_EFX_NAME FC_Helvetica14x15
 #define FONT_EFX_NUMBER FC_Boost_SSi19x17
 #define FONT_EFX_MSG FC_Boost_SSi26x20
 #define FONT_EFX_SEQ_CHK FC_Helvetica14x15
+#define FONT_EFX_LOGO FC_SimplixSSK14x9
 
 
 #endif //_FONTS_H_

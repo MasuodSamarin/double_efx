@@ -65,8 +65,8 @@ const glcd_FontConfig_t FC_Helvetica14x15 = {
 		.font_table = Helvetica14x15,
 		.width = 14,
 		.height = 15,
-		.start_char = 44,
-		.end_char = 122
+		.start_char = 48,
+		.end_char = 90
 };
 
 //const glcd_FontConfig_t FC_Univers_Black_Thin16x16 = {
@@ -109,6 +109,40 @@ const glcd_FontConfig_t FC_Boost_SSi26x20 = {
 		.start_char = 65,
 		.end_char = 90
 };
+
+
+const glcd_FontConfig_t FC_SimplixSSK19x12 = {
+		.font_table = SimplixSSK19x12,
+		.width = 19,
+		.height = 12,
+		.start_char = 48,
+		.end_char = 90
+};
+
+const glcd_FontConfig_t FC_SimplixSSK15x10 = {
+		.font_table = SimplixSSK15x10,
+		.width = 15,
+		.height = 10,
+		.start_char = 48,
+		.end_char = 90
+};
+
+const glcd_FontConfig_t FC_SimplixSSK14x9 = {
+		.font_table = SimplixSSK14x9,
+		.width = 14,
+		.height = 9,
+		.start_char = 48,
+		.end_char = 90
+};
+
+const glcd_FontConfig_t FC_Boost_SSi22x20 = {
+		.font_table = Boost_SSi22x20,
+		.width = 22,
+		.height = 20,
+		.start_char = 48,
+		.end_char = 57
+};
+
 //
 //const glcd_FontConfig_t FC_Helvetica_Narrow10x13 = {
 //		.font_table = Helvetica_Narrow10x13,
