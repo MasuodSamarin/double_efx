@@ -65,7 +65,7 @@
 #define WHITE 0
 /**@}*/
 
-#define GLCD_RESET_TIME 100
+#define GLCD_RESET_TIME 10
 
 //#include "stm32f0xx_hal.h"
 #include "main.h"

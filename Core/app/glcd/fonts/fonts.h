@@ -135,11 +135,11 @@ extern const glcd_FontConfig_t FC_SimplixSSK14x9;
 
 
 
-#define FONT_EFX_NAME FC_Helvetica14x15
-#define FONT_EFX_NUMBER FC_Boost_SSi19x17
-#define FONT_EFX_MSG FC_Boost_SSi26x20
-#define FONT_EFX_SEQ_CHK FC_Helvetica14x15
-#define FONT_EFX_LOGO FC_SimplixSSK14x9
+#define FONT_EFX_NAME 		FC_Helvetica14x15
+#define FONT_EFX_NUMBER 	FC_Boost_SSi19x17
+#define FONT_EFX_MSG 		FC_Boost_SSi26x20
+#define FONT_EFX_SEQ_		CHK FC_Helvetica14x15
+#define FONT_EFX_LOGO 		FC_SimplixSSK14x9
 
 
 #endif //_FONTS_H_

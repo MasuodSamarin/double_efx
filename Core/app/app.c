@@ -49,8 +49,10 @@ const Fsm_Fp_t fsm_fp_box[EVENT_MAX][STATE_MAX]={
 
 void App_Init(App_Handle_t *handle){
 
-	glcd_init();
+	//while(1){
 
+		glcd_init();
+	//}
 	/*
 	 * EEP connected test
 	 * */

@@ -182,6 +182,21 @@ text	   data	    bss	    dec	    hex	filename
 
 	App_Init(&handle);
 
+//	while(1){
+//		glcd_reset();
+//		glcd_ST7565R_init();
+//
+//		}
+
+//	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, 512);
+//	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_2, 512);
+//	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_3, 512);
+//	__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, 512);
+//
+//	while(1){};
+
+
+
 	MX_IWDG_Init();
 
 	//test_app();
