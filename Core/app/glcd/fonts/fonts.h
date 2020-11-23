@@ -32,7 +32,7 @@ extern glcd_FontConfig_t font_current;
 //#include "Liberation_Sans15x21_Numbers.h"
 //#include "Liberation_Sans17x17_Alpha.h"
 //#include "Liberation_Sans20x28_Numbers.h"
-//#include "Liberation_Sans27x36_Numbers.h"
+#include "Liberation_Sans27x36_Numbers.h"
 //
 //#include "Font5x8.h"
 //#include "Tahoma11x13.h"
@@ -84,7 +84,7 @@ extern glcd_FontConfig_t font_current;
 //extern const glcd_FontConfig_t FC_Bebas_Neue20x36_Bold_Numbers;
 //
 //extern const glcd_FontConfig_t FC_Liberation_Sans20x28_Numbers;
-//extern const glcd_FontConfig_t FC_Liberation_Sans27x36_Numbers;
+extern const glcd_FontConfig_t FC_Liberation_Sans27x36_Numbers;
 //
 //extern const glcd_FontConfig_t FC_Default_Font_5x8_AlphaNumber;
 
@@ -123,7 +123,7 @@ extern const glcd_FontConfig_t FC_Helvetica14x15;
 //extern const glcd_FontConfig_t FC_Univers12x14;
 //extern const glcd_FontConfig_t FC_Univers14x17;
 //extern const glcd_FontConfig_t FC_Univers_Black_Thin16x16;
-//extern const glcd_FontConfig_t FC_Boost_SSi16x16;
+extern const glcd_FontConfig_t FC_Boost_SSi16x16;
 //extern const glcd_FontConfig_t FC_One_BitDust_Two16x15;
 extern const glcd_FontConfig_t FC_Boost_SSi19x17;
 extern const glcd_FontConfig_t FC_Boost_SSi26x20;
@@ -136,9 +136,9 @@ extern const glcd_FontConfig_t FC_SimplixSSK14x9;
 
 
 #define FONT_EFX_NAME 		FC_Helvetica14x15
-#define FONT_EFX_NUMBER 	FC_Boost_SSi19x17
+#define FONT_EFX_NUMBER 	FC_Boost_SSi22x20
 #define FONT_EFX_MSG 		FC_Boost_SSi26x20
-#define FONT_EFX_SEQ_		CHK FC_Helvetica14x15
+#define FONT_EFX_SEQ_CHK 	FC_Helvetica14x15
 #define FONT_EFX_LOGO 		FC_SimplixSSK14x9
 
 

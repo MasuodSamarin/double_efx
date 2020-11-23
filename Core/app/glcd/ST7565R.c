@@ -673,7 +673,7 @@ void glcd_ST7565R_init(void) {
 	glcd_command(ST7565_LCD_CMD_SET_BIAS_9);
 	glcd_command(ST7565_LCD_CMD_SET_COM_REVERSE);
 	glcd_command(ST7565_LCD_CMD_SET_ALLPTS_NORMAL);
-	glcd_command(ST7565_LCD_CMD_SET_DISP_NORMAL);
+	glcd_command(ST7565_LCD_CMD_SET_DISP_REVERSE);
 	glcd_command(ST7565_LCD_CMD_DISPLAY_ON);
 
 				//glcd_command(ST7565_LCD_CMD_SET_BOOSTER_FIRST);

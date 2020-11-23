@@ -27,6 +27,7 @@ typedef enum {
 	FV1_CODE_5 = 0b0101,
 	FV1_CODE_6 = 0b0110,
 	FV1_CODE_7 = 0b0111,
+	FV1_CODE_T = 0b1000
 }Fv1_Code_t;
 
 typedef enum {
@@ -34,6 +35,6 @@ typedef enum {
 	FV1_EEP_1 = 0b00100000,
 }Fv1_EEP_t;
 
-
+#define SW_4066_EN	0x40
 
 #endif /* APP_EFFECT_FV1_H_ */

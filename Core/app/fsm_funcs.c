@@ -31,8 +31,8 @@
 #define EFX_NAME_2_X	6
 #define EFX_NAME_2_Y	24
 
-#define EFX_NUM_X		83
-#define EFX_NUM_Y		21
+#define EFX_NUM_X		78
+#define EFX_NUM_Y		15
 
 uint8_t VOL_Xs[] = {6, 6, 69, 69};
 uint8_t VOL_Ys[] = {43, 53, 43, 53};
@@ -267,6 +267,9 @@ void Helper_Print_EFX_Vol(uint32_t Vol_Value, Vol_Name_t name){
 //}
 
 
+#include "fv1.h"
+//#include "stm32f0xx.h"
+#define CLEAR_BIT_(REG, BIT)   ((REG) &= ~(BIT))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -341,9 +344,20 @@ void fp_S1_All(App_Handle_t *handle){
 	 * set FV1 effect
 	 * we clear the 4th bit off and then on
 	 * */
+	/*TODO:
+	 * change the current process for on ond off devices
+	 * */
+	uint8_t reg_1 = handle->cur_efx->base->code;
+	uint8_t reg_2 = reg_1;
+	reg_1 = CLEAR_BIT_(reg_1, SW_4066_EN);
+
 	HC595_SendByte(0x00);
-	HAL_Delay(1);
-	HC595_SendByte((handle->cur_efx->base->code) | 0x08);
+	HAL_Delay(10);
+	HC595_SendByte(reg_1 );
+	HAL_Delay(10);
+	HC595_SendByte(reg_1 | FV1_CODE_T);
+	HAL_Delay(100);
+	HC595_SendByte(reg_2| FV1_CODE_T );
 
 	handle->state = STATE_2;
 	handle->btn.press_time = BTN_LONG_PRESS_TIME;
@@ -373,7 +387,7 @@ void fp_S2_Not(App_Handle_t *handle){
 			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_A])>>4);
 		//vol_val = Helper_Get_Vol_Value(handle, VOL_A);
 
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, vol_val);
 		Helper_Print_EFX_Vol(vol_val, VOL_A);
 	}
 
@@ -405,7 +419,7 @@ void fp_S2_Not(App_Handle_t *handle){
 		else
 			vol_val = (uint32_t)((handle->vol.vol_raw[VOL_D])>>4);
 		//vol_val = Helper_Get_Vol_Value(handle, VOL_D);
-		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_4, vol_val);
+		__HAL_TIM_SET_COMPARE( &htim3, TIM_CHANNEL_1, vol_val);
 		Helper_Print_EFX_Vol(vol_val, VOL_D);
 	}
 	glcd_write();
@@ -685,7 +699,7 @@ void fp_S3_Enc(App_Handle_t *handle){
 ////	Enc_Event_Set_val(&handle->enc, (uint8_t)handle->cur_efx->mem.main_num);
 ////	handle->state = STATE_1;
 //}
-#define X_QEST		15
+#define X_QEST		33
 #define Y_QEST		7
 
 #define X_ANS		22
@@ -705,7 +719,7 @@ void fp_S3_Enc(App_Handle_t *handle){
 #define W_NO_BOX	25
 #define H_NO_BOX	15
 
-#define X_MARK		25
+#define X_MARK		39
 #define Y_MARK		47
 
 #define X_SIZE		57
@@ -717,7 +731,7 @@ void Helper_Service_Menu(void){
 	const char *yes = "YES";
 	const char *no = "NO";
 	const char *mark = "<<< --- >>>";
-	const char *quest = "CLR PRESET";
+	const char *quest = "DELETE";
 	const char *ans = "DELETING";
 	char temp[6];
 	//const char *menu = "RELEASE BTN PLZ";

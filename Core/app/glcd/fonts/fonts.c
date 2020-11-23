@@ -143,62 +143,62 @@ const glcd_FontConfig_t FC_Boost_SSi22x20 = {
 		.end_char = 57
 };
 
-//
-//const glcd_FontConfig_t FC_Helvetica_Narrow10x13 = {
-//		.font_table = Helvetica_Narrow10x13,
-//		.width = 10,
-//		.height = 13,
-//		.start_char = 44,
-//		.end_char = 122
-//};
-//
-//const glcd_FontConfig_t FC_Univers_BoldExt23x15 = {
-//		.font_table = Univers_BoldExt23x15,
-//		.width = 23,
-//		.height = 15,
-//		.start_char = 45,
-//		.end_char = 122
-//};
-//
-//const glcd_FontConfig_t FC_Univers_BoldExt26x18 = {
-//		.font_table = Univers_BoldExt26x18,
-//		.width = 23,
-//		.height = 15,
-//		.start_char = 44,
-//		.end_char = 122
-//};
-//
-//const glcd_FontConfig_t FC_Arial10x17 = {
-//		.font_table = Arial10x17,
-//		.width = 10,
-//		.height = 17,
-//		.start_char = 48,
-//		.end_char = 57
-//};
-//
-//const glcd_FontConfig_t FC_Seas10x14 = {
-//		.font_table = Seas10x14,
-//		.width = 10,
-//		.height = 14,
-//		.start_char = 48,
-//		.end_char = 57
-//};
-//
-//const glcd_FontConfig_t FC_Univers10x13 = {
-//		.font_table = Univers10x13,
-//		.width = 10,
-//		.height = 13,
-//		.start_char = 48,
-//		.end_char = 57
-//};
-//
-//const glcd_FontConfig_t FC_Univers12x14 = {
-//		.font_table = Univers12x14,
-//		.width = 12,
-//		.height = 14,
-//		.start_char = 48,
-//		.end_char = 57
-//};
+
+const glcd_FontConfig_t FC_Helvetica_Narrow10x13 = {
+		.font_table = Helvetica_Narrow10x13,
+		.width = 10,
+		.height = 13,
+		.start_char = 44,
+		.end_char = 122
+};
+
+const glcd_FontConfig_t FC_Univers_BoldExt23x15 = {
+		.font_table = Univers_BoldExt23x15,
+		.width = 23,
+		.height = 15,
+		.start_char = 45,
+		.end_char = 122
+};
+
+const glcd_FontConfig_t FC_Univers_BoldExt26x18 = {
+		.font_table = Univers_BoldExt26x18,
+		.width = 23,
+		.height = 15,
+		.start_char = 44,
+		.end_char = 122
+};
+
+const glcd_FontConfig_t FC_Arial10x17 = {
+		.font_table = Arial10x17,
+		.width = 10,
+		.height = 17,
+		.start_char = 48,
+		.end_char = 57
+};
+
+const glcd_FontConfig_t FC_Seas10x14 = {
+		.font_table = Seas10x14,
+		.width = 10,
+		.height = 14,
+		.start_char = 48,
+		.end_char = 57
+};
+
+const glcd_FontConfig_t FC_Univers10x13 = {
+		.font_table = Univers10x13,
+		.width = 10,
+		.height = 13,
+		.start_char = 48,
+		.end_char = 57
+};
+
+const glcd_FontConfig_t FC_Univers12x14 = {
+		.font_table = Univers12x14,
+		.width = 12,
+		.height = 14,
+		.start_char = 48,
+		.end_char = 57
+};
 
 
 /*
@@ -319,14 +319,14 @@ const glcd_FontConfig_t FC_Boost_SSi22x20 = {
 //		.end_char = 57,
 //
 //};
-//const glcd_FontConfig_t FC_Liberation_Sans27x36_Numbers = {
-//		.font_table = Liberation_Sans27x36_Numbers,
-//		.width = 27,
-//		.height = 36,
-//		.start_char = 46,
-//		.end_char = 57,
-//
-//};
+const glcd_FontConfig_t FC_Liberation_Sans27x36_Numbers = {
+		.font_table = Liberation_Sans27x36_Numbers,
+		.width = 27,
+		.height = 36,
+		.start_char = 46,
+		.end_char = 57,
+
+};
 //
 ///*
 // * alfa-numbers fonts
