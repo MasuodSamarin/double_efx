@@ -160,15 +160,18 @@ void glcd_init(void)
 	glcd_ST7565R_init();
 
 
-	glcd_buffer_selected = (uint8_t*)((void*)logo_1);
-    glcd_bbox_refresh();
-	glcd_write();
+	//glcd_buffer_selected = (uint8_t*)((void*)logo_1);
 
 	glcd_buffer_selected = glcd_buffer;
 
+	glcd_clear();
+	glcd_bbox_refresh();
+	glcd_write();
+
+
 	glcd_set_font_c(FONT_EFX_LOGO);
-	glcd_draw_string_P(25, 35, "24:BIT:DSP");
-	glcd_draw_string_P(8, 48, "DOUBLE:EFFECT");
+	glcd_draw_string_P(25, 15, "24:BIT:DSP");
+	glcd_draw_string_P(8, 35, "DOUBLE:EFFECT");
 	glcd_write();
 
 	HAL_Delay(4000);
